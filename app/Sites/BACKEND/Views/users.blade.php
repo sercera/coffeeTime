@@ -6,4 +6,4 @@
 
     backend
 
-    @endsection
+@endsection
