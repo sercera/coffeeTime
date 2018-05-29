@@ -8,7 +8,7 @@ class CaffeController extends Controller
 {
     public function index(){
 
-        return view('caffe.index');
+        return view('caffe.caffe');
 
 
     }
