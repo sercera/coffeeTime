@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $site_name = strtoupper(getenv('SITE_CODE'));
         if (empty($site_name)) {
-            $site_name = "BACKOFFICE";
+            $site_name = "BACKEND";
 
         }
 

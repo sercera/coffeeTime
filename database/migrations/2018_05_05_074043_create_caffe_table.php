@@ -18,7 +18,7 @@ class CreateCaffeTable extends Migration
             $table->string('name',30);
             $table->string('address',100);
             $table->string('city',50);
-            $table->string('description',255);
+            $table->mediumText('description',255);
             $table->string('work_hours',20);
             $table->timestamps();
         });
