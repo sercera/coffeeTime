@@ -10,6 +10,7 @@ Route::get('/article','ArticleController@index');
 Route::post('/article/submit','ArticleSubmitController@submit');
 Route::get('/table','TableController@index');
 Route::post('/table/submit','TableSubmitController@submit');
+Route::get('/employees', 'EmployeeSubmitController@getCaffes');
 
 Route::resources([
 
