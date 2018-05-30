@@ -22,6 +22,11 @@ Route::get('/table','TableController@index');
 Route::post('/table/submit','TableSubmitController@submit');
 Route::get('/table', 'TableSubmitController@getCaffes');
 
+//create menu
+Route::get('/create_menu','MenuController@index');
+Route::post('/create_menu/submit','MenuSubmitController@submit');
+Route::get('/create_menu', 'MenuSubmitController@getCaffes');
+
 Route::resources([
 
     'caffe' => 'CaffeController'
