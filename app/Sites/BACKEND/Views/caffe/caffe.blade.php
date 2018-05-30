@@ -17,7 +17,7 @@
         {{Form::text('city', '' , ['class' => 'form-control', 'placeholder' => 'Unesite grad'])}}
     </div>
     <div class="form-group">
-        {{Form::label('description', 'Adresa')}}
+        {{Form::label('description', 'Opis')}}
         {{Form::textarea('description', '' , ['class' => 'form-control', 'placeholder' => 'Opis...'])}}
     </div>
     <div class="form-group">

@@ -7,9 +7,9 @@
         @foreach($employees as $employee)
             <ul class="list-group">
                 <li class="list-group-item">Username: {{$employee->username}}</li>
-                <li class="list-group-item">Username: {{$employee->email}}</li>
-                <li class="list-group-item">Username: {{$employee->password}}</li>
-                <li class="list-group-item">Username: {{$employee->fk_for_caffe}}</li>
+                <li class="list-group-item">Email: {{$employee->email}}</li>
+                <li class="list-group-item">Password: {{$employee->password}}</li>
+                <li class="list-group-item">Radi u: {{$employee->fk_for_caffe}}</li>
             </ul>
         @endforeach
     @endif
