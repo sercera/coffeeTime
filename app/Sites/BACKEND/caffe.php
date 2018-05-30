@@ -16,4 +16,8 @@ class caffe extends Model
     {
         return $this->hasMany('App\BACKEND\table');
     }
+    public function menu()
+    {
+        return $this->hasOne('App\BACKEND\menu');
+    }
 }
