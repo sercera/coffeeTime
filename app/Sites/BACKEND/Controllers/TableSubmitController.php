@@ -4,6 +4,7 @@ namespace App\Sites\BACKEND\Controllers;
 
 use Illuminate\Http\Request;
 use App\Sites\BACKEND\table;
+use App\Sites\BACKEND\caffe;
 
 class TableSubmitController extends Controller
 {
@@ -19,10 +20,17 @@ class TableSubmitController extends Controller
         $table = new table;
         $table->table_number = $request->input('number');
         $table->table_spots = $request->input('spots');
+        $table->fk_for_caffe = $request->input('fk_for_caffe');
 
         //Save article
         $table->save();
         //Redirect
-        return redirect('/article')->with('success', 'Table Submited');
+        return redirect('/table')->with('success', 'Table Submited');
     }
+    public function getCaffes()
+    {
+        $caffes = caffe::all();
+        return view('caffe.table')->with('caffes',$caffes);
+    }
+
 }

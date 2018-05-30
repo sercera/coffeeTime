@@ -12,4 +12,8 @@ class caffe extends Model
     {
         return $this->hasMany('App\BACKEND\employees');
     }
+    public function table()
+    {
+        return $this->hasMany('App\BACKEND\table');
+    }
 }
