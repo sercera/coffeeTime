@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Sites\BACKEND;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class caffe extends Model
+class Caffe extends Model
 {
-    protected $table = 'caffes';
+    protected $table = 'caffe';
 
     public function employees()
     {

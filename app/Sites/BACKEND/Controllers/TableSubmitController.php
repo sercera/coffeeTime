@@ -3,8 +3,8 @@
 namespace App\Sites\BACKEND\Controllers;
 
 use Illuminate\Http\Request;
-use App\Sites\BACKEND\table;
-use App\Sites\BACKEND\caffe;
+use App\Models\Table;
+use App\Models\Caffe;
 
 class TableSubmitController extends Controller
 {

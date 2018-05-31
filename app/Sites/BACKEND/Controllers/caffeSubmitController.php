@@ -3,7 +3,7 @@
 namespace App\Sites\BACKEND\Controllers;
 
 use Illuminate\Http\Request;
-use App\Sites\BACKEND\caffe;
+use App\Models\Caffe;
 
 class caffeSubmitController extends Controller
 {
@@ -16,7 +16,7 @@ class caffeSubmitController extends Controller
 
         //Create new caffe
 
-        $caffe = new caffe;
+        $caffe = new Caffe;
         $caffe->name = $request->input('name');
         $caffe->address = $request->input('address');
         $caffe->city = $request->input('city');
@@ -28,7 +28,7 @@ class caffeSubmitController extends Controller
         return redirect('/caffe')->with('success', 'Caffe Submited');
     }
     public function getCaffes(){
-        $caffes = caffe::all();
+        $caffes = Caffe::all();
 
         return view('caffeList' )->with('caffes', $caffes);
     }

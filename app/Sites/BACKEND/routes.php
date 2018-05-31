@@ -26,12 +26,12 @@ Route::get('/table', 'TableSubmitController@getCaffes');
 //menu
 Route::get('/menu', 'MenuArticleController@index');
 Route::get('/menu', 'MenuArticleController@getArticles');
-=======
+//=======
 //create menu
 Route::get('/create_menu','MenuController@index');
 Route::post('/create_menu/submit','MenuSubmitController@submit');
 Route::get('/create_menu', 'MenuSubmitController@getCaffes');
->>>>>>> 5d557d64d44ba44ed70e679fba4df813aeee2c5c
+//>>>>>>> 5d557d64d44ba44ed70e679fba4df813aeee2c5c
 
 Route::resources([
 

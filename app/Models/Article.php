@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Sites\BACKEND;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class article extends Model
+class Article extends Model
 {
     //
 }
