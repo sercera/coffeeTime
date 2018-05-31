@@ -6,8 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Table extends Model
 {
-    public function caffe()
+    protected $table = "tables";
+    protected $primaryKey = "table_id";
+
+    protected $fillable = [
+
+        'table_number',
+        'table_spots',
+        'is_taken',
+        'is_reserved',
+        'fk_for_caffe'
+
+    ];
+
+    public function caffeEntity()
     {
-        return $this->belongsTo('App\Models\Caffe');
+        return $this->belongsTo('App\Models\Caffe','caffe_id','table_id');
     }
 }

@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
 {
+        protected $table="menu";
+        protected $primaryKey="menu_id";
+
     public function caffeEntity()
     {
         return $this->belongsTo('App\Models\Caffe');

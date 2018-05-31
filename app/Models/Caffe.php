@@ -7,17 +7,27 @@ use Illuminate\Database\Eloquent\Model;
 class Caffe extends Model
 {
     protected $table = 'caffe';
+    protected $primaryKey = 'caffe_id';
+    protected $fillable = [
+        'name',
+        'address',
+        'city',
+        'description',
+        'work_hours'
+    ];
 
-    public function employees()
+    public function getEmployees()
     {
-        return $this->hasMany('App\BACKEND\employees');
+        return $this->hasMany('App\Models\Employee', 'employee_id', 'caffe_id');
     }
-    public function table()
+
+    public function getTables()
     {
-        return $this->hasMany('App\BACKEND\table');
+        return $this->hasMany('App\Models\Table', 'table_id', 'caffe_id');
     }
-    public function menu()
+
+    public function getMenu()
     {
-        return $this->hasOne('App\BACKEND\menu');
+        return $this->hasOne('App\Models\Menu');
     }
 }
