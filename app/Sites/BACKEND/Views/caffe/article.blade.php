@@ -1,5 +1,7 @@
 @extends('layout')
 
+
+
 @section('content')
     @include('caffe.error')
 

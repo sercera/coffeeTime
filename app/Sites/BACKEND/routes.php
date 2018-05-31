@@ -18,9 +18,10 @@ Route::get('/article','ArticleController@index');
 Route::post('/article/submit','ArticleSubmitController@submit');
 
 //table
-Route::get('/table','TableController@index');
-Route::post('/table/submit','TableSubmitController@submit');
-Route::get('/table', 'TableSubmitController@getCaffes');
+Route::get('/table/add','TableController@index');
+Route::post('/table','TableController@store');
+/** ovo nam ne treba, moze se dobaviti u index funkciji, izbrisan je tablesubmitcontr, dodata funkcija store u TableControlleru,suvisna su dva kontrolelra */
+//Route::get('/table', 'TableSubmitController@getCaffes');
 
 
 //menu
