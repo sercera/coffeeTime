@@ -26,6 +26,7 @@ Route::post('/table','TableController@store');
 
 //menu
 Route::get('/menu', 'MenuArticleController@index');
+Route::post('/menu/submit','MenuArticleSubmitController@submit');
 Route::get('/menu', 'MenuArticleController@getArticles');
 //=======
 //create menu

@@ -14,4 +14,8 @@ class Article extends Model
         'type'
     ];
 
+    public function menuEntity()
+    {
+        $this->belongsToMany('App\Models\Menu','menu_article', 'article_id', 'menu_id');
+    }
 }

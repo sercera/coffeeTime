@@ -3,11 +3,12 @@
 namespace App\Sites\BACKEND\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Article;
 class ArticleController extends Controller
 {
     public function index()
     {
-        return view('caffe.article');
+        $article= Article::all();
+        return view('caffe.article')->withTags($tags);
     }
 }

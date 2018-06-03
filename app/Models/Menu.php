@@ -13,4 +13,8 @@ class Menu extends Model
     {
         return $this->belongsTo('App\Models\Caffe');
     }
+    public function articleEntity()
+    {
+        return $this->belongsToMany('App\Models\Article', 'menu_article','menu_id', 'article_id');
+    }
 }
