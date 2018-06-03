@@ -1,7 +1,36 @@
 @extends('layout')
 
+@section('active-menu')
+    @include('active-menu')
+@endsection
+
 @section('content')
     @include('caffe.error')
+
+    <ol class="breadcrumb breadcrumb-quirk">
+        <li>
+            <a href="{{url('/')}}">
+                <i class="glyphicon glyphicon-home"></i>
+                Home
+            </a>
+        </li>
+        <li class="active">
+            <a href="{{url('caffe')}}">
+                <i class="fa glyphicon glyphicon-book"></i>
+                Add new Caffe
+            </a>
+        </li>
+    </ol>
+    <div class="panel">
+        <div class="panel-heading">
+            <div class="col-lg-5">
+            </div>
+            <div class="col-lg-7">
+                <h4 class="panel-title">Add new Caffe</h4>
+            </div>
+        </div>
+        <br>
+        <div class="panel-body">
 
     {!! Form::open(['url' => 'caffe/submit']) !!}
     <div class="form-group">
@@ -28,5 +57,7 @@
         {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
     </div>
     {!! Form::close() !!}
+        </div>
+    </div>
 
 @endsection

@@ -5,77 +5,26 @@
 
 
 @section('active-menu')
-    <li class="nav-parent">
-        <a href="">
-            <i class="fa glyphicon glyphicon-globe"></i>
-            <span>Caffe</span>
-        </a>
-        <ul class="children">
-            <li>
-                <a href="#">Manage Users</a>
-            </li>
-            <li>
-                <a href="#">...</a>
-            </li>
-            <li>
-                <a href="#">...</a>
-            </li>
-
-        </ul>
-    </li>
-    <li class="nav-parent">
-        <a href="">
-            <i class="fa glyphicon glyphicon-book"></i>
-            <span>Table</span>
-        </a>
-        <ul class="children">
-            <li>
-                <a href="#"> List all Tables</a>
-            </li>
-            <li>
-                <a href="{{url(('table/add'))}}"> Add Table</a>
-            </li>
-
-
-        </ul>
-    </li>
-    <li class="nav-parent">
-        <a href="">
-            <i class="fa fa-users"></i>
-            <span>Employees</span>
-        </a>
-        <ul class="children">
-            <li>
-                <a href="#"> List all Employees</a>
-            </li>
-            <li>
-                <a href="#"> Add an Employee</a>
-            </li>
-
-
-        </ul>
-    </li>
-
-
+@include('active-menu')
 @endsection
 
 
 @section('content')
     @include('caffe.error')
-    <ol class="breadcrumb breadcrumb-quirk">
-        <li>
-            <a href="{{url('/')}}">
-                <i class="glyphicon glyphicon-home"></i>
-                Home
-            </a>
-        </li>
-        <li class="active">
-            <a href="{{url('table/add')}}">
-                <i class="fa glyphicon glyphicon-book"></i>
-                Add new Table
-            </a>
-        </li>
-    </ol>
+        <ol class="breadcrumb breadcrumb-quirk">
+            <li>
+                <a href="{{url('/')}}">
+                    <i class="glyphicon glyphicon-home"></i>
+                    Home
+                </a>
+            </li>
+            <li class="active">
+                <a href="{{url('table/add')}}">
+                    <i class="fa glyphicon glyphicon-book"></i>
+                    Add new Table
+                </a>
+            </li>
+        </ol>
     <div class="panel">
         <div class="panel-heading">
             <div class="col-lg-5">
