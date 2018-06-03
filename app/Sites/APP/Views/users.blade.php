@@ -6,4 +6,4 @@
 
     app
 
-    @endsection
+@endsection

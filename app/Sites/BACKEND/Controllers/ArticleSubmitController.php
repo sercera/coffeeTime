@@ -3,7 +3,7 @@
 namespace App\Sites\BACKEND\Controllers;
 
 use Illuminate\Http\Request;
-use App\Sites\BACKEND\article;
+use App\Models\Article;
 
 class ArticleSubmitController extends Controller
 {

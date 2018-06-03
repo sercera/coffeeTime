@@ -3,8 +3,8 @@
 namespace App\Sites\BACKEND\Controllers;
 
 use Illuminate\Http\Request;
-use App\Sites\BACKEND\menu;
-use App\Sites\BACKEND\caffe;
+use App\Models\Menu;
+use App\Models\Caffe;
 
 class MenuSubmitController extends Controller
 {
@@ -22,7 +22,7 @@ class MenuSubmitController extends Controller
     }
     public function getCaffes()
     {
-        $caffes = caffe::all();
+        $caffes = Caffe::all();
         return view('caffe.menu')->with('caffes',$caffes);
     }
 }

@@ -3,8 +3,8 @@
 namespace App\Sites\BACKEND\Controllers;
 
 use Illuminate\Http\Request;
-use App\Sites\BACKEND\employees;
-use App\Sites\BACKEND\caffe;
+use App\Models\Employee;
+use App\Models\Caffe;
 
 class EmployeeSubmitController extends Controller
 {
@@ -17,7 +17,7 @@ class EmployeeSubmitController extends Controller
             'fk_for_caffe'=> 'required'
         ]);
 
-        $employee = new employees;
+        $employee = new Employee;
         $employee->username= $request->input('username');
         $employee->email= $request->input('email');
         $employee->password= $request->input('password');
@@ -28,13 +28,13 @@ class EmployeeSubmitController extends Controller
     }
     public function getEmployees()
     {
-        $employees = employees::all();
+        $employees = Employee::all();
 
         return view('employeesList')->with('employees', $employees);
     }
     public function getCaffes()
     {
-        $caffes = caffe::all();
+        $caffes = Caffe::all();
         return view('caffe.employee')->with('caffes',$caffes);
     }
 }
