@@ -9,6 +9,8 @@ class ArticleController extends Controller
     public function index()
     {
         $article= Article::all();
-        return view('caffe.article')->withTags($tags);
+        return view('caffe.article',compact('article'));
     }
 }
+Request::all();
+

@@ -11,7 +11,7 @@ Route::get('/caffeList', 'caffeSubmitController@getCaffes');
 Route::get('/employees' , 'EmployeesController@index');
 Route::post('/employees/submit', 'EmployeeSubmitController@submit');
 Route::get('/employeesList', 'EmployeeSubmitController@getEmployees');
-Route::get('/employees', 'EmployeeSubmitController@getCaffes');
+Route::post('/employees', 'EmployeeSubmitController@getCaffes');
 
 //article
 Route::get('/article','ArticleController@index');
@@ -25,7 +25,7 @@ Route::post('/table','TableController@store');
 
 
 //menu
-Route::get('/menu', 'MenuArticleController@index');
+Route::get('/menu/{id}', 'MenuArticleController@index');
 Route::post('/menu/submit','MenuArticleSubmitController@submit');
 Route::get('/menu', 'MenuArticleController@getArticles');
 //=======

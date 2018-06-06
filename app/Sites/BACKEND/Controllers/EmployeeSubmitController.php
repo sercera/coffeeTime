@@ -24,7 +24,7 @@ class EmployeeSubmitController extends Controller
         $employee->fk_for_caffe=  $request->input('fk_for_caffe');
         $employee->save();
 
-        return redirect('/employees')->with('success', 'Employee Submited');
+        return redirect('/employees')->with('success', 'Employee Submitted');
     }
     public function getEmployees()
     {
