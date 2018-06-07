@@ -11,13 +11,13 @@
         <li>
             <a href="{{url('/')}}">
                 <i class="glyphicon glyphicon-home"></i>
-                Home
+                Početna strana
             </a>
         </li>
         <li class="active">
             <a href="{{url('caffe')}}">
                 <i class="fa glyphicon glyphicon-book"></i>
-                Add new Caffe
+                Dodaj novi kafić
             </a>
         </li>
     </ol>
@@ -26,7 +26,7 @@
             <div class="col-lg-5">
             </div>
             <div class="col-lg-7">
-                <h4 class="panel-title">Add new Caffe</h4>
+                <h4 class="panel-title">Dodaj novi kafić</h4>
             </div>
         </div>
         <br>

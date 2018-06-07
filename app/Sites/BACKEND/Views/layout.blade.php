@@ -268,7 +268,7 @@
 
             <div class="tab-pane active" id="mainmenu">
 
-                <h5 class="sidebar-title">Main Menu</h5>
+                <h5 class="sidebar-title">Glavni meni</h5>
                 <ul class="nav nav-pills nav-stacked nav-quirk">
                     @yield('active-menu')
                 </ul>
