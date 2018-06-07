@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title')</title>
+    <title>CoffeeTime</title>
 
 
     <link rel="stylesheet" type="text/css" href="{{asset('lib/fontawesome/css/font-awesome.css')}}">
@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css')}}">
     {{--    <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-data-table/dataTables.bootstrap.css')}}">--}}
 
-    <link rel="icon" sizes="60x60" href="{{asset('images/giggl1.png')}}">
+    <link rel="icon" sizes="64x64" href="{{asset('images/icon/icon_black.png')}}">
 
 
     <script src="{{asset('lib/modernizr/modernizr.js')}}"></script>
@@ -43,7 +43,7 @@
 
         <div class="logopanel">
             <a href="{{url(('/'))}}">
-                <img src="{{asset('images/giggl1.png')}}" alt="" class="media-object img-circle" style="width:20%;height:40px;margin-left: 40%;">
+                <img src="{{asset('images/icon/icon_white.png')}}" alt="" class="media-object img-square" style="width:25%;height:40px;margin-left: 40%;">
             </a>
 
         </div><!-- logopanel -->
@@ -61,8 +61,8 @@
                     <li>
                         <div class="logopanel">
                             <a href="{{url(('/'))}}">
-                                <img src="{{asset('images/giggl-text.png')}}" alt="" class="media-object img-square"
-                                     style="width:30%;height:34px; margin-left: -550px">
+                                <img src="{{asset('images/icon/icon_text_white.png')}}" alt="" class="media-object img-square"
+                                     style="width:100%;height:40px; margin-left: -650px">
                             </a>
                         </div>
                     </li>
