@@ -1,13 +1,8 @@
 @extends('layout')
-@section('title')
-    Add|Table
-@endsection
-
 
 @section('active-menu')
-@include('active-menu')
+    @include('active-menu')
 @endsection
-
 
 @section('content')
     @include('caffe.error')

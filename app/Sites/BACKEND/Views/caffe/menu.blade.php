@@ -1,7 +1,10 @@
 @extends('layout')
+
 @section('active-menu')
     @include('active-menu')
 @endsection
+
+
 @section('content')
     @include('caffe.error')
 
@@ -38,10 +41,27 @@
             @endforeach
         </select>
     </div>
+
+            <div class="form-group">
+                {{Form::label('article', 'Izaberi artikal')}}
+                <select class="form-control select2-multi" name="article[]" multiple="multiple">
+                    @foreach($articles as $article)
+                        <option value="{{$article->article_id}}"> {{$article->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+
+
     <div>
         {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
     </div>
     {!! Form::close() !!}
         </div>
     </div>
+
+    @section('scripts')
+        <script type="text/javascript">
+            $('.select2-multi').select2();
+        </script>
+    @endsection
 @endsection

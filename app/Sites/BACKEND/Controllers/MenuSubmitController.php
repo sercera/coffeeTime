@@ -5,6 +5,7 @@ namespace App\Sites\BACKEND\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Menu;
 use App\Models\Caffe;
+use App\Models\Article;
 
 class MenuSubmitController extends Controller
 {
@@ -23,6 +24,7 @@ class MenuSubmitController extends Controller
     public function getCaffes()
     {
         $caffes = Caffe::all();
-        return view('caffe.menu')->with('caffes',$caffes);
+        $articles = Article::all();
+        return view('caffe.menu')->withCaffes($caffes)->withArticles($articles);
     }
 }

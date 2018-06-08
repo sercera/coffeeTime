@@ -32,7 +32,7 @@
         <br>
         <div class="panel-body">
 
-    {!! Form::open(['url' => 'caffe/submit']) !!}
+    {!! Form::open(['url' => 'caffe/add']) !!}
     <div class="form-group">
         {{Form::label('name', 'Naziv')}}
         {{Form::text('name', '' , ['class' => 'form-control', 'placeholder' => 'Unesite naziv'])}}

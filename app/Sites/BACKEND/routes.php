@@ -4,8 +4,8 @@ Route::get('/', 'IndexController@index');
 Route::get('/users', 'IndexController@users');
 
 //caffe
-Route::post('/caffe/submit','caffeSubmitController@submit');
-Route::get('/caffeList', 'caffeSubmitController@getCaffes');
+Route::post('/caffe/add','CaffeController@submit');
+Route::get('/caffeList', 'CaffeController@getCaffes');
 
 //employee
 Route::get('/employees' , 'EmployeesController@index');

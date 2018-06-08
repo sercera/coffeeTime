@@ -1,7 +1,6 @@
 @extends('welcome')
 
 
-
 @section('content')
 
     backend
