@@ -6,6 +6,9 @@ Route::get('/users', 'IndexController@users');
 //caffe
 Route::post('/caffe/add','CaffeController@submit');
 Route::get('/caffeList', 'CaffeController@getCaffes');
+Route::get('/caffe/edit/{caffe_id}','CaffeController@edit');
+Route::post('/caffe/{caffe_id}','CaffeController@update');
+
 
 //employee
 Route::get('/employees' , 'EmployeesController@index');

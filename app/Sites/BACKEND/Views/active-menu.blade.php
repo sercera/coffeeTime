@@ -1,17 +1,17 @@
 <li class="nav-parent">
     <a href="">
         <i class="fa glyphicon glyphicon-globe"></i>
-        <span>Caffe</span>
+        <span>Kafić</span>
     </a>
     <ul class="children">
         <li>
-            <a href="#">Manage Users</a>
+            <a href="#">Upravljaj korisnicima</a>
         </li>
         <li>
-            <a href="{{url(('caffeList'))}}">List all caffes</a>
+            <a href="{{url(('caffeList'))}}">Lista svih kafića</a>
         </li>
         <li>
-            <a href="{{url(('caffe'))}}">Add caffe</a>
+            <a href="{{url(('caffe'))}}">Dodaj novi kafić</a>
         </li>
 
     </ul>
@@ -19,14 +19,14 @@
 <li class="nav-parent">
     <a href="">
         <i class="fa glyphicon glyphicon-book"></i>
-        <span>Table</span>
+        <span>Sto</span>
     </a>
     <ul class="children">
         <li>
-            <a href="#"> List all Tables</a>
+            <a href="#"> Lista stolova</a>
         </li>
         <li>
-            <a href="{{url(('table/add'))}}"> Add Table</a>
+            <a href="{{url(('table/add'))}}"> Dodaj novi sto</a>
         </li>
 
 
@@ -35,16 +35,14 @@
 <li class="nav-parent">
     <a href="">
         <i class="fa fa-users"></i>
-        <span>Employees</span>
+        <span>Radnici</span>
     </a>
     <ul class="children">
         <li>
-            <a href="{{url(('employeesList'))}}"> List all Employees</a>
+            <a href="{{url(('employeesList'))}}"> Lista radnika</a>
         </li>
         <li>
-            <a href="{{url(('employees'))}}"> Add an Employee</a>
+            <a href="{{url(('employees'))}}"> Dodaj radnika</a>
         </li>
-
-
     </ul>
 </li>
