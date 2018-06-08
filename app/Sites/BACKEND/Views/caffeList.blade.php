@@ -54,11 +54,17 @@
                         <td>{{$caffe->description}}</td>
                         <td></td>
                         <td style="width: 150px;">
+                            {!! Form::open(['route' => ['caffe.destroy', $caffe->caffe_id],'method' => 'DELETE']) !!}
+
+                            {!! Form::submit('Izbriši', ['class' => 'btn btn-danger pull-left', 'style' => 'margin-right: 10px']) !!}
+
+                            {!! Form::close() !!}
                             <a href="{{url('caffe/edit',$caffe['caffe_id'])}}"
                                class="edit btn btn-warning" role="button">Izmeni</a>
-                            {{--<a data-toggle="modal" href="#myModal" class="btn btn-danger" id="deleteUser"--}}
-                               {{--data-user={{$users['user_id']}}--}}
+                            {{--<a  href="{{url('caffe',$caffe['caffe_id'])}}" class="btn btn-danger" id="deleteCaffe"--}}
+                               {{--data-user={{$caffe['caffe_id']}}--}}
                                        {{--role="button">Izbriši</a>--}}
+
                         </td>
                     </tr>
                      @endforeach

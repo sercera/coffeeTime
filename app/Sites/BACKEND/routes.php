@@ -5,12 +5,13 @@ Route::get('/users', 'IndexController@users');
 
 //caffe
 Route::post('/caffe/submit','CaffeController@submit');
-Route::put('/caffe/{caffe_id}','CaffeController@update');
 Route::get('/caffe', 'CaffeController@getCaffes');
-Route::get('/caffe/eidt/{caffe_id}','CaffeController@edit');
-//Route::put('/caffe/{caffe_id}','CaffeController@update');
+Route::get('/caffe/edit/{caffe_id}','CaffeController@edit');
 Route::get('caffe/add','CaffeController@index');
-
+//Route::get('caffe/{caffe_id}', 'CaffeController@update');
+Route::resource('caffe', 'CaffeController')->only([
+    'update','destroy'
+]);
 
 //employee
 Route::get('/employees/add' , 'EmployeesController@index');
@@ -31,9 +32,9 @@ Route::post('/table','TableController@store');
 
 
 //menu
-Route::get('/menu/{id}', 'MenuArticleController@index');
-Route::post('/menu/submit','MenuArticleSubmitController@submit');
-Route::get('/menu', 'MenuArticleController@getArticles');
+//Route::get('/menu/{id}', 'MenuArticleController@index');
+//Route::post('/menu/submit','MenuArticleSubmitController@submit');
+//Route::get('/menu', 'MenuArticleController@getArticles');
 //=======
 //create menu
 Route::get('/create_menu','MenuController@index');

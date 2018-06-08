@@ -4,6 +4,7 @@ namespace App\Sites\BACKEND\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Caffe;
+use Session;
 
 class CaffeController extends Controller
 {
@@ -30,7 +31,7 @@ class CaffeController extends Controller
         //Save caffe
         $caffe->save();
         //Redirect
-        return redirect('/caffe/add')->with('success', 'Caffe Submited');
+        return redirect('/caffe')->with('success', 'Caffe Submited');
     }
 
     public function getCaffes()
@@ -63,11 +64,20 @@ class CaffeController extends Controller
         $caffe->address = $request->input('address');
         $caffe->city = $request->input('city');
         $caffe->description = $request->input('description');
-        $caffe->work_hours = $resquest->input('work_hours');
+        $caffe->work_hours = $request->input('work_hours');
         //Save caffe
         $caffe->save();
         Session::flash('success','This caffe was sucesfully saved.');
         //Redirect
         return redirect('/caffe')->with('success', 'Caffe Updated!');
+    }
+    public function destroy($id)
+    {
+        $caffe = Caffe::find($id);
+
+        $caffe->delete();
+        Session::flash('success','This caffe was sucesfully deleted.');
+        //Redirect
+        return redirect('/caffe')->with('success', 'Caffe Deleted!');
     }
 }
