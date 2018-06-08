@@ -16,17 +16,17 @@ class Caffe extends Model
         'work_hours'
     ];
 
-    public function getEmployees()
+    public function employees()
     {
         return $this->hasMany('App\Models\Employee', 'employee_id', 'caffe_id');
     }
 
-    public function getTables()
+    public function tables()
     {
         return $this->hasMany('App\Models\Table', 'table_id', 'caffe_id');
     }
 
-    public function getMenu()
+    public function menu()
     {
         return $this->hasOne('App\Models\Menu');
     }

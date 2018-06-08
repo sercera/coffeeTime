@@ -15,7 +15,7 @@
             </a>
         </li>
         <li class="active">
-            <a href="{{url('employees')}}">
+            <a href="{{url('employees/add')}}">
                 <i class="fa glyphicon glyphicon-book"></i>
                 Add new Employee
             </a>

@@ -15,7 +15,7 @@
                </a>
            </li>
            <li class="active">
-               <a href="{{url('caffeList')}}">
+               <a href="{{url('caffe')}}">
                    <i class="fa glyphicon glyphicon-book"></i>
                    Lista kafića
                </a>

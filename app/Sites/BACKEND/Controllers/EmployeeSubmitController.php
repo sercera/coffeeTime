@@ -35,6 +35,6 @@ class EmployeeSubmitController extends Controller
     public function getCaffes()
     {
         $caffes = Caffe::all();
-        return view('caffe.employee')->with('caffes',$caffes);
+        return view('caffe.employee')->withCaffes($caffes);
     }
 }

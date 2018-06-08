@@ -19,8 +19,8 @@ class Table extends Model
 
     ];
 
-    public function caffeEntity()
+    public function caffe()
     {
-        return $this->belongsTo('App\Models\Caffe','caffe_id','table_id');
+        return $this->belongsTo('App\Models\Caffe','fk_for_caffe','caffe_id');
     }
 }

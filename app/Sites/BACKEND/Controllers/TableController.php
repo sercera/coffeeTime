@@ -12,10 +12,11 @@ class TableController extends Controller
 {
     public function index()
     {
+        $tables = Table::all();
         $caffes = Caffe::all();
 
-
-        return view('caffe.table', compact('caffes'));
+        return view('caffe.tableList')->withTables($tables);
+        return view('caffe.table')->withCaffes($caffes);
     }
 
     public function store()
@@ -41,5 +42,13 @@ class TableController extends Controller
         //Save article
         ////Redirect
         return redirect('table')->with('success', 'Table Submited');
+    }
+    public function show()
+    {
+        $tables = Table::all();
+        $caffes = Caffe::all();
+
+        return view('caffe.tableList')->withTables($tables);
+        return view('caffe.tableList')->withCaffes($caffes);
     }
 }

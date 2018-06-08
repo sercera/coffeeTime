@@ -8,10 +8,10 @@
             <a href="#">Upravljaj korisnicima</a>
         </li>
         <li>
-            <a href="{{url(('caffeList'))}}">Lista svih kafića</a>
+            <a href="{{url(('caffe'))}}">Lista svih kafića</a>
         </li>
         <li>
-            <a href="{{url(('caffe'))}}">Dodaj novi kafić</a>
+            <a href="{{url(('caffe/add'))}}">Dodaj novi kafić</a>
         </li>
 
     </ul>
@@ -39,10 +39,10 @@
     </a>
     <ul class="children">
         <li>
-            <a href="{{url(('employeesList'))}}"> Lista radnika</a>
+            <a href="{{url(('employees'))}}"> Lista radnika</a>
         </li>
         <li>
-            <a href="{{url(('employees'))}}"> Dodaj radnika</a>
+            <a href="{{url(('employees/add'))}}"> Dodaj radnika</a>
         </li>
     </ul>
 </li>

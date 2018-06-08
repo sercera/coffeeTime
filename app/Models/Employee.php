@@ -14,8 +14,8 @@ class Employee extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function caffeEntity()
+    public function caffe()
     {
-        return $this->belongsTo('App\Models\Caffe');
+        return $this->belongsTo('App\Models\Caffe', 'fk_for_caffe','caffe_id');
     }
 }

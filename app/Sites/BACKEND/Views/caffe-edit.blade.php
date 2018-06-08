@@ -32,7 +32,8 @@
         <br>
         <div class="panel-body">
 
-            {!! Form::model($caffe,['CaffeController@update',$caffe->id]) !!}
+            {{--{!! Form::model($caffe,['CaffeController@update',$caffe->id, 'method' => 'PUT']) !!}--}}
+            {!! Form::open(['url' => ['caffe/{caffe_id}',$caffe->id], 'method' => 'PUT']) !!}
             <div class="form-group">
                 {{Form::label('name', 'Naziv')}}
                 {{Form::text('name', $caffe->name , ['class' => 'form-control', 'placeholder' => 'Unesite naziv'])}}

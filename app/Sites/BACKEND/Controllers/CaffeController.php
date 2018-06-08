@@ -30,7 +30,7 @@ class CaffeController extends Controller
         //Save caffe
         $caffe->save();
         //Redirect
-        return redirect('/caffe')->with('success', 'Caffe Submited');
+        return redirect('/caffe/add')->with('success', 'Caffe Submited');
     }
 
     public function getCaffes()
@@ -44,7 +44,7 @@ class CaffeController extends Controller
     {
         $caffe = Caffe::find($id);
 
-        return view('caffe-edit' )->with('caffe', $caffe);
+        return view('caffe-edit' )->withCaffe($caffe);
     }
 
     public function update(Request $request,$id)
@@ -56,16 +56,18 @@ class CaffeController extends Controller
 
         //Update caffe
 
+
         $caffe = Caffe::find($id);
+        var_dump($caffe);
         $caffe->name = $request->input('name');
         $caffe->address = $request->input('address');
         $caffe->city = $request->input('city');
         $caffe->description = $request->input('description');
-        $caffe->work_hours = $request->input('work_hours');
+        $caffe->work_hours = $resquest->input('work_hours');
         //Save caffe
         $caffe->save();
-        Session::flash('success','This post was sucesfully saved.');
+        Session::flash('success','This caffe was sucesfully saved.');
         //Redirect
-        return redirect('/caffeList')->with('success', 'Caffe Updated!');
+        return redirect('/caffe')->with('success', 'Caffe Updated!');
     }
 }
