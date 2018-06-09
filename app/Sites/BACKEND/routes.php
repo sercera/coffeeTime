@@ -16,7 +16,7 @@ Route::resource('caffe', 'CaffeController')->only([
 Route::get('/employees', 'EmployeesController@getEmployees');
 Route::get('/employees/add' , 'EmployeesController@index');
 Route::post('/employees/submit', 'EmployeesController@submit');
-Route::get('/employees/edit/{employees_id}','EmployeesController@edit');
+Route::get('/employees/edit/{employee_id}','EmployeesController@edit');
 Route::resource('employees', 'EmployeesController')->only([
     'update','destroy'
 ]);

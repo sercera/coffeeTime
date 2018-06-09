@@ -32,14 +32,14 @@
         <br>
         <div class="panel-body">
 
-            {!! Form::open(['url' => 'employees/submit']) !!}
+            {!! Form::model($employee,['route' => ['employees.update' ,$employee->employee_id], 'method' => "PATCH"]) !!}
             <div class="form-group">
                 {{Form::label('username', 'Username')}}
-                {{Form::text('username', '' , ['class' => 'form-control', 'placeholder' => 'Unesite username'])}}
+                {{Form::text('username', $employee->username , ['class' => 'form-control', 'placeholder' => 'Unesite username'])}}
             </div>
             <div class="form-group">
                 {{Form::label('email', 'E-Mail')}}
-                {{Form::text('email', '' , ['class' => 'form-control', 'placeholder' => 'Unesite email'])}}
+                {{Form::text('email', $employee->email , ['class' => 'form-control', 'placeholder' => 'Unesite email'])}}
             </div>
             <div class="form-group">
                 {{Form::label('password', 'Password')}}

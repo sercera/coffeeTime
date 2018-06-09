@@ -33,7 +33,6 @@
         <div class="panel-body">
 
             {!! Form::model($caffe,['route' => ['caffe.update' ,$caffe->caffe_id], 'method' => "PATCH"]) !!}
-            {{--{!! Form::open(['url' => ['caffe/{caffe_id}',$caffe->id], 'method' => 'PUT']) !!}--}}
             <div class="form-group">
                 {{Form::label('name', 'Naziv')}}
                 {{Form::text('name', $caffe->name , ['class' => 'form-control', 'placeholder' => 'Unesite naziv'])}}

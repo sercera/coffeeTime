@@ -72,7 +72,7 @@
                                         {!! Form::submit('Izbriši', ['class' => 'btn btn-danger pull-left', 'style' => 'margin-right: 10px']) !!}
 
                                         {!! Form::close() !!}
-                                        <a href="{{url('employee/edit',$employee['employee_id'])}}"
+                                        <a href="{{url('employees/edit',$employee['employee_id'])}}"
                                            class="edit btn btn-warning" role="button">Izmeni</a>
                                     </td>
                                 </tr>
