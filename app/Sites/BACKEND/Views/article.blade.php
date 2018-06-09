@@ -11,13 +11,13 @@
         <li>
             <a href="{{url('/')}}">
                 <i class="glyphicon glyphicon-home"></i>
-                Home
+                Početna strana
             </a>
         </li>
         <li class="active">
             <a href="{{url('article')}}">
-                <i class="fa glyphicon glyphicon-book"></i>
-                Add new article
+                <i class="fa fa-beer"></i>
+                Lista svih proizvoda
             </a>
         </li>
     </ol>
@@ -26,7 +26,7 @@
             <div class="col-lg-5">
             </div>
             <div class="col-lg-7">
-                <h4 class="panel-title">Add new article</h4>
+                <h4 class="panel-title">Dodajte novi proizvod</h4>
             </div>
         </div>
         <br>
@@ -34,22 +34,21 @@
 
     {!! Form::open(['url' => 'article/submit']) !!}
     <div class="form-group">
-        {{Form::label('name', 'Naziv proizvoda')}}
+        {{Form::label('name', 'Naziv')}}
         {{Form::text('name', '' , ['class' => 'form-control', 'placeholder' => 'Unesite naziv proizvoda'])}}
     </div>
     <div class="form-group">
         {{Form::label('type', 'Tip')}}
-        {{Form::text('type', '' , ['class' => 'form-control', 'placeholder' => 'Unesite tip'])}}
+        {{Form::text('type', '' , ['class' => 'form-control', 'placeholder' => 'Unesite tip proizvoda'])}}
     </div>
     <div class="form-group">
-        {{Form::label('description', 'Opis proizvoda')}}
+        {{Form::label('description', 'Opis')}}
         {{Form::textarea('description', '' , ['class' => 'form-control', 'placeholder' => 'Opis proizvoda...'])}}
     </div>
     <div>
         {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
     </div>
     {!! Form::close() !!}
-
         </div>
     </div>
 @endsection

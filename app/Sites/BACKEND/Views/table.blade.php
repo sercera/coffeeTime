@@ -33,7 +33,7 @@
         <div class="panel-body">
 
             {{--iz nekog razloga ne ucitava bootstrap za raspored elemenata ne mogu sad da gledam--}}
-            {!! Form::open(['url' => 'table/store']) !!}
+            {!! Form::open(['url' => 'table/submit']) !!}
             <div class="form-group">
                 {!! Form::label('number','Broj stola',['class'=>'col-lg-1 control-label']); !!}
                 <div class="col-lg-5">

@@ -40,4 +40,18 @@
         </li>
     </ul>
 </li>
+<li class="nav-parent">
+    <a href="">
+        <i class="fa fa-beer"></i>
+        <span>Proizvodi</span>
+    </a>
+    <ul class="children">
+        <li>
+            <a href="{{url(('article/add'))}}"> Dodajte novi proizvod</a>
+        </li>
+        <li>
+            <a href="{{url(('article'))}}"> Lista svih proizvoda</a>
+        </li>
+    </ul>
+</li>
 

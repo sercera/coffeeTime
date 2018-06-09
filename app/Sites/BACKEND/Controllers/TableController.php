@@ -18,7 +18,7 @@ class TableController extends Controller
         return view('table')->withTables($tables)->withCaffes($caffes);
     }
 
-    public function store(Request $request)
+    public function submit(Request $request)
     {
 
         $this->validate($request, [
@@ -44,7 +44,7 @@ class TableController extends Controller
         ////Redirect
         return redirect('table')->with('success', 'Uspešno ste uneli novi sto.');
     }
-    public function show()
+    public function getTables()
     {
         $tables = Table::all();
         $caffes = Caffe::all();

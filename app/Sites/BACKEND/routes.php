@@ -23,17 +23,24 @@ Route::resource('employees', 'EmployeesController')->only([
 ]);
 
 //table
+Route::get('/table','TableController@getTables');
 Route::get('/table/add','TableController@index');
-Route::get('/table','TableController@show');
+Route::post('/table/submit','TableController@submit');
 Route::get('/table/edit/{table_id}','TableController@edit');
-Route::post('/table/store','TableController@store');
 Route::resource('table', 'TableController')->only([
     'update','destroy'
 ]);
 
 //article
-Route::get('/article','ArticleController@index');
+Route::get('/article', 'ArticleController@getArticle');
+Route::get('/article/add','ArticleController@index');
 Route::post('/article/submit','ArticleController@submit');
+Route::get('/article/edit/{article_id}','ArticleController@edit');
+Route::resource('article','ArticleController')->only([
+   'update','destroy'
+]);
+
+
 
 //menu
 //Route::get('/menu/{id}', 'MenuArticleController@index');

@@ -59,7 +59,7 @@ class EmployeesController extends Controller
 
         //Update caffe
 
-        $employee = new Employee;
+        $employee = Employee::find($id);
         $employee->username= $request->input('username');
         $employee->email= $request->input('email');
         $employee->password= $request->input('password');
