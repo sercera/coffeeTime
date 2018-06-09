@@ -23,7 +23,7 @@
     </a>
     <ul class="children">
         <li>
-            <a href="#"> Lista stolova</a>
+            <a href="{{url(('table'))}}"> Lista stolova</a>
         </li>
         <li>
             <a href="{{url(('table/add'))}}"> Dodaj novi sto</a>

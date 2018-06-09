@@ -59,7 +59,6 @@ class CaffeController extends Controller
 
 
         $caffe = Caffe::find($id);
-        var_dump($caffe);
         $caffe->name = $request->input('name');
         $caffe->address = $request->input('address');
         $caffe->city = $request->input('city');
@@ -76,7 +75,7 @@ class CaffeController extends Controller
         $caffe = Caffe::find($id);
 
         $caffe->delete();
-        Session::flash('success','This caffe was sucesfully deleted.');
+        Session::flash('success','This caffe was successfully deleted.');
         //Redirect
         return redirect('/caffe')->with('success', 'Caffe Deleted!');
     }

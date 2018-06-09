@@ -26,7 +26,11 @@ Route::post('/article/submit','ArticleSubmitController@submit');
 //table
 Route::get('/table/add','TableController@index');
 Route::get('/table','TableController@show');
+Route::get('/table/edit/{table_id}','TableController@edit');
 Route::post('/table/store','TableController@store');
+Route::resource('table', 'TableController')->only([
+    'update','destroy'
+]);
 /** ovo nam ne treba, moze se dobaviti u index funkciji, izbrisan je tablesubmitcontr, dodata funkcija store u TableControlleru,suvisna su dva kontrolelra */
 //Route::get('/table', 'TableSubmitController@getCaffes');
 

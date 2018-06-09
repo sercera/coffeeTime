@@ -54,6 +54,11 @@
                                        <td>{{$table->is_taken}}</td>
                                     <td>{{$table->is_reserved}}</td>
                                     <td style="width: 150px;">
+                                        {!! Form::open(['route' => ['table.destroy', $table->table_id],'method' => 'DELETE']) !!}
+
+                                        {!! Form::submit('Izbriši', ['class' => 'btn btn-danger pull-left', 'style' => 'margin-right: 10px']) !!}
+
+                                        {!! Form::close() !!}
                                         <a href="{{url('table/edit',$table['table_id'])}}"
                                            class="edit btn btn-warning" role="button">Izmeni</a>
                                         {{--<a data-toggle="modal" href="#myModal" class="btn btn-danger" id="deleteUser"--}}

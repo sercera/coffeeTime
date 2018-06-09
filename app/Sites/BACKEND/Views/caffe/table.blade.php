@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="form-group">
-                {!! Form::label('choose_caffe','Izaberi kafic',['class'=>'col-lg-1 control-label']); !!}
+                {!! Form::label('fk_for_caffe','Izaberi kafic',['class'=>'col-lg-1 control-label']); !!}
                 <div class="col-lg-5">
 
                     <select class="form-control" name="fk_for_caffe">
