@@ -61,10 +61,6 @@
                             {!! Form::close() !!}
                             <a href="{{url('caffe/edit',$caffe['caffe_id'])}}"
                                class="edit btn btn-warning" role="button">Izmeni</a>
-                            {{--<a  href="{{url('caffe',$caffe['caffe_id'])}}" class="btn btn-danger" id="deleteCaffe"--}}
-                               {{--data-user={{$caffe['caffe_id']}}--}}
-                                       {{--role="button">Izbriši</a>--}}
-
                         </td>
                     </tr>
                      @endforeach

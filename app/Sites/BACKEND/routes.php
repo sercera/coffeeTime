@@ -4,20 +4,25 @@ Route::get('/', 'IndexController@index');
 Route::get('/users', 'IndexController@users');
 
 //caffe
-Route::post('/caffe/submit','CaffeController@submit');
 Route::get('/caffe', 'CaffeController@getCaffes');
+Route::get('/caffe/add','CaffeController@index');
+Route::post('/caffe/submit','CaffeController@submit');
 Route::get('/caffe/edit/{caffe_id}','CaffeController@edit');
-Route::get('caffe/add','CaffeController@index');
-//Route::get('caffe/{caffe_id}', 'CaffeController@update');
 Route::resource('caffe', 'CaffeController')->only([
     'update','destroy'
 ]);
 
 //employee
+Route::get('/employees', 'EmployeesController@getEmployees');
 Route::get('/employees/add' , 'EmployeesController@index');
-Route::post('/employees/submit', 'EmployeeSubmitController@submit');
-Route::get('/employees', 'EmployeeSubmitController@getEmployees');
-Route::get('/employees/add', 'EmployeeSubmitController@getCaffes');
+Route::post('/employees/submit', 'EmployeesController@submit');
+Route::get('/employees/edit/{employees_id}','EmployeesController@edit');
+Route::resource('employees', 'EmployeesController')->only([
+    'update','destroy'
+]);
+
+
+
 
 //article
 Route::get('/article','ArticleController@index');

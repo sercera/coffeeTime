@@ -51,11 +51,11 @@
                     <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead class="bg-primary">
                         <tr>
-                            <td>Username:</td>
-                            <td>Email:</td>
-                            <td>Password:</td>
+                            <td>Username</td>
+                            <td>E-mail</td>
+                            <td>Password</td>
                             <td>Radi u</td>
-
+                            <td></td>
                         </tr>
                         </thead>
                         <tbody>
@@ -66,23 +66,20 @@
                                     <td>{{$employee->email}}</td>
                                     <td>{{$employee->password}}</td>
                                     <td>{{$employee->caffe->name}}</td>
-
                                     <td style="width: 150px;">
-                                        <a href="{{url('employees/edit',$employee['employee_id'])}}"
+                                        {!! Form::open(['route' => ['employees.destroy', $employee->employee_id],'method' => 'DELETE']) !!}
+
+                                        {!! Form::submit('Izbriši', ['class' => 'btn btn-danger pull-left', 'style' => 'margin-right: 10px']) !!}
+
+                                        {!! Form::close() !!}
+                                        <a href="{{url('employee/edit',$employee['employee_id'])}}"
                                            class="edit btn btn-warning" role="button">Izmeni</a>
-                                        {{--<a data-toggle="modal" href="#myModal" class="btn btn-danger" id="deleteUser"--}}
-                                        {{--data-user={{$users['user_id']}}--}}
-                                        {{--role="button">Izbriši</a>--}}
                                     </td>
                                 </tr>
                             @endforeach
                         @endif
-
-
                         </tbody>
                     </table>
                 </div>
             </div>
-
-
 @endsection
