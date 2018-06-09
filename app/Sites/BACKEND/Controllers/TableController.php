@@ -15,30 +15,31 @@ class TableController extends Controller
         $tables = Table::all();
         $caffes = Caffe::all();
 
-        return view('caffe.tableList')->withTables($tables);
-        return view('caffe.table')->withCaffes($caffes);
+        return view('caffe.table')->withTables($tables)->withCaffes($caffes);
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        $request = Request::all();
-
 
         $this->validate($request, [
             'number' => 'required',
             'spots' => 'required'
         ]);
 
-        //Create new article
 
-        DB::table('tables')->insert([
+//        DB::table('tables')->insert([
+//
+//            'table_number' => $request->input['number'],
+//            'table_spots' => $request->input['spots'],
+//            'fk_for_caffe ' => $request->input['fk_for_caffe']
+//
+//        ]);
 
-            'table_number' => $request['number'],
-            'table_spots' => $request->input['spots'],
-            'fk_for_caffe ' => $request['fk_for_caffe']
-
-        ]);
-
+        $table = new Table;
+        $table->table_number= $request->input('number');
+        $table->table_spots= $request->input('spots');
+        $table->fk_for_caffe= $request->input('fk_for_caffe');
+        $table->save();
         //Save article
         ////Redirect
         return redirect('table')->with('success', 'Table Submited');
@@ -48,7 +49,6 @@ class TableController extends Controller
         $tables = Table::all();
         $caffes = Caffe::all();
 
-        return view('caffe.tableList')->withTables($tables);
-        return view('caffe.tableList')->withCaffes($caffes);
+        return view('caffe.tableList')->withTables($tables)->withCaffes($caffes);
     }
 }
