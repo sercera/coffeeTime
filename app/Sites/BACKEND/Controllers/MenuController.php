@@ -11,6 +11,20 @@ class MenuController extends Controller
 {
     public function index()
     {
-        return view('caffe.menu');
+        $caffes = Caffe::all();
+        $articles = Article::all();
+        return view('menu')->withCaffes($caffes)->withArticles($articles);
+    }
+    public function submit(Request $request)
+    {
+        $this->validate($request, [
+            'fk_for_caffe'=> 'required'
+        ]);
+
+        $menu = new menu;
+        $menu->fk_for_caffe=  $request->input('fk_for_caffe');
+        $menu->save();
+
+        return redirect('/create_menu')->with('success', 'Menu Submited');
     }
 }

@@ -42,14 +42,14 @@
         </select>
     </div>
 
-            <div class="form-group">
-                {{Form::label('article', 'Izaberi artikal')}}
-                <select class="form-control select2-multi" name="article[]" multiple="multiple">
-                    @foreach($articles as $article)
-                        <option value="{{$article->article_id}}"> {{$article->name}}</option>
-                    @endforeach
-                </select>
-            </div>
+            {{--<div class="form-group">--}}
+                {{--{{Form::label('article', 'Izaberi artikal')}}--}}
+                {{--<select class="form-control select2-multi" name="article[]" multiple="multiple">--}}
+                    {{--@foreach($articles as $article)--}}
+                        {{--<option value="{{$article->article_id}}"> {{$article->name}}</option>--}}
+                    {{--@endforeach--}}
+                {{--</select>--}}
+            {{--</div>--}}
 
 
     <div>
