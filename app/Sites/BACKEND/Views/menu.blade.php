@@ -16,9 +16,9 @@
             </a>
         </li>
         <li class="active">
-            <a href="{{url('create_menu')}}">
+            <a href="{{url('menu')}}">
                 <i class="fa glyphicon glyphicon-book"></i>
-                Add new menu
+                Lista menija
             </a>
         </li>
     </ol>
@@ -32,7 +32,7 @@
         </div>
         <br>
         <div class="panel-body">
-    {!! Form::open(['url' => 'create_menu/submit']) !!}
+    {!! Form::open(['url' => 'menu/submit']) !!}
     <div class="form-group">
         {{Form::label('fk_for_caffe', 'Izaberi kafić')}}
         <select class="form-control" name="fk_for_caffe">

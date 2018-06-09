@@ -1,0 +1,100 @@
+@extends('layout')
+
+@section('active-menu')
+    @include('active-menu')
+@endsection
+
+
+@section('content')
+    @include('caffe.error')
+
+    <ol class="breadcrumb breadcrumb-quirk">
+        <li>
+            <a href="{{url('/')}}">
+                <i class="glyphicon glyphicon-home"></i>
+                Početna strana
+            </a>
+        </li>
+        <li class="active">
+            <a href="{{url('menu')}}">
+                <i class="fa glyphicon glyphicon-book"></i>
+                Lista menija
+            </a>
+        </li>
+    </ol>
+
+
+
+    <div class="panel col-md-8">
+        <div class="panel-heading">
+            <div>
+
+            </div>
+            <div >
+                <h4 class="panel-title">Menu {{$menu->caffe->name}}</h4>
+            </div>
+        </div>
+        <br>
+        <div class="panel-body">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead class="bg-primary">
+                        <tr>
+                            <td>Naziv artikla</td>
+                            <td>Tip</td>
+                            <td>Opis</td>
+                            <td>Neto cena</td>
+                            <td>Prodajna cena</td>
+                            <td>Kolicina</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {{--@foreach($menu->articles as $article)--}}
+                                {{--<tr>--}}
+                                    {{--<td>{{$article->name}}</td>--}}
+                                    {{--<td>{{$article->type}}</td>--}}
+                                    {{--<td>{{$article->description}}</td>--}}
+                                    {{--<td></td>--}}
+                                    {{--<td style="width: 150px;">--}}
+                                        {{--{!! Form::open(['route' => ['article.destroy', $article->article_id],'method' => 'DELETE']) !!}--}}
+
+                                        {{--{!! Form::submit('Izbriši', ['class' => 'btn btn-danger pull-left', 'style' => 'margin-right: 10px']) !!}--}}
+
+                                        {{--{!! Form::close() !!}--}}
+                                        {{--<a href="{{url('article/edit',article['article_id'])}}"--}}
+                                           {{--class="edit btn btn-warning" role="button">Izmeni</a>--}}
+                                    {{--</td>--}}
+                                {{--</tr>--}}
+                            {{--@endforeach--}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="well">
+            {!! Form::open(['url' => 'menu/submit']) !!}
+            <h2>Dodajte novi artikal u meni</h2>
+            {{Form::label('article_number', 'Izaberite artikal:')}}
+            <select class="form-control" name="article_number">
+                @foreach($articles as $article)
+                    <option value="{{$article->article_id}}"> {{$article->name}}</option>
+                @endforeach
+            </select>
+            {{Form::hidden('meni_id', $menu->menu_id)}}
+            {{Form::label('neto_price', 'Neto cena:')}}
+            {{Form::number('neto_price',  '' , ['class' => 'form-control', 'placeholder' => 'Unesite neto cenu'])}}
+
+            {{Form::label('selling_price', 'Prodajna cena:')}}
+            {{Form::number('selling_price',  '' , ['class' => 'form-control', 'placeholder' => 'Unesite prodajnu cenu'])}}
+
+            {{Form::label('quantity', 'Kolicina:')}}
+            {{Form::number('quantity',  '' , ['class' => 'form-control', 'placeholder' => 'Unesite kolicinu'])}}
+
+            {{Form::submit('Dodajte artikal u meni',['class'=>'btn btn-primary'])}}
+            {!! Form::close() !!}
+        </div>
+    </div>
+@endsection

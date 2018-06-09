@@ -26,7 +26,11 @@ Route::resource('employees', 'EmployeesController')->only([
 
 //article
 Route::get('/article','ArticleController@index');
+Route::get('/article/edit/{article_id}','ArticleController@edit');
 Route::post('/article/submit','ArticleController@submit');
+Route::resource('article', 'ArticleController')->only([
+    'update','destroy'
+]);
 
 //table
 Route::get('/table/add','TableController@index');
@@ -46,8 +50,13 @@ Route::resource('table', 'TableController')->only([
 //Route::get('/menu', 'MenuArticleController@getArticles');
 //=======
 //create menu
-Route::get('/create_menu','MenuController@index');
-Route::post('/create_menu/submit','MenuController@submit');
+Route::get('/menu/create','MenuController@index');
+Route::post('/menu/submit','MenuController@submit');
+Route::get('/menu/edit/{menu_id}','MenuController@edit');
+Route::get('/menu','MenuController@list');
+Route::resource('menu', 'MenuController')->only([
+    'update','destroy', 'show'
+]);
 //>>>>>>> 5d557d64d44ba44ed70e679fba4df813aeee2c5c
 
 //Route::resources([

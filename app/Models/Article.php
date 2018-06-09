@@ -16,7 +16,7 @@ class Article extends Model
 
     public function menu()
     {
-        $this->belongsToMany('App\Models\Menu','menu_article', 'article_id', 'menu_id');
+        $this->belongsToMany('App\Models\Menu','menu_article', 'article_id', 'menu_id')->withPivot('neto_price', 'selling_price','quantity')->withTimestamps();
     }
 
     public function getType(){

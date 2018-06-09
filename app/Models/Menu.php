@@ -11,10 +11,10 @@ class Menu extends Model
 
     public function caffe()
     {
-        return $this->belongsTo('App\Models\Caffe');
+        return $this->belongsTo('App\Models\Caffe', 'fk_for_caffe' , 'caffe_id');
     }
     public function article()
     {
-        return $this->belongsToMany('App\Models\Article', 'menu_article','menu_id', 'article_id');
+        return $this->belongsToMany('App\Models\Article', 'menu_article','menu_id', 'article_id')->withPivot('neto_price', 'selling_price','quantity')->withTimestamps();
     }
 }
