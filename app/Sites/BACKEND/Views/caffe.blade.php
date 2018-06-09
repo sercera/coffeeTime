@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    @include('caffe.error')
+    @include('error')
 
     <ol class="breadcrumb breadcrumb-quirk">
         <li>
@@ -15,9 +15,9 @@
             </a>
         </li>
         <li class="active">
-            <a href="{{url('caffe')}}">
-                <i class="fa glyphicon glyphicon-book"></i>
-                Dodaj novi kafić
+            <a href="{{url('/caffe')}}">
+                <i class="fa fa-coffee"></i>
+                Lista svih kafića
             </a>
         </li>
     </ol>
@@ -26,7 +26,7 @@
             <div class="col-lg-5">
             </div>
             <div class="col-lg-7">
-                <h4 class="panel-title">Dodaj novi kafić</h4>
+                <h4 class="panel-title">Dodajte novi kafić</h4>
             </div>
         </div>
         <br>

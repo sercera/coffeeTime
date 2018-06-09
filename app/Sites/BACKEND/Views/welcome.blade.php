@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    @include('caffe.error')
+    @include('error')
 
     WELCOME
 

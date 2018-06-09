@@ -5,18 +5,19 @@
 @endsection
 
 @section('content')
-    @include('caffe.error')
+    @include('error')
+
         <ol class="breadcrumb breadcrumb-quirk">
             <li>
                 <a href="{{url('/')}}">
                     <i class="glyphicon glyphicon-home"></i>
-                    Home
+                    Početna strana
                 </a>
             </li>
             <li class="active">
-                <a href="{{url('table/add')}}">
-                    <i class="fa glyphicon glyphicon-book"></i>
-                    Add new Table
+                <a href="{{url('/table')}}">
+                    <i class="fa fa-circle"></i>
+                    Lista svih stolova
                 </a>
             </li>
         </ol>
@@ -25,7 +26,7 @@
             <div class="col-lg-5">
             </div>
             <div class="col-lg-7">
-                <h4 class="panel-title">Add new Table</h4>
+                <h4 class="panel-title">Dodajte novi sto</h4>
             </div>
         </div>
         <br>
@@ -48,7 +49,7 @@
                 </div>
             </div>
             <div class="form-group">
-                {!! Form::label('fk_for_caffe','Izaberi kafic',['class'=>'col-lg-1 control-label']); !!}
+                {!! Form::label('fk_for_caffe','Izaberite kafic',['class'=>'col-lg-1 control-label']); !!}
                 <div class="col-lg-5">
 
                     <select class="form-control" name="fk_for_caffe">

@@ -30,7 +30,7 @@ class EmployeesController extends Controller
         $employee->fk_for_caffe=  $request->input('fk_for_caffe');
         $employee->save();
 
-        return redirect('/employees')->with('success', 'Employee Submitted');
+        return redirect('/employees')->with('success', 'Uspešno ste dodali novog radnika.');
     }
 
     public function getEmployees()
@@ -39,12 +39,6 @@ class EmployeesController extends Controller
 
         return view('employeesList')->with('employees', $employees);
     }
-
-//    public function getCaffes()
-//    {
-//        $caffes = Caffe::all();
-//        return view('employee')->withCaffes($caffes);
-//    }
 
     public function edit($id)
     {
@@ -75,7 +69,7 @@ class EmployeesController extends Controller
 
         Session::flash('success','This employee was sucesfully saved.');
 
-        return redirect('/employees')->with('success', 'Employee Submitted');
+        return redirect('/employees')->with('success', 'Uspešno ste promenili podatke o izabranom radniku.');
     }
 
     public function destroy($id)
@@ -85,6 +79,6 @@ class EmployeesController extends Controller
         $employee->delete();
         Session::flash('success','This employee was successfully deleted.');
         //Redirect
-        return redirect('/employees')->with('success', 'Employee Deleted!');
+        return redirect('/employees')->with('success', 'Uspešno ste izbrisali izabranog radnika.');
     }
 }

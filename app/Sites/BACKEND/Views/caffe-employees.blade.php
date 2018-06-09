@@ -4,7 +4,6 @@
     @include('active-menu')
 @endsection
 
-
 @section('content')
     @include('error')
 
@@ -15,19 +14,13 @@
                 Početna strana
             </a>
         </li>
-        <li class="active">
-            <a href="{{url('table/add')}}">
-                <i class="fa fa-circle"></i>
-                Dodajte novi sto
-            </a>
-        </li>
     </ol>
     <div class="panel">
         <div class="panel-heading">
             <div class="col-lg-5">
             </div>
             <div class="col-lg-7">
-                <h4 class="panel-title">Lista svih stolova</h4>
+                <h4 class="panel-title">Lista radnika kafića "{{$caffe->name}}"</h4>
             </div>
         </div>
         <br>
@@ -37,44 +30,37 @@
                     <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead class="bg-primary">
                         <tr>
-                            <td>Broj stola</td>
-                            <td>Broj mesta za stolom</td>
-                            <td>Kafić</td>
-                            <td>Zauzet</td>
-                            <td>Rezervisan</td>
+                            <td>Username</td>
+                            <td>E-mail</td>
+                            <td>Password</td>
+                            <td>Radi u</td>
                             <td></td>
                         </tr>
                         </thead>
                         <tbody>
-                        @if(count($tables) > 0)
-                            @foreach($tables as $table)
+                        @if(count($employees) > 0)
+                            @foreach($employees as $employee)
+                                @if($employee->caffe->name==$caffe->name)
                                 <tr>
-                                    <td>{{$table->table_number}}</td>
-                                    <td>{{$table->table_spots}}</td>
-                                    <td>{{$table->caffe->name}}</td>
-                                       <td>{{$table->is_taken}}</td>
-                                    <td>{{$table->is_reserved}}</td>
+                                    <td>{{$employee->username}}</td>
+                                    <td>{{$employee->email}}</td>
+                                    <td>{{$employee->password}}</td>
+                                    <td>{{$employee->caffe->name}}</td>
                                     <td style="width: 150px;">
-                                        {!! Form::open(['route' => ['table.destroy', $table->table_id],'method' => 'DELETE']) !!}
+                                        {!! Form::open(['route' => ['employees.destroy', $employee->employee_id],'method' => 'DELETE']) !!}
 
                                         {!! Form::submit('Izbriši', ['class' => 'btn btn-danger pull-left', 'style' => 'margin-right: 10px']) !!}
 
                                         {!! Form::close() !!}
-                                        <a href="{{url('table/edit',$table['table_id'])}}"
+                                        <a href="{{url('employees/edit',$employee['employee_id'])}}"
                                            class="edit btn btn-warning" role="button">Izmeni</a>
-                                        {{--<a data-toggle="modal" href="#myModal" class="btn btn-danger" id="deleteUser"--}}
-                                        {{--data-user={{$users['user_id']}}--}}
-                                        {{--role="button">Izbriši</a>--}}
                                     </td>
                                 </tr>
+                                @endif
                             @endforeach
                         @endif
-
-
                         </tbody>
                     </table>
                 </div>
             </div>
-
-
 @endsection

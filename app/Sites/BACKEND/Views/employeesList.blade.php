@@ -4,23 +4,8 @@
     @include('active-menu')
 @endsection
 
-{{--@section('content')--}}
-    {{--@include('caffe.error');--}}
-    {{--<h1>Radnici</h1>--}}
-    {{--@if(count($employees) > 0)--}}
-        {{--@foreach($employees as $employee)--}}
-            {{--<ul class="list-group">--}}
-                {{--<li class="list-group-item">Username: {{$employee->username}}</li>--}}
-                {{--<li class="list-group-item">Email: {{$employee->email}}</li>--}}
-                {{--<li class="list-group-item">Password: {{$employee->password}}</li>--}}
-                {{--<li class="list-group-item">Radi u: {{$employee->caffe->name}}</li>--}}
-            {{--</ul>--}}
-        {{--@endforeach--}}
-    {{--@endif--}}
-{{--@endsection--}}
-
 @section('content')
-    @include('caffe.error')
+    @include('error')
 
     <ol class="breadcrumb breadcrumb-quirk">
         <li>
@@ -30,9 +15,9 @@
             </a>
         </li>
         <li class="active">
-            <a href="{{url('employees')}}">
-                <i class="fa glyphicon glyphicon-book"></i>
-                Lista radnika
+            <a href="{{url('/employees/add')}}">
+                <i class="fa fa-users"></i>
+                Dodajte novog radnika
             </a>
         </li>
     </ol>
@@ -41,7 +26,7 @@
             <div class="col-lg-5">
             </div>
             <div class="col-lg-7">
-                <h4 class="panel-title">Lista radnika</h4>
+                <h4 class="panel-title">Lista svih radnika</h4>
             </div>
         </div>
         <br>
