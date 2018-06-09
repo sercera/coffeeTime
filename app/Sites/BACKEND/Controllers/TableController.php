@@ -15,7 +15,7 @@ class TableController extends Controller
         $tables = Table::all();
         $caffes = Caffe::all();
 
-        return view('caffe.table')->withTables($tables)->withCaffes($caffes);
+        return view('table')->withTables($tables)->withCaffes($caffes);
     }
 
     public function store(Request $request)
@@ -49,7 +49,7 @@ class TableController extends Controller
         $tables = Table::all();
         $caffes = Caffe::all();
 
-        return view('caffe.tableList')->withTables($tables)->withCaffes($caffes);
+        return view('tableList')->withTables($tables)->withCaffes($caffes);
     }
     public function edit($id)
     {

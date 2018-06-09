@@ -26,7 +26,7 @@ Route::resource('employees', 'EmployeesController')->only([
 
 //article
 Route::get('/article','ArticleController@index');
-Route::post('/article/submit','ArticleSubmitController@submit');
+Route::post('/article/submit','ArticleController@submit');
 
 //table
 Route::get('/table/add','TableController@index');
@@ -47,8 +47,7 @@ Route::resource('table', 'TableController')->only([
 //=======
 //create menu
 Route::get('/create_menu','MenuController@index');
-Route::post('/create_menu/submit','MenuSubmitController@submit');
-Route::get('/create_menu', 'MenuSubmitController@getCaffes');
+Route::post('/create_menu/submit','MenuController@submit');
 //>>>>>>> 5d557d64d44ba44ed70e679fba4df813aeee2c5c
 
 //Route::resources([
