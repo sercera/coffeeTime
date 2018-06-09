@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-       @include('caffe.error')
+       @include('error')
 
        <ol class="breadcrumb breadcrumb-quirk">
            <li>
@@ -15,9 +15,9 @@
                </a>
            </li>
            <li class="active">
-               <a href="{{url('caffe')}}">
-                   <i class="fa glyphicon glyphicon-book"></i>
-                   Lista kafića
+               <a href="{{url('/caffe/add')}}">
+                   <i class="fa fa-coffee"></i>
+                   Dodajte novi kafić
                </a>
            </li>
        </ol>
@@ -26,7 +26,7 @@
                <div class="col-lg-5">
                </div>
                <div class="col-lg-7">
-                   <h4 class="panel-title">Lista kafića</h4>
+                   <h4 class="panel-title">Lista svih kafića</h4>
                </div>
            </div>
            <br>
@@ -42,6 +42,7 @@
                     <td>Opis</td>
                     <td>Radno vreme</td>
                     <td></td>
+                    <td></td>
                 </tr>
                 </thead>
                 <tbody>
@@ -53,6 +54,10 @@
                         <td>{{$caffe->city}}</td>
                         <td>{{$caffe->description}}</td>
                         <td></td>
+                        <td style="width: 75px;">
+                            <a href="{{url('caffe/employees',$caffe['caffe_id'])}}"
+                               class="edit btn btn-success" role="button">Radnici</a>
+                        </td>
                         <td style="width: 150px;">
                             {!! Form::open(['route' => ['caffe.destroy', $caffe->caffe_id],'method' => 'DELETE']) !!}
 

@@ -2,6 +2,7 @@
 
 namespace App\Sites\BACKEND\Controllers;
 
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Models\Caffe;
 use Session;
@@ -31,7 +32,7 @@ class CaffeController extends Controller
         //Save caffe
         $caffe->save();
         //Redirect
-        return redirect('/caffe')->with('success', 'Caffe Submited');
+        return redirect('/caffe')->with('success', 'Uspešno ste dodali novi kafić.');
     }
 
     public function getCaffes()
@@ -68,8 +69,9 @@ class CaffeController extends Controller
         $caffe->save();
         Session::flash('success','This caffe was sucesfully saved.');
         //Redirect
-        return redirect('/caffe')->with('success', 'Caffe Updated!');
+        return redirect('/caffe')->with('success', 'Uspešno ste promenili podatke o kafiću.');
     }
+
     public function destroy($id)
     {
         $caffe = Caffe::find($id);
@@ -77,6 +79,14 @@ class CaffeController extends Controller
         $caffe->delete();
         Session::flash('success','This caffe was successfully deleted.');
         //Redirect
-        return redirect('/caffe')->with('success', 'Caffe Deleted!');
+        return redirect('/caffe')->with('success', 'Uspešno ste izbrisali izabrani kafić.');
+    }
+
+    public function showEmployees($id)
+    {
+        $employees=Employee::all();
+        $caffe=Caffe::find($id);
+
+        return view('caffe-employees')->withEmployees($employees)->withCaffe($caffe);
     }
 }

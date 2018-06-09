@@ -18,7 +18,7 @@ class TableController extends Controller
         return view('table')->withTables($tables)->withCaffes($caffes);
     }
 
-    public function store(Request $request)
+    public function submit(Request $request)
     {
 
         $this->validate($request, [
@@ -42,9 +42,9 @@ class TableController extends Controller
         $table->save();
 //        Save article
         ////Redirect
-        return redirect('table')->with('success', 'Table Submited');
+        return redirect('table')->with('success', 'Uspešno ste uneli novi sto.');
     }
-    public function show()
+    public function getTables()
     {
         $tables = Table::all();
         $caffes = Caffe::all();
@@ -72,7 +72,7 @@ class TableController extends Controller
 
         Session::flash('success','This article was successfully saved.');
         ////Redirect
-        return redirect('table')->with('success', 'Table Updated');
+        return redirect('table')->with('success', 'Uspešno ste promenili podatke o stolu.');
     }
     public function destroy($id)
     {
@@ -81,6 +81,6 @@ class TableController extends Controller
         $table->delete();
         Session::flash('success','This table was successfully deleted.');
         //Redirect
-        return redirect('/table')->with('success', 'Table Deleted!');
+        return redirect('/table')->with('success', 'Uspešno ste izbrisali izabrani sto.');
     }
 }

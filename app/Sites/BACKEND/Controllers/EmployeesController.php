@@ -30,7 +30,7 @@ class EmployeesController extends Controller
         $employee->fk_for_caffe=  $request->input('fk_for_caffe');
         $employee->save();
 
-        return redirect('/employees')->with('success', 'Employee Submitted');
+        return redirect('/employees')->with('success', 'Uspešno ste dodali novog radnika.');
     }
 
     public function getEmployees()
@@ -40,40 +40,36 @@ class EmployeesController extends Controller
         return view('employeesList')->with('employees', $employees);
     }
 
-//    public function getCaffes()
-//    {
-//        $caffes = Caffe::all();
-//        return view('employee')->withCaffes($caffes);
-//    }
-
     public function edit($id)
     {
         $employee = Employee::find($id);
+        $caffes = Caffe::all();
 
-        return view('employee-edit' )->withCaffe($employee);
+        return view('employee-edit' )->withEmployee($employee)->withCaffes($caffes);
     }
 
     public function update(Request $request,$id)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'address' => 'required'
+            'username'=>'required',
+            'email'=>'required',
+            'password'=>'required',
+            'fk_for_caffe'=> 'required'
         ]);
 
         //Update caffe
 
+        $employee = Employee::find($id);
+        $employee->username= $request->input('username');
+        $employee->email= $request->input('email');
+        $employee->password= $request->input('password');
+        $employee->fk_for_caffe=  $request->input('fk_for_caffe');
 
-        $caffe = Caffe::find($id);
-        $caffe->name = $request->input('name');
-        $caffe->address = $request->input('address');
-        $caffe->city = $request->input('city');
-        $caffe->description = $request->input('description');
-        $caffe->work_hours = $request->input('work_hours');
-        //Save caffe
-        $caffe->save();
-        Session::flash('success','This caffe was sucesfully saved.');
-        //Redirect
-        return redirect('/caffe')->with('success', 'Caffe Updated!');
+        $employee->save();
+
+        Session::flash('success','This employee was sucesfully saved.');
+
+        return redirect('/employees')->with('success', 'Uspešno ste promenili podatke o izabranom radniku.');
     }
 
     public function destroy($id)
@@ -83,6 +79,6 @@ class EmployeesController extends Controller
         $employee->delete();
         Session::flash('success','This employee was successfully deleted.');
         //Redirect
-        return redirect('/employees')->with('success', 'Employee Deleted!');
+        return redirect('/employees')->with('success', 'Uspešno ste izbrisali izabranog radnika.');
     }
 }

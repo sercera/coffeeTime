@@ -6,7 +6,7 @@
 
 
 @section('content')
-    @include('caffe.error')
+    @include('error')
 
     <ol class="breadcrumb breadcrumb-quirk">
         <li>

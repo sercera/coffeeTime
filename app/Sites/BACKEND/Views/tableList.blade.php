@@ -6,7 +6,7 @@
 
 
 @section('content')
-    @include('caffe.error')
+    @include('error')
 
     <ol class="breadcrumb breadcrumb-quirk">
         <li>
@@ -16,9 +16,9 @@
             </a>
         </li>
         <li class="active">
-            <a href="{{url('table')}}">
-                <i class="fa glyphicon glyphicon-book"></i>
-                Lista stolova
+            <a href="{{url('table/add')}}">
+                <i class="fa fa-circle"></i>
+                Dodajte novi sto
             </a>
         </li>
     </ol>
@@ -27,7 +27,7 @@
             <div class="col-lg-5">
             </div>
             <div class="col-lg-7">
-                <h4 class="panel-title">Lista stolova</h4>
+                <h4 class="panel-title">Lista svih stolova</h4>
             </div>
         </div>
         <br>
@@ -37,11 +37,12 @@
                     <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead class="bg-primary">
                         <tr>
-                            <td>Broj stola:</td>
-                            <td>Broj mesta za stolom:</td>
-                            <td>Kafić:</td>
-                            <td>Zauzet:</td>
-                            <td>Rezervisan:</td>
+                            <td>Broj stola</td>
+                            <td>Broj mesta za stolom</td>
+                            <td>Kafić</td>
+                            <td>Zauzet</td>
+                            <td>Rezervisan</td>
+                            <td></td>
                         </tr>
                         </thead>
                         <tbody>

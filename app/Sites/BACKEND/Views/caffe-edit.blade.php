@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    @include('caffe.error')
+    @include('error')
 
     <ol class="breadcrumb breadcrumb-quirk">
         <li>
@@ -16,8 +16,14 @@
         </li>
         <li class="active">
             <a href="{{url('caffe')}}">
-                <i class="fa glyphicon glyphicon-book"></i>
-                Dodaj novi kafić
+                <i class="fa fa-coffee"></i>
+                Dodajte novi kafić
+            </a>
+        </li>
+        <li class="active">
+            <a href="{{url('/caffe')}}">
+                <i class="fa fa-coffee"></i>
+                Lista svih kafića
             </a>
         </li>
     </ol>
@@ -26,14 +32,13 @@
             <div class="col-lg-5">
             </div>
             <div class="col-lg-7">
-                <h4 class="panel-title">Izmeni kafić</h4>
+                <h4 class="panel-title">Izmenite podatke o kafiću</h4>
             </div>
         </div>
         <br>
         <div class="panel-body">
 
             {!! Form::model($caffe,['route' => ['caffe.update' ,$caffe->caffe_id], 'method' => "PATCH"]) !!}
-            {{--{!! Form::open(['url' => ['caffe/{caffe_id}',$caffe->id], 'method' => 'PUT']) !!}--}}
             <div class="form-group">
                 {{Form::label('name', 'Naziv')}}
                 {{Form::text('name', $caffe->name , ['class' => 'form-control', 'placeholder' => 'Unesite naziv'])}}
