@@ -10,12 +10,4 @@ class IndexController extends Controller
     {
         return view('home');
     }
-
-
-    public function users()
-    {
-        return view('users');
-    }
-
-
 }

@@ -1,12 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
+
 
 class User extends Authenticatable
 {
+    use EntrustUserTrait;
+
     use Notifiable;
 
     /**
@@ -28,5 +32,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getDetails(){
+
+
+        return $this->hasOne('App\Models\UserDetails','fk_for_user','user_id');
+    }
 
 }

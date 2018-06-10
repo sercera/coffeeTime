@@ -24,13 +24,11 @@ class CreateUserDetailsTable extends Migration
             $table->integer('age');
             $table->integer('employee_number')->nullable();
             $table->integer('fk_for_user')->nullable()->unsigned();
-            $table->integer('fk_for_employee')->nullable()->unsigned();
             $table->timestamps();
         });
         Schema::table('user_details',function (Blueprint $table){
 
             $table->foreign('fk_for_user')->references('user_id')->on('users')->onDelete('cascade');
-            $table->foreign('fk_for_employee')->references('user_id')->on('users')->onDelete('cascade');
 
         });
 
