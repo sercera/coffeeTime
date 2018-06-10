@@ -109,7 +109,7 @@
                     </a>
                 </div>--}}
                 <div class="media-body">
-                    <h3 class="media-heading">dsfs</h3>
+                    <h3 class="media-heading">NESTO</h3>
                     {{--{{Auth::user()->username}}--}}
                 </div>
             </div><!-- leftpanel-profile -->

@@ -15,7 +15,7 @@ class TableController extends Controller
         $tables = Table::all();
         $caffes = Caffe::all();
 
-        return view('table')->withTables($tables)->withCaffes($caffes);
+        return view('table.table')->withTables($tables)->withCaffes($caffes);
     }
 
     public function submit(Request $request)
@@ -49,13 +49,13 @@ class TableController extends Controller
         $tables = Table::all();
         $caffes = Caffe::all();
 
-        return view('tableList')->withTables($tables)->withCaffes($caffes);
+        return view('table.tableList')->withTables($tables)->withCaffes($caffes);
     }
     public function edit($id)
     {
         $table = Table::find($id);
         $caffe = Caffe::find($table->fk_for_caffe);
-        return view('table-edit' )->withTable($table)->withCaffe($caffe);
+        return view('table.table-edit' )->withTable($table)->withCaffe($caffe);
     }
     public function update(Request $request, $id)
     {

@@ -14,7 +14,7 @@ class MenuController extends Controller
     {
         $caffes = Caffe::all();
         $articles = Article::all();
-        return view('menu')->withCaffes($caffes)->withArticles($articles);
+        return view('menu.menu')->withCaffes($caffes)->withArticles($articles);
     }
     public function submit(Request $request)
     {
@@ -59,14 +59,14 @@ class MenuController extends Controller
     public function list()
     {
         $menus= Menu::all();
-        return view('menuList')->withMenus($menus);
+        return view('menu.menuList')->withMenus($menus);
     }
     public function show($id)
     {
         $menu=Menu::find($id);
         $articles = Article::all();
 
-        return view('menu-show')->withMenu($menu)->withArticles($articles);
+        return view('menu.menu-show')->withMenu($menu)->withArticles($articles);
     }
     public function destroy($id)
     {

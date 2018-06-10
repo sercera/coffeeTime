@@ -11,7 +11,7 @@ class CaffeController extends Controller
 {
     public function index()
     {
-        return view('caffe');
+        return view('caffe.caffe');
     }
 
     public function submit(Request $request)
@@ -39,14 +39,14 @@ class CaffeController extends Controller
     {
         $caffes = Caffe::all();
 
-        return view('caffeList' )->with('caffes', $caffes);
+        return view('caffe.caffeList' )->with('caffes', $caffes);
     }
 
     public function edit($id)
     {
         $caffe = Caffe::find($id);
 
-        return view('caffe-edit' )->withCaffe($caffe);
+        return view('caffe.caffe-edit' )->withCaffe($caffe);
     }
 
     public function update(Request $request,$id)
@@ -87,6 +87,6 @@ class CaffeController extends Controller
         $employees=Employee::all();
         $caffe=Caffe::find($id);
 
-        return view('caffe-employees')->withEmployees($employees)->withCaffe($caffe);
+        return view('caffe.caffe-employees')->withEmployees($employees)->withCaffe($caffe);
     }
 }

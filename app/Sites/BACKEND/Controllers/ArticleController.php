@@ -11,7 +11,7 @@ class ArticleController extends Controller
     public function index()
     {
         $article= Article::all();
-        return view('article')->withArticles($article);
+        return view('article.article')->withArticles($article);
     }
     public function submit(Request $request)
     {
@@ -38,14 +38,14 @@ class ArticleController extends Controller
     {
         $articles = Article::all();
 
-        return view('articleList')->with('articles', $articles);
+        return view('article.articleList')->with('articles', $articles);
     }
 
     public function edit($id)
     {
         $article = Article::find($id);
 
-        return view('article-edit' )->withArticle($article);
+        return view('article.article-edit' )->withArticle($article);
     }
 
     public function update(Request $request,$id)

@@ -11,7 +11,7 @@ class EmployeesController extends Controller
 {
     public function index(){
         $caffes = Caffe::all();
-        return view('employee')->withCaffes($caffes);
+        return view('employee.employee')->withCaffes($caffes);
     }
 
     public function submit(Request $request)
@@ -37,7 +37,7 @@ class EmployeesController extends Controller
     {
         $employees = Employee::all();
 
-        return view('employeesList')->with('employees', $employees);
+        return view('employee.employeesList')->with('employees', $employees);
     }
 
     public function edit($id)
@@ -45,7 +45,7 @@ class EmployeesController extends Controller
         $employee = Employee::find($id);
         $caffes = Caffe::all();
 
-        return view('employee-edit' )->withEmployee($employee)->withCaffes($caffes);
+        return view('employee.employee-edit' )->withEmployee($employee)->withCaffes($caffes);
     }
 
     public function update(Request $request,$id)
