@@ -6,7 +6,7 @@
 
 
 @section('content')
-    @include('caffe.error')
+    @include('error')
 
     <ol class="breadcrumb breadcrumb-quirk">
         <li>
@@ -50,12 +50,14 @@
                         </tr>
                         </thead>
                         <tbody>
-                            {{--@foreach($menu->articles as $article)--}}
-                                {{--<tr>--}}
-                                    {{--<td>{{$article->name}}</td>--}}
-                                    {{--<td>{{$article->type}}</td>--}}
-                                    {{--<td>{{$article->description}}</td>--}}
-                                    {{--<td></td>--}}
+                            @foreach($menu->article as $article)
+                                <tr>
+                                    <td>{{$article->name}}</td>
+                                    <td>{{$article->type}}</td>
+                                    <td>{{$article->description}}</td>
+                                    <td>{{$article->pivot->neto_price}}</td>
+                                    <td>{{$article->pivot->selling_price}}</td>
+                                    <td>{{$article->pivot->quantity }}</td>
                                     {{--<td style="width: 150px;">--}}
                                         {{--{!! Form::open(['route' => ['article.destroy', $article->article_id],'method' => 'DELETE']) !!}--}}
 
@@ -65,8 +67,8 @@
                                         {{--<a href="{{url('article/edit',article['article_id'])}}"--}}
                                            {{--class="edit btn btn-warning" role="button">Izmeni</a>--}}
                                     {{--</td>--}}
-                                {{--</tr>--}}
-                            {{--@endforeach--}}
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -75,7 +77,7 @@
     </div>
     <div class="col-md-3">
         <div class="well">
-            {!! Form::open(['url' => 'menu/submit']) !!}
+            {!! Form::open(['url' => 'menu/add_article', 'method' => 'POST']) !!}
             <h2>Dodajte novi artikal u meni</h2>
             {{Form::label('article_number', 'Izaberite artikal:')}}
             <select class="form-control" name="article_number">

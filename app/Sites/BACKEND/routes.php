@@ -22,7 +22,6 @@ Route::resource('employees', 'EmployeesController')->only([
     'update','destroy'
 ]);
 
-<<<<<<< HEAD
 
 
 
@@ -34,8 +33,6 @@ Route::resource('article', 'ArticleController')->only([
     'update','destroy'
 ]);
 
-=======
->>>>>>> a17a0dfa9e33ffca7e5ef4c7bf817591f36b737b
 //table
 Route::get('/table','TableController@getTables');
 Route::get('/table/add','TableController@index');
@@ -64,18 +61,15 @@ Route::resource('article','ArticleController')->only([
 //create menu
 Route::get('/menu/create','MenuController@index');
 Route::post('/menu/submit','MenuController@submit');
+Route::post('/menu/add_article','MenuController@addArticle');
 Route::get('/menu/edit/{menu_id}','MenuController@edit');
 Route::get('/menu','MenuController@list');
 Route::resource('menu', 'MenuController')->only([
     'update','destroy', 'show'
 ]);
-//>>>>>>> 5d557d64d44ba44ed70e679fba4df813aeee2c5c
 
-<<<<<<< HEAD
 //Route::resources([
 //
 //    'caffe' => 'CaffeController'
 //
 //]);
-=======
->>>>>>> a17a0dfa9e33ffca7e5ef4c7bf817591f36b737b

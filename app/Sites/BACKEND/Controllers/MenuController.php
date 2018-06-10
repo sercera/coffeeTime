@@ -22,18 +22,31 @@ class MenuController extends Controller
 //            'fk_for_caffe'=> 'required'
 //        ]);
 //        dd($request);
-        $menu = new menu;
-        $menu->fk_for_caffe=  $request->input('fk_for_caffe');
+//        dd($request->input('article_number'));
+        $menu = new Menu;
+        $menu->fk_for_caffe =  $request->input('fk_for_caffe');
         $menu->save();
 
-        $menu->article()->attach($request->input('meni_id'),['neto_price' => $request->input('neto_price'),
+//        $menu->article()->attach($request->input('article_number'),['neto_price' => $request->input('neto_price'),
+//            'selling_price' => $request->input('selling_price'),
+//            'quantity' => $request->input('quantity'),
+//            'article_id' => $request->input('article_number'),
+//            'menu_id' => $menu->menu_id,
+//            ]);
+
+        return redirect('/menu')->with('success', 'Menu Submited');
+    }
+    public function addArticle(Request $request)
+    {
+        $menu = Menu::find($request->input('meni_id'));
+
+        $menu->article()->attach($request->input('article_number'),['neto_price' => $request->input('neto_price'),
             'selling_price' => $request->input('selling_price'),
             'quantity' => $request->input('quantity'),
             'article_id' => $request->input('article_number'),
             'menu_id' => $menu->menu_id,
-            ]);
-
-        return redirect('/menu')->with('success', 'Menu Submited');
+        ]);
+        return redirect()->route('menu.show', $menu->menu_id)->with('success', 'Article Added');
     }
     public function list()
     {
