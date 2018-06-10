@@ -54,4 +54,19 @@
         </li>
     </ul>
 </li>
+<li class="nav-parent">
+    <a href="">
+        <i class="fa fa-book"></i>
+        <span>Menu</span>
+    </a>
+    <ul class="children">
+        <li>
+            <a href="{{url(('/menu/create'))}}"> Dodajte novi meni</a>
+        </li>
+        <li>
+            <a href="{{url(('/menu'))}}"> Lista svih menija</a>
+        </li>
+    </ul>
+</li>
+
 

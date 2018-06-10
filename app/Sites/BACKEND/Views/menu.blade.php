@@ -12,13 +12,13 @@
         <li>
             <a href="{{url('/')}}">
                 <i class="glyphicon glyphicon-home"></i>
-                Home
+                Početna strana
             </a>
         </li>
         <li class="active">
-            <a href="{{url('menu')}}">
-                <i class="fa glyphicon glyphicon-book"></i>
-                Lista menija
+            <a href="{{url('/menu')}}">
+                <i class="fa fa-book"></i>
+                Lista svih menija
             </a>
         </li>
     </ol>
@@ -27,7 +27,7 @@
             <div class="col-lg-5">
             </div>
             <div class="col-lg-7">
-                <h4 class="panel-title">Add new menu</h4>
+                <h4 class="panel-title">Dodajte novi meni</h4>
             </div>
         </div>
         <br>

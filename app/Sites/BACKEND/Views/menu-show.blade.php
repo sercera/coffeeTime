@@ -16,9 +16,9 @@
             </a>
         </li>
         <li class="active">
-            <a href="{{url('menu')}}">
-                <i class="fa glyphicon glyphicon-book"></i>
-                Lista menija
+            <a href="{{url('/menu')}}">
+                <i class="fa fa-book"></i>
+                Lista svih menija
             </a>
         </li>
     </ol>
@@ -31,7 +31,7 @@
 
             </div>
             <div >
-                <h4 class="panel-title">Menu {{$menu->caffe->name}}</h4>
+                <h4 class="panel-title">Menu "{{$menu->caffe->name}}"</h4>
             </div>
         </div>
         <br>

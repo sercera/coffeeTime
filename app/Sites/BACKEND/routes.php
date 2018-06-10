@@ -22,9 +22,6 @@ Route::resource('employees', 'EmployeesController')->only([
     'update','destroy'
 ]);
 
-
-
-
 //article
 Route::get('/article','ArticleController@index');
 Route::get('/article/edit/{article_id}','ArticleController@edit');
@@ -68,8 +65,3 @@ Route::resource('menu', 'MenuController')->only([
     'update','destroy', 'show'
 ]);
 
-//Route::resources([
-//
-//    'caffe' => 'CaffeController'
-//
-//]);
