@@ -89,4 +89,9 @@ class CaffeController extends Controller
 
         return view('caffe.caffe-employees')->withEmployees($employees)->withCaffe($caffe);
     }
+
+    public function show($id)
+    {
+
+    }
 }

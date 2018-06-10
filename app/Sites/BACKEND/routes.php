@@ -5,6 +5,7 @@ Route::get('/caffe', 'CaffeController@getCaffes');
 Route::get('/caffe/add','CaffeController@index');
 Route::post('/caffe/submit','CaffeController@submit');
 Route::get('/caffe/edit/{caffe_id}','CaffeController@edit');
+Route::get('/caffe/show/{caffe_id}','CaffeController@show');
 Route::get('/caffe/employees/{caffe_id}','CaffeController@showEmployees');
 Route::resource('caffe', 'CaffeController')->only([
     'update','destroy'

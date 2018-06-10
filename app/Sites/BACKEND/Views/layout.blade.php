@@ -41,7 +41,10 @@
 <header>
     <div class="headerpanel">
 
+
+
         <div class="logopanel">
+
             <a href="{{url(('/'))}}">
                 <img src="{{asset('images/icon/icon_white.png')}}" alt="" class="media-object img-square" style="width:25%;height:40px;margin-left: 40%;">
             </a>
@@ -109,7 +112,7 @@
                     </a>
                 </div>--}}
                 <div class="media-body">
-                    <h3 class="media-heading">NESTO</h3>
+                    <h3 class="media-heading">GLAVNI MENI</h3>
                     {{--{{Auth::user()->username}}--}}
                 </div>
             </div><!-- leftpanel-profile -->
@@ -125,7 +128,7 @@
 
             <div class="tab-pane active" id="mainmenu">
 
-                <h5 class="sidebar-title">Glavni meni</h5>
+                {{--<h5 class="sidebar-title">Glavni meni</h5>--}}
                 <ul class="nav nav-pills nav-stacked nav-quirk">
                     @yield('active-menu')
                 </ul>
