@@ -62,9 +62,6 @@
                                         {!! Form::close() !!}
                                         <a href="{{url('table/edit',$table['table_id'])}}"
                                            class="edit btn btn-warning" role="button">Izmeni</a>
-                                        {{--<a data-toggle="modal" href="#myModal" class="btn btn-danger" id="deleteUser"--}}
-                                        {{--data-user={{$users['user_id']}}--}}
-                                        {{--role="button">Izbriši</a>--}}
                                     </td>
                                 </tr>
                             @endforeach

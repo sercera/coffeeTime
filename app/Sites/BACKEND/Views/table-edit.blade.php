@@ -38,7 +38,6 @@
         <br>
         <div class="panel-body">
 
-            {{--iz nekog razloga ne ucitava bootstrap za raspored elemenata ne mogu sad da gledam--}}
             {!! Form::model($table,['route' => ['table.update' ,$table->table_id], 'method' => "PATCH"]) !!}
             <div class="form-group">
                 {!! Form::label('number','Broj stola',['class'=>'col-lg-1 control-label']); !!}
@@ -58,7 +57,7 @@
                 {{Form::hidden('fk_for_caffe', $caffe->id, ['class' => 'form-control', 'placeholder' => 'Unesite naziv'])}}
             </div>
 
-            {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
+            {{Form::submit('Potvrdi',['class'=>'btn btn-primary'])}}
             {!! Form::close() !!}
         </div>
     </div>

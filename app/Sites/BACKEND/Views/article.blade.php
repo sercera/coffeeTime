@@ -39,14 +39,28 @@
     </div>
     <div class="form-group">
         {{Form::label('type', 'Tip')}}
-        {{Form::text('type', '' , ['class' => 'form-control', 'placeholder' => 'Unesite tip proizvoda'])}}
+        <select class="form-control" name="type">
+            <option value="Voda"> Voda</option>
+            <option value="Negazirano piće"> Negazirano piće</option>
+            <option value="Gazirano piće"> Gazirano piće</option>
+            <option value="Energetski napitci"> Energetski napitci</option>
+            <option value="Čaj"> Čaj</option>
+            <option value="Kafa"> Kafa</option>
+            <option value="Alkoholno piće"> Alkoholno piće</option>
+            <option value="Koktel"> Koktel</option>
+            <option value="Kolači"> Kolači</option>
+            <option value="Palačinka"> Palačinka</option>
+            <option value="Pomfrit"> Pomfrit</option>
+            <option value="Krilca"> Krilca</option>
+            <option value="Rebarca"> Rebarca</option>
+        </select>
     </div>
     <div class="form-group">
         {{Form::label('description', 'Opis')}}
         {{Form::textarea('description', '' , ['class' => 'form-control', 'placeholder' => 'Opis proizvoda...'])}}
     </div>
     <div>
-        {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
+        {{Form::submit('Potvrdi',['class'=>'btn btn-primary'])}}
     </div>
     {!! Form::close() !!}
         </div>

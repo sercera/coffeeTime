@@ -59,7 +59,3 @@ Route::get('/menu','MenuController@list');
 Route::resource('menu', 'MenuController')->only([
     'update','destroy', 'show'
 ]);
-<<<<<<< HEAD
-=======
-
->>>>>>> b5463078134dc4790f9ce28d4e031222e9b5ae96
