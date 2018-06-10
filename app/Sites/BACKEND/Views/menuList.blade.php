@@ -60,9 +60,6 @@
                                         {!! Form::submit('Izbriši', ['class' => 'btn btn-danger pull-left', 'style' => 'margin-right: 10px']) !!}
 
                                         {!! Form::close() !!}
-                                        {{--<a data-toggle="modal" href="#myModal" class="btn btn-danger" id="deleteUser"--}}
-                                        {{--data-user={{$users['user_id']}}--}}
-                                        {{--role="button">Izbriši</a>--}}
                                     </td>
                                 </tr>
                             @endforeach

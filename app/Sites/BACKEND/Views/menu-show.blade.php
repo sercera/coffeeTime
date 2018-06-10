@@ -31,7 +31,7 @@
 
             </div>
             <div >
-                <h4 class="panel-title">Menu "{{$menu->caffe->name}}"</h4>
+                <h4 class="panel-title">Meni "{{$menu->caffe->name}}"</h4>
             </div>
         </div>
         <br>
@@ -47,6 +47,7 @@
                             <td>Neto cena</td>
                             <td>Prodajna cena</td>
                             <td>Kolicina</td>
+                            <td></td>
                         </tr>
                         </thead>
                         <tbody>
