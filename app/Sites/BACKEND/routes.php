@@ -52,24 +52,13 @@ Route::resource('article','ArticleController')->only([
 ]);
 
 
-
-//menu
-//Route::get('/menu/{id}', 'MenuArticleController@index');
-//Route::post('/menu/submit','MenuArticleSubmitController@submit');
-//Route::get('/menu', 'MenuArticleController@getArticles');
-//=======
 //create menu
 Route::get('/menu/create','MenuController@index');
 Route::post('/menu/submit','MenuController@submit');
+Route::delete('/menu/delete_article/{menu_id}/{article_id}','MenuController@removeFromMenu');
 Route::post('/menu/add_article','MenuController@addArticle');
 Route::get('/menu/edit/{menu_id}','MenuController@edit');
 Route::get('/menu','MenuController@list');
 Route::resource('menu', 'MenuController')->only([
     'update','destroy', 'show'
 ]);
-
-//Route::resources([
-//
-//    'caffe' => 'CaffeController'
-//
-//]);

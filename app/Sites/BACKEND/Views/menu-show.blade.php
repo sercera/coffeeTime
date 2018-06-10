@@ -58,15 +58,15 @@
                                     <td>{{$article->pivot->neto_price}}</td>
                                     <td>{{$article->pivot->selling_price}}</td>
                                     <td>{{$article->pivot->quantity }}</td>
-                                    {{--<td style="width: 150px;">--}}
-                                        {{--{!! Form::open(['route' => ['article.destroy', $article->article_id],'method' => 'DELETE']) !!}--}}
+                                    <td style="width: 150px;">
+                                        {!! Form::open(['url' => ['menu/delete_article', $menu->menu_id, $article->article_id],'method' => 'DELETE']) !!}
 
-                                        {{--{!! Form::submit('Izbriši', ['class' => 'btn btn-danger pull-left', 'style' => 'margin-right: 10px']) !!}--}}
+                                        {!! Form::submit('Izbriši', ['class' => 'btn btn-danger pull-left', 'style' => 'margin-right: 10px']) !!}
 
-                                        {{--{!! Form::close() !!}--}}
+                                        {!! Form::close() !!}
                                         {{--<a href="{{url('article/edit',article['article_id'])}}"--}}
                                            {{--class="edit btn btn-warning" role="button">Izmeni</a>--}}
-                                    {{--</td>--}}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -76,7 +76,7 @@
         </div>
     </div>
     <div class="col-md-3">
-        <div class="well">
+        <div class="well" style="margin-top:20px">
             {!! Form::open(['url' => 'menu/add_article', 'method' => 'POST']) !!}
             <h2>Dodajte novi artikal u meni</h2>
             {{Form::label('article_number', 'Izaberite artikal:')}}
@@ -95,7 +95,7 @@
             {{Form::label('quantity', 'Kolicina:')}}
             {{Form::number('quantity',  '' , ['class' => 'form-control', 'placeholder' => 'Unesite kolicinu'])}}
 
-            {{Form::submit('Dodajte artikal u meni',['class'=>'btn btn-primary'])}}
+            {{Form::submit('Dodajte artikal u meni',['class'=>'btn btn-primary', 'style' => 'margin-top:10px'])}}
             {!! Form::close() !!}
         </div>
     </div>

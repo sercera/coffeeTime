@@ -48,6 +48,14 @@ class MenuController extends Controller
         ]);
         return redirect()->route('menu.show', $menu->menu_id)->with('success', 'Article Added');
     }
+    public function removeFromMenu($meni, $arti)
+    {
+        $menu = Menu::find($meni);
+
+        $menu->article()->detach($arti);
+
+        return redirect()->route('menu.show', $menu->menu_id)->with('success', 'Article Removed');
+    }
     public function list()
     {
         $menus= Menu::all();
