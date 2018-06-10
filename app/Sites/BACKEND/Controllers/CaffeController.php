@@ -92,6 +92,8 @@ class CaffeController extends AuthController
 
     public function show($id)
     {
+        $caffe=Caffe::find($id);
 
+        return view('caffe.caffe-show')->withCaffe($caffe);
     }
 }

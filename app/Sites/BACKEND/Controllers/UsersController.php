@@ -10,7 +10,7 @@ use App\Models\User;
 use Validator;
 
 
-class UsersController extends AuthController
+class UsersController extends Controller
 {
     public function index()
     {

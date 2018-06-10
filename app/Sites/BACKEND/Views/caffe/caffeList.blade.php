@@ -43,6 +43,7 @@
                     <td>Radno vreme</td>
                     <td></td>
                     <td></td>
+                    <td></td>
                 </tr>
                 </thead>
                 <tbody>
@@ -54,11 +55,16 @@
                         <td>{{$caffe->city}}</td>
                         <td>{{$caffe->description}}</td>
                         <td></td>
+                        <td style="width:75px;">
+                            <a href="{{url('caffe/show',$caffe['caffe_id'])}}"
+                               class="edit btn btn-info" role="button">Prikaži</a>
+                        </td>
                         <td style="width: 75px;">
                             <a href="{{url('caffe/employees',$caffe['caffe_id'])}}"
                                class="edit btn btn-success" role="button">Radnici</a>
                         </td>
                         <td style="width: 150px;">
+
                             {!! Form::open(['route' => ['caffe.destroy', $caffe->caffe_id],'method' => 'DELETE']) !!}
 
                             {!! Form::submit('Izbriši', ['class' => 'btn btn-danger pull-left', 'style' => 'margin-right: 10px']) !!}
