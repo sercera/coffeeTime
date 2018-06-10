@@ -17,6 +17,7 @@ class CreateMenuTable extends Migration
             $table->increments('menu_id');
 
             $table->integer('fk_for_caffe')->unsigned();
+            $table->string('name',100);
             $table->timestamps();
         });
 
