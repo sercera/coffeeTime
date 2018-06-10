@@ -13,9 +13,9 @@
             </a>
         </li>
         <li class="active">
-            <a href="{{url('users/create')}}">
-                <i class="fa fa-user-plus"></i>
-                Dodaj novog radnika
+            <a href="{{url('users')}}">
+                <i class="fa fa-users"></i>
+                Lista svih radnika
 
             </a>
         </li>
@@ -26,7 +26,7 @@
             <div class="col-lg-5">
             </div>
             <div class="col-lg-7">
-                <h4 class="panel-title" style="margin-left: 40%;">Dodaj novog Radnika</h4>
+                <h4 class="panel-title" style="margin-left: 40%;">Lista svih radnika</h4>
             </div>
         </div>
 
@@ -61,12 +61,14 @@
                             <td>{{$user['userDetails']->gender}}</td>
                             <td>{{$user['role']}}</td>
                             <td style="width: 150px;">
-                                <a href="{{url('users/'.$user['user_id']).'/edit'}}"
-                                   class="edit btn btn-warning" role="button">Edit
-                                </a>
                                 <a  href="{{url('users/delete',$user['user_id'])}}" class="btn btn-danger"
-                                           role="button">Delete
+                                    role="button">Izbriši
                                 </a>
+
+                                <a href="{{url('users/'.$user['user_id']).'/edit'}}"
+                                   class="edit btn btn-warning" role="button">Izmeni
+                                </a>
+
                         </tr>
 
                     @endforeach

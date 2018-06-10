@@ -15,17 +15,18 @@
             </a>
         </li>
         <li class="active">
-            <a href="{{url('/article/add')}}">
-                <i class="fa fa-beer"></i>
-                Dodajte novi proizvod
-            </a>
-        </li>
-        <li class="active">
             <a href="{{url('article')}}">
                 <i class="fa fa-beer"></i>
                 Lista svih proizvoda
             </a>
         </li>
+        <li class="active">
+            <a href="{{url('/article/edit/'.$article->article_id)}}">
+                <i class="fa fa-beer"></i>
+                {{$article->name}}
+            </a>
+        </li>
+
     </ol>
     <div class="panel">
         <div class="panel-heading">

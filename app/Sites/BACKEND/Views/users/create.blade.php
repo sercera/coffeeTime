@@ -4,6 +4,7 @@
 @endsection
 
 @section('content')
+    @include('error')
 
     <ol class="breadcrumb breadcrumb-quirk">
         <li>

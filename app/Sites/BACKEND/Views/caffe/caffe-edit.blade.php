@@ -17,13 +17,12 @@
         <li class="active">
             <a href="{{url('caffe')}}">
                 <i class="fa fa-coffee"></i>
-                Dodajte novi kafić
+                Lista svih kafića
             </a>
         </li>
         <li class="active">
-            <a href="{{url('/caffe')}}">
-                <i class="fa fa-coffee"></i>
-                Lista svih kafića
+            <a href="{{url('/caffe/edit/'.$caffe->caffe_id)}}">
+                {{$caffe->name}}
             </a>
         </li>
     </ol>

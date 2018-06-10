@@ -52,21 +52,15 @@ Route::resource('menu', 'MenuController')->only([
     'update','destroy', 'show'
 ]);
 
-Route::get('403',function (){
-
-
-    return View::make('errors.403');
-
-});
-
-//Auth (login, logout, register)
 Auth::routes();
-
 Route::get('logout','LogoutController@logout');
-Route::resources([
 
+Route::resources([
     'users'=>'UsersController'
 ]);
+
+Route::get('users/delete/{userId}','UsersController@destroy');
+Route::put('users/editpassword/{user}','UsersController@editPassword');
 
 
 Route::get('hello',function (){
@@ -75,5 +69,8 @@ Route::get('hello',function (){
 
 });
 
-Route::get('users/delete/{userId}','UsersController@destroy');
-Route::put('users/editpassword/{user}','UsersController@editPassword');
+Route::get('403',function (){
+
+    return View::make('errors.403');
+
+});

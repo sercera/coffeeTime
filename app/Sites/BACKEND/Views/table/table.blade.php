@@ -15,9 +15,9 @@
                 </a>
             </li>
             <li class="active">
-                <a href="{{url('/table')}}">
+                <a href="{{url('/table/add')}}">
                     <i class="fa fa-circle"></i>
-                    Lista svih stolova
+                    Dodajte novi sto
                 </a>
             </li>
         </ol>
@@ -38,14 +38,14 @@
                 {!! Form::label('number','Broj stola',['class'=>'col-lg-1 control-label']); !!}
                 <div class="col-lg-5">
 
-                    {{Form::number('number', '' , ['class' => 'form-control', 'placeholder' => 'Unesite broj stola'])}}
+                    {{Form::number('number', '' , ['class' => 'form-control', 'placeholder' => 'Unesite broj stola','required'=>'required'])}}
                 </div>
             </div>
             <div class="form-group">
                 {!! Form::label('spots','Broj mesta',['class'=>'col-lg-1 control-label']); !!}
                 <div class="col-lg-5">
 
-                    {{Form::number('spots', '' , ['class' => 'form-control', 'placeholder' => 'Unesite broj mesta za stolom'])}}
+                    {{Form::number('spots', '' , ['class' => 'form-control', 'placeholder' => 'Unesite broj mesta za stolom','required'=>'required'])}}
                 </div>
             </div>
             <div class="form-group">

@@ -16,7 +16,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('lib/jquery-toggles/toggles-full.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-date-picker/bootstrap-datepicker3.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('lib/select2/select2.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css')}}">
     {{--    <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-data-table/dataTables.bootstrap.css')}}">--}}
 
     <link rel="icon" sizes="64x64" href="{{asset('images/icon/icon_black.png')}}">
@@ -27,12 +28,9 @@
     <script src="{{asset('lib/respond/respond.src.js')}}"></script>
 
 
-
     {{--<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">--}}
     {{--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">--}}
     {{--<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">--}}
-
-
 
 
 </head>
@@ -42,11 +40,11 @@
     <div class="headerpanel">
 
 
-
         <div class="logopanel">
 
             <a href="{{url(('/'))}}">
-                <img src="{{asset('images/icon/icon_white.png')}}" alt="" class="media-object img-square" style="width:25%;height:40px;margin-left: 40%;">
+                <img src="{{asset('images/icon/icon_white.png')}}" alt="" class="media-object img-square"
+                     style="width:25%;height:40px;margin-left: 40%;">
             </a>
 
         </div><!-- logopanel -->
@@ -64,7 +62,8 @@
                     <li>
                         <div class="logopanel">
                             <a href="{{url(('/'))}}">
-                                <img src="{{asset('images/icon/icon_text_white.png')}}" alt="" class="media-object img-square"
+                                <img src="{{asset('images/icon/icon_text_white.png')}}" alt=""
+                                     class="media-object img-square"
                                      style="width:100%;height:40px; margin-left: -650px">
                             </a>
                         </div>
@@ -75,14 +74,14 @@
                     <li>
                         <div class="btn-group">
                             <button type="button" class="btn btn-logged" data-toggle="dropdown">
-                                <img src="images/photos/loggeduser.png" alt="" />
+                                <img src="images/photos/loggeduser.png" alt=""/>
 
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu pull-right">
-                                <li><a href="profile.html"><i class="glyphicon glyphicon-user"></i> My Profile</a></li>
-                                {{--<li><a href="#"><i class="glyphicon glyphicon-cog"></i> Account Settings</a></li>--}}
-                                <li><a href="{{url(('logout'))}}"><i class="glyphicon glyphicon-log-out logout"></i> Log Out</a></li>
+                                <li><a href="#"><i class="glyphicon glyphicon-cog"></i> Account Settings</a></li>
+                                <li><a href="{{url(('logout'))}}"><i class="glyphicon glyphicon-log-out logout"></i> Log
+                                        Out</a></li>
                             </ul>
                         </div>
                     </li>
@@ -106,20 +105,14 @@
             <!-- ################## LEFT PANEL PROFILE ################## -->
 
             <div class="media leftpanel-profile">
-                {{--<div class="media-left">
-                    <a href="#">
-                        <img src="../images/photos/loggeduser.png" alt="" class="media-object img-circle">
-                    </a>
-                </div>--}}
                 <div class="media-body">
-                    <h3 class="media-heading">GLAVNI MENI</h3>
-                    {{--{{Auth::user()->username}}--}}
+                    <h3 class="media-heading">{{Auth::user()->username}}</h3>
+
                 </div>
             </div><!-- leftpanel-profile -->
 
 
         </div><!-- leftpanel-userinfo -->
-
 
 
         <div class="tab-content">
@@ -128,7 +121,7 @@
 
             <div class="tab-pane active" id="mainmenu">
 
-                {{--<h5 class="sidebar-title">Glavni meni</h5>--}}
+                <h5 class="sidebar-title">Glavni meni</h5>
                 <ul class="nav nav-pills nav-stacked nav-quirk">
                     @yield('active-menu')
                 </ul>
@@ -151,8 +144,6 @@
     </div><!-- mainpanel -->
 
 </section>
-
-
 
 
 {{--<div class="footer">@yield('footer')</div>--}}

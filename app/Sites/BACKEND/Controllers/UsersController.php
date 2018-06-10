@@ -38,17 +38,16 @@ class UsersController extends Controller
     {
 
 
-        /* if (Auth::user()->hasRole('admin')) {
+        if (Auth::user()->hasRole('admin')) {
 
-             $roles = Role::all();
-         }elseif(Auth::user()->hasRole('owner')){
+            $roles = Role::all();
+        } elseif (Auth::user()->hasRole('owner')) {
 
-             $roles=Role::where('name','!=','admin')->get();
-         }else {
+            $roles = Role::where('name', '!=', 'admin')->get();
+        } else {
 
-             $roles = null;
-         }*/
-        $roles = Role::all();
+            $roles = null;
+        }
 
 
         return view('users.create', compact('roles'));
@@ -57,8 +56,6 @@ class UsersController extends Controller
 
     public function update($user)
     {
-
-        $request=Request::all();
 
 
         $request = Request::all();
@@ -80,14 +77,14 @@ class UsersController extends Controller
         }
 
 
-        DB::table('users')->where('user_id',$user)->update([
+        DB::table('users')->where('user_id', $user)->update([
 
             'username' => $request['username'],
 
         ]);
 
 
-        DB::table('user_details')->where('fk_for_user',$user)->update([
+        DB::table('user_details')->where('fk_for_user', $user)->update([
             'first_name' => $request['first_name'],
             'last_name' => $request['last_name'],
             'address' => $request['address'],
@@ -103,12 +100,11 @@ class UsersController extends Controller
         $role = Role::find($request['role']);
 
         $selectedUser = User::find($user);
-        $selectedUser ->detachRoles();
-        $selectedUser ->attachRole($role);
+        $selectedUser->detachRoles();
+        $selectedUser->attachRole($role);
 
 
-
-        return redirect()->route('users.edit', [$user]);
+        return redirect()->route('users.edit', [$user])->with('success', 'Uspešno ste izmenili korisnika "' . $request['username'] . '"');
 
     }
 
@@ -168,16 +164,16 @@ class UsersController extends Controller
         ]);
 
 
-        return redirect()->route('users.create');
+        return redirect()->route('users.create')->with('success', 'Uspešno ste dodali novog radnika.');
     }
 
     public function destroy($userId)
     {
 
-
+        $username = User::find($userId)->username;
         User::where('user_id', $userId)->delete();
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'Uspešno ste izbrisali korisnika "' . $username . '"');
 
 
     }
@@ -239,7 +235,6 @@ class UsersController extends Controller
         return redirect()->route('users.edit', [$user]);
 
     }
-
 
 
 }

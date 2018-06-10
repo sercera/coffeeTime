@@ -39,17 +39,22 @@ class CaffeController extends AuthController
     {
         $caffes = Caffe::all();
 
-        return view('caffe.caffeList' )->with('caffes', $caffes);
+        return view('caffe.caffeList')->with('caffes', $caffes);
     }
 
     public function edit($id)
     {
         $caffe = Caffe::find($id);
 
-        return view('caffe.caffe-edit' )->withCaffe($caffe);
+        if (empty($caffe)) {
+
+            return redirect()->back();
+        }
+
+        return view('caffe.caffe-edit')->withCaffe($caffe);
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
             'name' => 'required',
@@ -67,7 +72,7 @@ class CaffeController extends AuthController
         $caffe->work_hours = $request->input('work_hours');
         //Save caffe
         $caffe->save();
-        Session::flash('success','This caffe was sucesfully saved.');
+        Session::flash('success', 'This caffe was sucesfully saved.');
         //Redirect
         return redirect('/caffe')->with('success', 'Uspešno ste promenili podatke o kafiću.');
     }
@@ -77,22 +82,28 @@ class CaffeController extends AuthController
         $caffe = Caffe::find($id);
 
         $caffe->delete();
-        Session::flash('success','This caffe was successfully deleted.');
+        Session::flash('success', 'This caffe was successfully deleted.');
         //Redirect
         return redirect('/caffe')->with('success', 'Uspešno ste izbrisali izabrani kafić.');
     }
 
     public function showEmployees($id)
     {
-        $employees=Employee::all();
-        $caffe=Caffe::find($id);
+        $employees = Employee::all();
+        $caffe = Caffe::find($id);
+
 
         return view('caffe.caffe-employees')->withEmployees($employees)->withCaffe($caffe);
     }
 
     public function show($id)
     {
-        $caffe=Caffe::find($id);
+        $caffe = Caffe::find($id);
+
+        if (empty($caffe)) {
+
+            return redirect()->back();
+        }
 
         return view('caffe.caffe-show')->withCaffe($caffe);
     }
