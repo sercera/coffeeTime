@@ -19,10 +19,4 @@ class Article extends Model
         $this->belongsToMany('App\Models\Menu','menu_article', 'article_id', 'menu_id')->withPivot('neto_price', 'selling_price','quantity')->withTimestamps();
     }
 
-    public function getType(){
-
-
-        $this->hasOne('App\Models\ArticleType','fk_for_article','article_id');
-
-    }
 }

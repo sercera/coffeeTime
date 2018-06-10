@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Caffe;
 use Session;
 
-class CaffeController extends Controller
+class CaffeController extends AuthController
 {
     public function index()
     {
