@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Article;
 use Session;
 
-class ArticleController extends Controller
+class ArticleController extends AuthController
 {
     public function index()
     {

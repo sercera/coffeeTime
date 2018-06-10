@@ -8,7 +8,7 @@ use App\Models\Caffe;
 use App\Models\Article;
 use Session;
 
-class MenuController extends Controller
+class MenuController extends AuthController
 {
     public function index()
     {

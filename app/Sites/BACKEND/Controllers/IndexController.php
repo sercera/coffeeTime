@@ -4,7 +4,7 @@ namespace App\Sites\BACKEND\Controllers;
 
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
+class IndexController extends AuthController
 {
     public function index()
     {

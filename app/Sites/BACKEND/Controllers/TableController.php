@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Session;
 
 
-class TableController extends Controller
+class TableController extends AuthController
 {
     public function index()
     {
