@@ -52,7 +52,7 @@
                 {{Form::textarea('description', $article->description , ['class' => 'form-control', 'placeholder' => 'Opis proizvoda...'])}}
             </div>
             <div>
-                {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
+                {{Form::submit('Potvrdi',['class'=>'btn btn-primary'])}}
             </div>
             {!! Form::close() !!}
         </div>

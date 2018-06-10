@@ -41,9 +41,12 @@
             @endforeach
         </select>
     </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> ac39869a4d509868c57b2bd55b77aa96c1fd2890
     <div>
-        {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
+        {{Form::submit('Potvrdi',['class'=>'btn btn-primary'])}}
     </div>
     {!! Form::close() !!}
         </div>

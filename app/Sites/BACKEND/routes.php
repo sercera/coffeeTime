@@ -58,4 +58,5 @@ Route::get('/menu/edit/{menu_id}','MenuController@edit');
 Route::get('/menu','MenuController@list');
 Route::resource('menu', 'MenuController')->only([
     'update','destroy', 'show'
+
 ]);
