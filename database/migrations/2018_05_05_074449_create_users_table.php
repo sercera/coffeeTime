@@ -19,7 +19,15 @@ class CreateUsersTable extends Migration
             $table->string('email',255);
             $table->string('password',255);
             $table->rememberToken();
+            $table->integer('fk_for_caffe')->nullable()->unsigned();
+
             $table->timestamps();
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+
+            $table->foreign('fk_for_caffe')->references('caffe_id')->on('caffe')->onDelete('cascade');
+
         });
 
     }

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'coffeeTime'),
 
     /*
     |--------------------------------------------------------------------------
@@ -147,6 +147,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        'Zizaco\Entrust\EntrustServiceProvider',
         /*
          * Package Service Providers...
          */
@@ -210,6 +211,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Entrust' => 'Zizaco\Entrust\EntrustFacade',
+        'Input' => Illuminate\Support\Facades\Input::class,
+
     ],
 
 ];

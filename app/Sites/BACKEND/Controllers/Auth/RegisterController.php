@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
-
-use App\User;
-use App\Http\Controllers\Controller;
+namespace App\Sites\BACKEND\Controllers\Auth;
+use App\Sites\BACKEND\Controllers\Controller;
+use App\Models\Employee;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -28,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.

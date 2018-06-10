@@ -35,14 +35,20 @@
 <li class="nav-parent">
     <a href="">
         <i class="fa fa-users"></i>
-        <span>Radnici</span>
+        <span>Korisnici</span>
     </a>
     <ul class="children">
         <li>
             <a href="{{url(('employees'))}}"> Lista radnika</a>
         </li>
         <li>
+            <a href="{{url(('users'))}}"> Lista korisnika</a>
+        </li>
+        <li>
             <a href="{{url(('employees/add'))}}"> Dodaj radnika</a>
         </li>
     </ul>
 </li>
+
+
+
