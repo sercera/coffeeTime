@@ -34,7 +34,7 @@ class MenuController extends Controller
 //            'menu_id' => $menu->menu_id,
 //            ]);
 
-        return redirect('/menu')->with('success', 'Menu Submited');
+        return redirect('/menu')->with('success', 'Uspešno ste dodali novi meni.');
     }
     public function addArticle(Request $request)
     {
@@ -46,7 +46,7 @@ class MenuController extends Controller
             'article_id' => $request->input('article_number'),
             'menu_id' => $menu->menu_id,
         ]);
-        return redirect()->route('menu.show', $menu->menu_id)->with('success', 'Article Added');
+        return redirect()->route('menu.show', $menu->menu_id)->with('success', 'Uspešno ste dodali novi proizvod.');
     }
     public function removeFromMenu($meni, $arti)
     {
@@ -75,6 +75,6 @@ class MenuController extends Controller
         $menu->delete();
         Session::flash('success','This menu was successfully deleted.');
         //Redirect
-        return redirect('/menu')->with('success', 'Menu Deleted!');
+        return redirect('/menu')->with('success', 'Uspešno ste izbrisali izabrani meni.');
     }
 }

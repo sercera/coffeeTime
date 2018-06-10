@@ -17,8 +17,8 @@
         </li>
         <li class="active">
             <a href="{{url('menu/create')}}">
-                <i class="fa glyphicon glyphicon-book"></i>
-                Dodaj novi meni
+                <i class="fa fa-book"></i>
+                Dodajte novi meni
             </a>
         </li>
     </ol>
@@ -27,7 +27,7 @@
             <div class="col-lg-5">
             </div>
             <div class="col-lg-7">
-                <h4 class="panel-title">Lista menija</h4>
+                <h4 class="panel-title">Lista svih menija</h4>
             </div>
         </div>
         <br>
