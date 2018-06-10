@@ -14,19 +14,13 @@
                 Početna strana
             </a>
         </li>
-        <li class="active">
-            <a href="{{url('/employees/add')}}">
-                <i class="fa fa-users"></i>
-                Dodajte novog radnika
-            </a>
-        </li>
     </ol>
     <div class="panel">
         <div class="panel-heading">
             <div class="col-lg-5">
             </div>
             <div class="col-lg-7">
-                <h4 class="panel-title">Lista svih radnika</h4>
+                <h4 class="panel-title">Lista radnika kafića "{{$caffe->name}}"</h4>
             </div>
         </div>
         <br>
@@ -46,6 +40,7 @@
                         <tbody>
                         @if(count($employees) > 0)
                             @foreach($employees as $employee)
+                                @if($employee->caffe->name==$caffe->name)
                                 <tr>
                                     <td>{{$employee->username}}</td>
                                     <td>{{$employee->email}}</td>
@@ -61,6 +56,7 @@
                                            class="edit btn btn-warning" role="button">Izmeni</a>
                                     </td>
                                 </tr>
+                                @endif
                             @endforeach
                         @endif
                         </tbody>

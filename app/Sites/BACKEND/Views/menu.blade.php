@@ -6,19 +6,19 @@
 
 
 @section('content')
-    @include('caffe.error')
+    @include('error')
 
     <ol class="breadcrumb breadcrumb-quirk">
         <li>
             <a href="{{url('/')}}">
                 <i class="glyphicon glyphicon-home"></i>
-                Home
+                Početna strana
             </a>
         </li>
         <li class="active">
-            <a href="{{url('create_menu')}}">
-                <i class="fa glyphicon glyphicon-book"></i>
-                Add new menu
+            <a href="{{url('/menu')}}">
+                <i class="fa fa-book"></i>
+                Lista svih menija
             </a>
         </li>
     </ol>
@@ -27,12 +27,12 @@
             <div class="col-lg-5">
             </div>
             <div class="col-lg-7">
-                <h4 class="panel-title">Add new menu</h4>
+                <h4 class="panel-title">Dodajte novi meni</h4>
             </div>
         </div>
         <br>
         <div class="panel-body">
-    {!! Form::open(['url' => 'create_menu/submit']) !!}
+    {!! Form::open(['url' => 'menu/submit']) !!}
     <div class="form-group">
         {{Form::label('fk_for_caffe', 'Izaberi kafić')}}
         <select class="form-control" name="fk_for_caffe">
@@ -41,19 +41,12 @@
             @endforeach
         </select>
     </div>
+<<<<<<< HEAD
 
-            <div class="form-group">
-                {{Form::label('article', 'Izaberi artikal')}}
-                <select class="form-control select2-multi" name="article[]" multiple="multiple">
-                    @foreach($articles as $article)
-                        <option value="{{$article->article_id}}"> {{$article->name}}</option>
-                    @endforeach
-                </select>
-            </div>
-
-
+=======
+>>>>>>> ac39869a4d509868c57b2bd55b77aa96c1fd2890
     <div>
-        {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
+        {{Form::submit('Potvrdi',['class'=>'btn btn-primary'])}}
     </div>
     {!! Form::close() !!}
         </div>

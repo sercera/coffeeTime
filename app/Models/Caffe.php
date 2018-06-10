@@ -28,6 +28,6 @@ class Caffe extends Model
 
     public function menu()
     {
-        return $this->hasOne('App\Models\Menu');
+        return $this->hasOne('App\Models\Menu', 'menu_id' , 'caffe_id');
     }
 }
