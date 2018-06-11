@@ -15,9 +15,9 @@
                </a>
            </li>
            <li class="active">
-               <a href="{{url('/caffe/add')}}">
+               <a href="{{url('/caffe')}}">
                    <i class="fa fa-coffee"></i>
-                   Dodajte novi kafić
+                   Lista svih kafića
                </a>
            </li>
        </ol>
@@ -41,8 +41,9 @@
                     <td>Grad</td>
                     <td>Opis</td>
                     <td>Radno vreme</td>
-                    <td></td>
-                    <td></td>
+                    <td>Prikazi kafic</td>
+                    <td>Lista radnika</td>
+                    <td>Akcije</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -53,12 +54,17 @@
                         <td>{{$caffe->address}}</td>
                         <td>{{$caffe->city}}</td>
                         <td>{{$caffe->description}}</td>
-                        <td></td>
+                        <td>{{$caffe->work_hours}}</td>
+                        <td style="width:75px;">
+                            <a href="{{url('caffe/show',$caffe['caffe_id'])}}"
+                               class="edit btn btn-info" role="button">Prikaži</a>
+                        </td>
                         <td style="width: 75px;">
                             <a href="{{url('caffe/employees',$caffe['caffe_id'])}}"
                                class="edit btn btn-success" role="button">Radnici</a>
                         </td>
                         <td style="width: 150px;">
+
                             {!! Form::open(['route' => ['caffe.destroy', $caffe->caffe_id],'method' => 'DELETE']) !!}
 
                             {!! Form::submit('Izbriši', ['class' => 'btn btn-danger pull-left', 'style' => 'margin-right: 10px']) !!}

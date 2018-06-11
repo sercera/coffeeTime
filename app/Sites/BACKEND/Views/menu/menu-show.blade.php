@@ -16,9 +16,9 @@
             </a>
         </li>
         <li class="active">
-            <a href="{{url('/menu')}}">
+            <a href="{{url('/menu/'.$menu->menu_id)}}">
                 <i class="fa fa-book"></i>
-                Lista svih menija
+                {{$menu->caffe->name}}
             </a>
         </li>
     </ol>
@@ -30,7 +30,7 @@
             <div>
 
             </div>
-            <div >
+            <div>
                 <h4 class="panel-title">Meni "{{$menu->caffe->name}}"</h4>
             </div>
         </div>
@@ -47,29 +47,29 @@
                             <td>Neto cena</td>
                             <td>Prodajna cena</td>
                             <td>Kolicina</td>
-                            <td></td>
+                            <td>Akcije</td>
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($menu->article as $article)
-                                <tr>
-                                    <td>{{$article->name}}</td>
-                                    <td>{{$article->type}}</td>
-                                    <td>{{$article->description}}</td>
-                                    <td>{{$article->pivot->neto_price}}</td>
-                                    <td>{{$article->pivot->selling_price}}</td>
-                                    <td>{{$article->pivot->quantity }}</td>
-                                    <td style="width: 150px;">
-                                        {!! Form::open(['url' => ['menu/delete_article', $menu->menu_id, $article->article_id],'method' => 'DELETE']) !!}
+                        @foreach($menu->article as $article)
+                            <tr>
+                                <td>{{$article->name}}</td>
+                                <td>{{$article->type}}</td>
+                                <td>{{$article->description}}</td>
+                                <td>{{$article->pivot->neto_price}}</td>
+                                <td>{{$article->pivot->selling_price}}</td>
+                                <td>{{$article->pivot->quantity }}</td>
+                                <td style="width: 150px;">
+                                    {!! Form::open(['url' => ['menu/delete_article', $menu->menu_id, $article->article_id],'method' => 'DELETE']) !!}
 
-                                        {!! Form::submit('Izbriši', ['class' => 'btn btn-danger pull-left', 'style' => 'margin-right: 10px']) !!}
+                                    {!! Form::submit('Izbriši', ['class' => 'btn btn-danger pull-left', 'style' => 'margin-right: 10px;width:100%']) !!}
 
-                                        {!! Form::close() !!}
-                                        {{--<a href="{{url('article/edit',article['article_id'])}}"--}}
-                                           {{--class="edit btn btn-warning" role="button">Izmeni</a>--}}
-                                    </td>
-                                </tr>
-                            @endforeach
+                                    {!! Form::close() !!}
+                                    {{--<a href="{{url('article/edit',article['article_id'])}}"--}}
+                                    {{--class="edit btn btn-warning" role="button">Izmeni</a>--}}
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

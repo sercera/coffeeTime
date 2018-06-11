@@ -4,6 +4,7 @@
 @endsection
 
 @section('content')
+    @include('error')
 
     <ol class="breadcrumb breadcrumb-quirk">
         <li>
@@ -12,9 +13,15 @@
                 Home
             </a>
         </li>
-        <li class="active">
+        <li>
+            <a href="{{url('users')}}">
+                <i class="fa fa-users"></i>
+                Lista svih radnika
+            </a>
+        </li>
+        <li>
             <a href="{{url('users/'.$user->user_id.'/edit')}}">
-                <i class="fa fa-user-plus"></i>
+                <i class="fa fa-user"></i>
                 {{$userDetails->first_name}} {{$userDetails->last_name}}
             </a>
         </li>
@@ -25,7 +32,7 @@
             <div class="col-lg-5">
             </div>
             <div class="col-lg-7">
-                <h4 class="panel-title" style="margin-left: 40%;">Edituj korsinika: {{$userDetails->first_name}} {{$userDetails->last_name}}</h4>
+                <h4 class="panel-title" style="margin-left: 40%;">Izmeni korsinika: {{$userDetails->first_name}} {{$userDetails->last_name}}</h4>
             </div>
         </div>
         <div class="panel-body" style="margin-left: 20px">

@@ -36,7 +36,7 @@
                 </div>
             </div>
         </a>
-        <a href="{{url('employees')}}">
+        <a href="{{url('users')}}">
             <div class="col-xs-4 col-sm-4 col-md-4 page-reports">
                 <div class="panel" id="users">
                     <div class="panel-heading">

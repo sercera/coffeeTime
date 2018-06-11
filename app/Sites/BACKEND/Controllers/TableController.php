@@ -36,14 +36,15 @@ class TableController extends AuthController
 //        ]);
 
         $table = new Table;
-        $table->table_number= $request->input('number');
-        $table->table_spots= $request->input('spots');
-        $table->fk_for_caffe= $request->input('fk_for_caffe');
+        $table->table_number = $request->input('number');
+        $table->table_spots = $request->input('spots');
+        $table->fk_for_caffe = $request->input('fk_for_caffe');
         $table->save();
 //        Save article
         ////Redirect
         return redirect('table')->with('success', 'Uspešno ste uneli novi sto.');
     }
+
     public function getTables()
     {
         $tables = Table::all();
@@ -51,12 +52,20 @@ class TableController extends AuthController
 
         return view('table.tableList')->withTables($tables)->withCaffes($caffes);
     }
+
     public function edit($id)
     {
+
         $table = Table::find($id);
+
+        if (empty($table)) {
+
+            return redirect()->back();
+        }
         $caffe = Caffe::find($table->fk_for_caffe);
-        return view('table.table-edit' )->withTable($table)->withCaffe($caffe);
+        return view('table.table-edit')->withTable($table)->withCaffe($caffe);
     }
+
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -65,21 +74,22 @@ class TableController extends AuthController
         ]);
 
         $table = Table::find($id);
-        $table->table_number= $request->input('number');
-        $table->table_spots= $request->input('spots');
-        $table->fk_for_caffe= $request->input('fk_for_caffe');
+        $table->table_number = $request->input('number');
+        $table->table_spots = $request->input('spots');
+        $table->fk_for_caffe = $request->input('fk_for_caffe');
         $table->save();
 
-        Session::flash('success','This article was successfully saved.');
+        Session::flash('success', 'This article was successfully saved.');
         ////Redirect
         return redirect('table')->with('success', 'Uspešno ste promenili podatke o stolu.');
     }
+
     public function destroy($id)
     {
-        $table= Table::find($id);
+        $table = Table::find($id);
 
         $table->delete();
-        Session::flash('success','This table was successfully deleted.');
+        Session::flash('success', 'This table was successfully deleted.');
         //Redirect
         return redirect('/table')->with('success', 'Uspešno ste izbrisali izabrani sto.');
     }

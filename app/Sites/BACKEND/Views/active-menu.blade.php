@@ -19,10 +19,10 @@
     </a>
     <ul class="children">
         <li>
-            <a href="{{url(('employees/add'))}}"> Dodajte novog radnika</a>
+            <a href="{{url(('users/create'))}}"> Dodajte novog radnika</a>
         </li>
         <li>
-            <a href="{{url(('employees'))}}"> Lista svih radnika</a>
+            <a href="{{url(('users'))}}"> Lista svih radnika</a>
         </li>
     </ul>
 </li>

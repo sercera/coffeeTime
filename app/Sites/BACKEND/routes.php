@@ -5,6 +5,7 @@ Route::get('/caffe', 'CaffeController@getCaffes');
 Route::get('/caffe/add','CaffeController@index');
 Route::post('/caffe/submit','CaffeController@submit');
 Route::get('/caffe/edit/{caffe_id}','CaffeController@edit');
+Route::get('/caffe/show/{caffe_id}','CaffeController@show');
 Route::get('/caffe/employees/{caffe_id}','CaffeController@showEmployees');
 Route::resource('caffe', 'CaffeController')->only([
     'update','destroy'
@@ -51,21 +52,15 @@ Route::resource('menu', 'MenuController')->only([
     'update','destroy', 'show'
 ]);
 
-Route::get('403',function (){
-
-
-    return View::make('errors.403');
-
-});
-
-//Auth (login, logout, register)
 Auth::routes();
-
 Route::get('logout','LogoutController@logout');
-Route::resources([
 
+Route::resources([
     'users'=>'UsersController'
 ]);
+
+Route::get('users/delete/{userId}','UsersController@destroy');
+Route::put('users/editpassword/{user}','UsersController@editPassword');
 
 
 Route::get('hello',function (){
@@ -74,5 +69,8 @@ Route::get('hello',function (){
 
 });
 
-Route::get('users/delete/{userId}','UsersController@destroy');
-Route::put('users/editpassword/{user}','UsersController@editPassword');
+Route::get('403',function (){
+
+    return View::make('errors.403');
+
+});

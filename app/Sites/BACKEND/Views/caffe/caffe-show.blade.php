@@ -14,43 +14,38 @@
                 Početna strana
             </a>
         </li>
-        <li class="active">
-            <a href="{{url('article')}}">
-                <i class="fa fa-beer"></i>
-                Lista svih proizvoda
-            </a>
-        </li>
-        <li class="active">
-            <a href="{{url('/article/edit/'.$article->article_id)}}">
-                <i class="fa fa-beer"></i>
-                {{$article->name}}
-            </a>
-        </li>
-
     </ol>
     <div class="panel">
         <div class="panel-heading">
             <div class="col-lg-5">
             </div>
             <div class="col-lg-7">
-                <h4 class="panel-title">Izmenite podatke o proizvodu</h4>
+                <h4 class="panel-title">{{$caffe->name}}</h4>
             </div>
         </div>
         <br>
         <div class="panel-body">
 
-            {!! Form::model($article,['route' => ['article.update' ,$article->article_id], 'method' => "PATCH"]) !!}
+            {!! Form::open(['url' => 'caffe/submit']) !!}
             <div class="form-group">
                 {{Form::label('name', 'Naziv')}}
-                {{Form::text('name', $article->name , ['class' => 'form-control', 'placeholder' => 'Unesite naziv proizvoda'])}}
+                {{Form::text('name', '' , ['class' => 'form-control', 'placeholder' => 'Unesite naziv'])}}
             </div>
             <div class="form-group">
-                {{Form::label('type', 'Tip')}}
-                {{Form::text('type', $article->type , ['class' => 'form-control', 'placeholder' => 'Unesite tip proizvoda'])}}
+                {{Form::label('address', 'Adresa')}}
+                {{Form::text('address', '' , ['class' => 'form-control', 'placeholder' => 'Unesite adresu'])}}
+            </div>
+            <div class="form-group">
+                {{Form::label('city', 'Grad')}}
+                {{Form::text('city', '' , ['class' => 'form-control', 'placeholder' => 'Unesite grad'])}}
             </div>
             <div class="form-group">
                 {{Form::label('description', 'Opis')}}
-                {{Form::textarea('description', $article->description , ['class' => 'form-control', 'placeholder' => 'Opis proizvoda...'])}}
+                {{Form::textarea('description', '' , ['class' => 'form-control', 'placeholder' => 'Opis...'])}}
+            </div>
+            <div class="form-group">
+                {{Form::label('work_hours', 'Radni sati')}}
+                {{Form::text('work_hours', '' , ['class' => 'form-control', 'placeholder' => '12'])}}
             </div>
             <div>
                 {{Form::submit('Potvrdi',['class'=>'btn btn-primary'])}}
@@ -58,4 +53,5 @@
             {!! Form::close() !!}
         </div>
     </div>
+
 @endsection

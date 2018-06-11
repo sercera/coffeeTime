@@ -16,9 +16,9 @@
             </a>
         </li>
         <li class="active">
-            <a href="{{url('/menu')}}">
+            <a href="{{url('/menu/create')}}">
                 <i class="fa fa-book"></i>
-                Lista svih menija
+                Dodajte novi meni
             </a>
         </li>
     </ol>

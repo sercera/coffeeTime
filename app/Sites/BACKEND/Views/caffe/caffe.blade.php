@@ -15,9 +15,9 @@
             </a>
         </li>
         <li class="active">
-            <a href="{{url('/caffe')}}">
+            <a href="{{url('caffe/add')}}">
                 <i class="fa fa-coffee"></i>
-                Lista svih kafića
+                Dodajte novi kafić
             </a>
         </li>
     </ol>
@@ -35,23 +35,23 @@
     {!! Form::open(['url' => 'caffe/submit']) !!}
     <div class="form-group">
         {{Form::label('name', 'Naziv')}}
-        {{Form::text('name', '' , ['class' => 'form-control', 'placeholder' => 'Unesite naziv'])}}
+        {{Form::text('name', '' , ['class' => 'form-control', 'placeholder' => 'Unesite naziv','required'=>'required'])}}
     </div>
     <div class="form-group">
         {{Form::label('address', 'Adresa')}}
-        {{Form::text('address', '' , ['class' => 'form-control', 'placeholder' => 'Unesite adresu'])}}
+        {{Form::text('address', '' , ['class' => 'form-control', 'placeholder' => 'Unesite adresu','required'=>'required'])}}
     </div>
     <div class="form-group">
         {{Form::label('city', 'Grad')}}
-        {{Form::text('city', '' , ['class' => 'form-control', 'placeholder' => 'Unesite grad'])}}
+        {{Form::text('city', '' , ['class' => 'form-control', 'placeholder' => 'Unesite grad','required'=>'required'])}}
     </div>
     <div class="form-group">
         {{Form::label('description', 'Opis')}}
-        {{Form::textarea('description', '' , ['class' => 'form-control', 'placeholder' => 'Opis...'])}}
+        {{Form::textarea('description', '' , ['class' => 'form-control', 'placeholder' => 'Opis...','required'=>'required'])}}
     </div>
     <div class="form-group">
         {{Form::label('work_hours', 'Radni sati')}}
-        {{Form::text('work_hours', '' , ['class' => 'form-control', 'placeholder' => '12'])}}
+        {{Form::text('work_hours', '' , ['class' => 'form-control', 'placeholder' => '12','required'=>'required'])}}
     </div>
     <div>
         {{Form::submit('Potvrdi',['class'=>'btn btn-primary'])}}
