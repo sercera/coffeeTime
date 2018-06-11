@@ -1,0 +1,84 @@
+/*
+* 11. Media
+* ====================
+*/
+
+$media-gutter: 90px;
+
+.media-right {
+  padding-top: $media-gutter;
+}
+.media-left {
+  padding-bottom: $media-gutter;
+}
+
+.media-ltr {
+  direction: ltr;
+}
+
+.media-rtl {
+  direction: rtl;
+
+  > .media-left {
+    padding-right: 0;
+    padding-left: $media-gutter;
+  }
+
+  > .media-right {
+    padding-right: $media-gutter;
+    padding-left: 0;
+  }
+}
+
+
+.media {
+  box-shadow: -4px 4px 20px 0 rgba(0,0,0,0.3);
+  padding: 30px;
+  border-bottom: 5px solid $brand-primary;
+
+  & + *{ margin-top: 35px; }
+
+  > .media-left img, > .media-right img {
+    max-width: none;
+  }
+
+  > .media-left,
+  > .media-right,
+  > .media-body {
+    padding: 0;
+    direction: ltr;
+    display: inherit;
+    vertical-align: middle;
+  }
+  .media-body{
+    overflow: visible;
+    margin-top: 10px;
+    @media(min-width: 992px){ margin-top: 0; }
+  }
+}
+
+  @include make-media("xxs", $media-gutter);
+
+@media (min-width: $screen-xs-min) {
+  @include make-media("xs", $media-gutter);
+}
+
+@media (min-width: $screen-sm-min) {
+  @include make-media("sm", $media-gutter);
+}
+
+@media (min-width: $screen-md-min) {
+  @include make-media("md", $media-gutter);
+}
+
+@media (min-width: $screen-lg-min) {
+  @include make-media("lg", $media-gutter);
+}
+
+.media, .media-xs, .media-sm, .media-md, .media-lg {
+  &{
+    .media-middle { vertical-align: middle; }
+
+    .media-bottom { vertical-align: bottom; }
+  }
+}

@@ -1,0 +1,255 @@
+/*
+* Owl Carousel
+* ========================================
+*/
+.owl-carousel .animated {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.owl-carousel .owl-animated-in {
+  z-index: 0;
+}
+.owl-carousel .owl-animated-out {
+  z-index: 1;
+}
+.owl-carousel .fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+/**
+* FadeIn Keyframes Animation
+*/
+
+@include keyframes(fadeIn){
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+
+/* 
+ * 	Owl Carousel - Auto Height Plugin
+ */
+.owl-height {
+  -webkit-transition: height 500ms ease-in-out;
+  -moz-transition: height 500ms ease-in-out;
+  -ms-transition: height 500ms ease-in-out;
+  -o-transition: height 500ms ease-in-out;
+  transition: height 500ms ease-in-out;
+}
+
+/* 
+ *  Core Owl Carousel CSS File
+ */
+.owl-carousel {
+  display: none;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+  /* position relative and z-index fix webkit rendering fonts issue */
+  position: relative;
+  z-index: 1;
+}
+.owl-carousel .owl-stage {
+  position: relative;
+  -ms-touch-action: pan-Y;
+}
+.owl-carousel .owl-stage:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+.owl-carousel .owl-stage-outer {
+  position: relative;
+  overflow: hidden;
+  /* fix for flashing background */
+  -webkit-transform: translate3d(0px, 0px, 0px);
+}
+.owl-carousel .owl-controls .owl-nav .owl-prev,
+.owl-carousel .owl-controls .owl-nav .owl-next {
+  cursor: pointer;
+  cursor: hand;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  margin: 0 5px;
+  border-radius: 50%;
+}
+.owl-carousel.owl-loaded {
+  display: block;
+}
+.owl-carousel.owl-loading {
+  opacity: 0;
+  display: block;
+}
+.owl-carousel.owl-hidden {
+  opacity: 0;
+}
+.owl-carousel .owl-refresh .owl-item {
+  display: none;
+}
+.owl-carousel .owl-item {
+  position: relative;
+  min-height: 1px;
+  will-change: transform;
+  float: left;
+  -webkit-backface-visibility: hidden;
+  
+}
+
+
+/*
+ * Owl Navigation
+ */
+.owl-controls{
+  width: 100%;
+  position: absolute;
+  top: -45px;
+  @media(min-width: 992px){ top: 50%; }
+
+}
+.owl-nav {
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.owl-nav [class*='owl-'] {
+  padding: 4px;
+  color: #fff;
+  position: absolute;
+  @include transform(translateY(-50%));
+
+  font: 47px/50px "FontAwesome";
+  transition: all .4s ease;
+
+  &:hover{
+    color: #fff;
+    background: $brand-primary;
+  }
+}
+
+.owl-prev{
+  left: 20%;
+  top: 0;
+  &:before{ content: '\f104'; padding-right: 4px; }
+  @media(min-width: 992px){ left: 0; }
+}
+
+.owl-next{
+  right: 20%;
+  top: 0;
+  &:before{ content: '\f105'; padding-left: 4px; }
+  @media(min-width: 992px){ right: 0; }
+}
+
+/* Owl dots */
+.owl-dots{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.owl-controls .owl-dot {
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  width: 14px;
+  height: 14px;
+  outline: none;
+  cursor: pointer;
+  border: 2px solid $brand-primary;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: 0.3s ease;
+
+  &.active{ background: $brand-primary; }
+
+  & + .owl-dot{
+    margin-left: 10px;
+  }
+}
+
+
+
+.owl-1{
+  margin-top: 90px;
+
+  .owl-item{
+    position: relative;
+    padding: 0 30px;
+
+
+    @media(min-width: 992px){ padding: 0; }
+
+    .pricing-box{
+      position: relative;
+      &:after{
+        display: block;
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: url(../img/default-pricing-bg.jpg) center no-repeat;
+        background-size: cover;
+        z-index: -1;
+        @media(min-width: 992px){
+          top: 20px;
+          bottom: 20px;
+          left: 60px;
+          right: 60px;
+        }
+        @media(min-width: 1200px){
+          left: 90px;
+          right: 90px;
+        }
+      }
+    }
+    .pricing-box-primary:after{ 
+      background: url(../img/primary-pricing-bg.jpg) center no-repeat; 
+      background-size: cover; 
+    }
+
+    * + p{ margin-top: 25px; }
+  }
+}
+
+
+

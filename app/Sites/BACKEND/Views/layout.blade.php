@@ -8,19 +8,20 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>coffeeTime</title>
+    <link rel="icon" sizes="64x64" href="{{asset('images/icon/icon_black.png')}}">
 
     @yield('stylesheets')
     <link rel="stylesheet" type="text/css" href="{{asset('lib/fontawesome/css/font-awesome.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('lib/weather-icons/css/weather-icons.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/quirk.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('lib/jquery-toggles/toggles-full.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/lib/jquery-toggles/toggles-full.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-date-picker/bootstrap-datepicker3.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('lib/select2/select2.css')}}">
     <link rel="stylesheet" type="text/css"
           href="{{asset('lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css')}}">
     {{--    <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-data-table/dataTables.bootstrap.css')}}">--}}
 
-    <link rel="icon" sizes="64x64" href="{{asset('images/icon/icon_black.png')}}">
+
 
 
     <script src="{{asset('lib/modernizr/modernizr.js')}}"></script>
