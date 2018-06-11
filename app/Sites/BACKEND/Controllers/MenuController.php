@@ -26,6 +26,7 @@ class MenuController extends AuthController
 //        dd($request->input('article_number'));
         $menu = new Menu;
         $menu->fk_for_caffe = $request->input('fk_for_caffe');
+        $menu->name= $request -> input ('name');
         $menu->save();
 
 //        $menu->article()->attach($request->input('article_number'),['neto_price' => $request->input('neto_price'),
@@ -82,6 +83,7 @@ class MenuController extends AuthController
     public function destroy($id)
     {
         $menu = Menu::find($id);
+        $menu->article()->detach();
 
         $menu->delete();
         Session::flash('success', 'This menu was successfully deleted.');

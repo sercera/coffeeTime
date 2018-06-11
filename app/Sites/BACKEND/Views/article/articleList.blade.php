@@ -15,9 +15,9 @@
             </a>
         </li>
         <li class="active">
-            <a href="{{url('/article')}}">
+            <a href="{{url('/article/add')}}">
                 <i class="fa fa-beer"></i>
-                Lista svih proizvoda
+                Dodaj novi proizvod
             </a>
         </li>
     </ol>
