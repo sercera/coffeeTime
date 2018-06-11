@@ -43,7 +43,7 @@
     </div>
             <div class="form-group">
                 {{Form::label('name', 'Naziv menija')}}
-                {{Form::text('name', '' , ['class' => 'form-control', 'placeholder' => 'Podrazumevano se ispred naziva menija dodaje "Meni" ','required'=>'required'])}}
+                {{Form::text('name', '' , ['class' => 'form-control', 'placeholder' => 'Podrazumeva se ispred naziva menija dodaje "Meni" ','required'=>'required'])}}
             </div>
     <div>
         {{Form::submit('Potvrdi',['class'=>'btn btn-primary'])}}

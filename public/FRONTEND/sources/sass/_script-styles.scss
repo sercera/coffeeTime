@@ -1,0 +1,273 @@
+/*
+* 19. Script styles
+* ========================================
+*/
+
+@import "extensions/animate";
+@import "extensions/counter";
+@import "extensions/countdown";
+@import "extensions/magnific-popup";
+@import "extensions/navigation";
+@import "extensions/owl-carousel";
+@import "extensions/toTop";
+@import "extensions/tabs";
+
+
+
+/*
+* Js form
+* ====================
+*/
+
+.js-form{
+  input{
+    &:required{
+      &:valid{ border-color: #1FB51D; }
+    }
+
+    &:-webkit-autofill{
+      background-color: red !important;
+      color: red !important;
+    }
+  }
+}
+
+.js-result{
+  position: fixed;
+  bottom: -100px;
+  padding: 8px 20px;
+  color: #fff;
+  background-color: gray;
+  transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 3px;
+  box-shadow: 1px 4px 10px 0 rgba(0, 0, 0, 0.15);
+  z-index: 1200;
+
+  &.success,
+  &.error{
+    bottom: 20px;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.success{
+    background-color: #1FB51D;
+  }
+  &.error{
+    background-color: #EC6F28;
+  }
+}
+
+
+
+/*
+* Map
+* ==============
+*/
+
+.map {
+  width: 800px; 
+  height: 400px; 
+  margin: 0 auto;
+
+  .marker-popup{ color: #000; }
+}
+
+
+/*
+* Bootstrap Touchspin
+* ==============
+*/
+
+.bootstrap-touchspin{
+  width: 130px;
+
+  .bootstrap-touchspin-down, .bootstrap-touchspin-up{
+    background: $brand-primary;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: none;
+    padding: 6px 10px;
+
+    &:focus{ background: $brand-primary; }
+  }
+
+  .quantity.form-control{ 
+    height: 35px; 
+    box-shadow: none;
+
+    &:focus{ box-shadow: none; }
+  }
+}
+
+
+
+/*
+* Full Page JS
+* ==============
+*/
+
+ #menu{
+  position:fixed;
+  top:0;
+  left:0;
+  height: 40px;
+  z-index: 70;
+  height: 100%;
+  pointer-events: none;
+  
+
+  &.open{ pointer-events: all; }
+
+  @media(min-width: 992px){ 
+    width: 100%; 
+    height: 0; 
+    pointer-events: all;
+  }
+  padding: 0;
+  margin:0;
+}
+
+html.fp-enabled,
+.fp-enabled body {
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+
+    /*Avoid flicker on slides transitions for mobile phones #336 */
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+#superContainer {
+    height: 100%;
+    position: relative;
+    /* Touch detection for Windows 8 */
+    -ms-touch-action: none;
+    /* IE 11 on Windows Phone 8.1*/
+    touch-action: none;
+}
+.fp-section {
+    position: relative;
+    min-height: 480px;
+}
+.fp-scrollable {
+    @media(min-width: 1200px){
+      overflow: hidden;
+      position: relative;
+      width: 100%; 
+    }
+    @media(max-width: 1200px){
+      height: 100%!important;
+    }
+}
+.fp-scroller{
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    @media(max-width: 1200px){
+      height: 100%!important;
+      transform: translate(0px, 0px) translateZ(0px)!important;
+    }
+}
+.outer-scroll{
+  height: 100%!important;
+}
+.in-scroll{
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  @media(max-width: 1200px){
+    height: 100%!important;
+    transform: translate(0px, 0px) translateZ(0px)!important;
+  }
+}
+.fp-auto-height.fp-section,
+.fp-auto-height .fp-slide,
+.fp-auto-height .fp-tableCell{
+    height: auto !important;
+}
+
+.fp-responsive .fp-auto-height-responsive.fp-section,
+.fp-responsive .fp-auto-height-responsive .fp-slide,
+.fp-responsive .fp-auto-height-responsive .fp-tableCell {
+    height: auto !important;
+}
+
+.section .fp-tableCell{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 480px;
+}
+
+.section-content .fp-tableCell{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+}
+
+.section-content{
+    @media(max-width: 1200px){ height: 100%!important; }
+
+    .fp-tableCell{ 
+        @media(max-width: 1200px){ height: 100%!important; }
+    }
+}
+
+.section-content .container{
+  @media(min-width: 1200px){ margin-left: 200px; }
+  @media(min-width: 1800px){ margin-left: 320px; }
+}
+
+
+/*
+* Popover
+* ==============
+*/
+
+.popup {
+  width: 40px;
+  height: 40px;
+  background: $brand-primary;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: -4px 4px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.popover {
+  border: none;
+  line-height: 20px;
+  z-index: 999;
+  max-width: 140px;
+  padding: 0;
+
+  .arrow:after{ border-bottom-color: $brand-primary!important; }
+  
+  .popover-title{
+    color: #fff;
+    padding: 3px 15px;
+    text-transform: none;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    margin: 0;
+    background: $brand-primary;
+  }
+
+  .popover-content{
+    color: #333;
+    padding: 5px 15px 7px;
+    font-size: 14px;
+  }
+
+  .arrow{ bottom: -9px; }
+}
+
+.popup-2 + .popover{ max-width: 155px; }
+.popup-3 + .popover{ max-width: 160px; }

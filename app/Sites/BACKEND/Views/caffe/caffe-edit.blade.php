@@ -22,6 +22,7 @@
         </li>
         <li class="active">
             <a href="{{url('/caffe/edit/'.$caffe->caffe_id)}}">
+                <i class="fa fa-coffee"></i>
                 {{$caffe->name}}
             </a>
         </li>

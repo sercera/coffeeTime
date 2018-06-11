@@ -1,0 +1,141 @@
+/*
+* 15. Buttons
+* ====================
+*/
+
+
+// Base
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  line-height: 1;
+  white-space: nowrap;
+  max-width: 100%;
+  letter-spacing: 0.04em;
+  border-style: solid;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0px 0px 20px 0 rgba(0,0,0,0.2);
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+  .icon{
+    float: left;
+    vertical-align: middle;
+  }
+}
+
+
+// Size
+
+.btn-sm { 
+  padding: 10px 20px;
+  @media(min-width: 768px){ padding: 18px 20px; }
+}
+
+.btn-md{ padding: 20px; }
+
+.btn-lg { padding: 16px 25px; }
+
+.btn-xl { padding: 15px 25px; }
+
+
+// Styles
+
+.btn-primary {
+  color: #fff;
+  background: $brand-primary;
+  border: 2px solid $brand-primary;
+  border-radius: 0;
+  font-family: $secondary-font-family;
+
+  &:hover{
+    color: $brand-primary;
+    background: transparent;
+    border: 2px solid $brand-primary;
+  }  
+ 
+  &:focus{
+    outline: none;
+    color: $brand-primary;
+    background: transparent;
+    border: 2px solid $brand-primary;
+  }
+ 
+  &:active{
+    color: $brand-primary;
+    background: transparent;
+    box-shadow: none;
+    border: 2px solid $brand-primary;
+   
+    &:focus{ 
+      background: $brand-primary; 
+      outline: none; 
+      border: 2px solid $brand-primary;
+    }
+  }
+}
+
+
+.btn-main{
+  background: #fff;
+  border-radius: 50%;
+  padding: 25px 30px;
+  transition: all .4s ease;
+  border: 2px solid transparent;
+
+  @media(min-width: 768px){ padding: 35px 40px; }
+
+  span{
+    display: block;
+    font-family: $secondary-font-family;
+    font-size: 20px;
+    font-weight: 500;
+
+    & + span{ margin-top: 5px; }
+  }
+  &:hover{
+    color: #fff!important;
+    background: rgba(240,160,3,0.6);
+    border: 2px solid #fff;
+    &:focus{ color: #fff; }
+  }
+  &:active:focus{ color: #fff; outline: none; }
+  &:focus{ 
+    color: $brand-primary!important; 
+    outline: none; 
+    &:hover{ color: #fff!important; }
+  }
+
+
+  &:before{
+    content: '\f101';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -60px;
+    color: #fff;
+    font-weight: 400;
+    font-family: $fa;
+    font-size: 40px;
+  }
+  &:after{
+    content: '\f100';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -60px;
+    color: #fff;
+    font-weight: 400;
+    font-family: $fa;
+    font-size: 40px;
+  }
+}
