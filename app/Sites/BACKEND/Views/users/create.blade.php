@@ -16,7 +16,7 @@
         <li class="active">
             <a href="{{url('users/create')}}">
                 <i class="fa fa-user-plus"></i>
-                Dodaj novog Radnika
+                Dodaj novog usera
 
             </a>
         </li>
@@ -27,7 +27,7 @@
             <div class="col-lg-5">
             </div>
             <div class="col-lg-7">
-                <h4 class="panel-title" style="margin-left: 40%;">Dodaj novog Radnika</h4>
+                <h4 class="panel-title" style="margin-left: 40%;">Dodaj novog usera</h4>
             </div>
         </div>
         <div class="panel-body" style="margin-left: 20px">

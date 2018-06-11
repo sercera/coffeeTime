@@ -31,7 +31,7 @@
 
             </div>
             <div>
-                <h4 class="panel-title">Meni "{{$menu->caffe->name}}"</h4>
+                <h4 class="panel-title">Meni {{$menu->name}} "{{$menu->caffe->name}}"</h4>
             </div>
         </div>
         <br>

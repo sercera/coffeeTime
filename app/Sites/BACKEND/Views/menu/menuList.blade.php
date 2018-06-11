@@ -38,6 +38,7 @@
                         <thead class="bg-primary">
                         <tr>
                             <td>Naziv kafića</td>
+                            <td>Naziv menija</td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -47,6 +48,7 @@
                             @foreach($menus as $menu)
                                 <tr>
                                     <td>{{$menu->caffe->name}}</td>
+                                    <td>{{$menu->name}}</td>
                                     <td style="width: 66px">
                                         {!! Form::open(['route' => ['menu.show', $menu->menu_id],'method' => 'GET']) !!}
 

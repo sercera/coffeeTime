@@ -8,10 +8,6 @@ class IndexController extends AuthController
 {
     public function index()
     {
-
         return view('home');
-
     }
-
-
 }

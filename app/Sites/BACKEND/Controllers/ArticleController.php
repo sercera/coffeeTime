@@ -72,6 +72,7 @@ class ArticleController extends AuthController
     public function destroy($id)
     {
         $article = Article::find($id);
+        $article->menu()->detach();
 
         $article->delete();
         Session::flash('success','This article was successfully deleted.');
