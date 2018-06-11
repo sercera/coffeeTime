@@ -16,9 +16,9 @@
             </a>
         </li>
         <li class="active">
-            <a href="{{url('table/add')}}">
+            <a href="{{url('table')}}">
                 <i class="fa fa-circle"></i>
-                Dodajte novi sto
+                Lista svih stolova
             </a>
         </li>
     </ol>

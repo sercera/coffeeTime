@@ -14,6 +14,18 @@
                 Početna strana
             </a>
         </li>
+
+        <li class="active">
+            <a href="{{url('caffe')}}">
+                <i class="fa fa-coffee"></i>
+                Lista svih kafića
+            </a>
+        </li>
+        <li class="active">
+                <i class="fa fa-coffee"></i>
+                {{$caffe->name}}
+            </a>
+        </li>
     </ol>
     <div class="panel">
         <div class="panel-heading">

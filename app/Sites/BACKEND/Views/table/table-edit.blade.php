@@ -15,15 +15,15 @@
             </a>
         </li>
         <li class="active">
-            <a href="{{url('table/add')}}">
-                <i class="fa fa-circle"></i>
-                Dodajte novi sto
-            </a>
-        </li>
-        <li class="active">
             <a href="{{url('table')}}">
                 <i class="fa fa-circle"></i>
                 Lista svih stolova
+            </a>
+        </li>
+        <li class="active">
+            <a href="{{url('/table/edit/'.$table->table_id)}}">
+                <i class="fa fa-circle"></i>
+                Sto
             </a>
         </li>
     </ol>
