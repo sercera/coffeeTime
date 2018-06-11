@@ -52,8 +52,20 @@
                                     <td>{{$table->table_number}}</td>
                                     <td>{{$table->table_spots}}</td>
                                     <td>{{$table->caffe->name}}</td>
-                                    <td>{{$table->is_taken}}</td>
-                                    <td>{{$table->is_reserved}}</td>
+                                    <td>
+                                        @if($table->is_taken==0)
+                                            Slobodan
+                                        @else
+                                            Zauzet
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($table->is_reserved==0)
+                                            Nije rezervisan
+                                        @else
+                                            Rezervisan
+                                        @endif
+                                    </td>
                                     <td style="width: 150px;">
                                         {!! Form::open(['route' => ['table.destroy', $table->table_id],'method' => 'DELETE']) !!}
 

@@ -39,9 +39,9 @@
                     <td>Ime kafića</td>
                     <td>Adresa</td>
                     <td>Grad</td>
-                    <td>Opis</td>
                     <td>Radno vreme</td>
-                    <td>Prikazi kafic</td>
+                    <td>Opis</td>
+                    <td>Prikaži kafić</td>
                     <td>Lista radnika</td>
                     <td>Akcije</td>
                 </tr>
@@ -53,8 +53,9 @@
                         <td>{{$caffe->name}}</td>
                         <td>{{$caffe->address}}</td>
                         <td>{{$caffe->city}}</td>
+                        <td>{{$caffe->work_hour_from}}-{{$caffe->work_hour_to}}</td>
                         <td>{{$caffe->description}}</td>
-                        <td>{{$caffe->work_hours}}</td>
+
                         <td style="width:75px;">
                             <a href="{{url('caffe/show',$caffe['caffe_id'])}}"
                                class="edit btn btn-info" role="button">Prikaži</a>

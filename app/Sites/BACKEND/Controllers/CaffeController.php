@@ -2,9 +2,9 @@
 
 namespace App\Sites\BACKEND\Controllers;
 
-use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Models\Caffe;
+use App\Models\Table;
 use Session;
 
 class CaffeController extends AuthController
@@ -27,8 +27,10 @@ class CaffeController extends AuthController
         $caffe->name = $request->input('name');
         $caffe->address = $request->input('address');
         $caffe->city = $request->input('city');
+        $caffe->work_hour_from=$request->input('work_hour_from');
+        $caffe->work_hour_to=$request->input('work_hour_to');
         $caffe->description = $request->input('description');
-        $caffe->work_hours = $request->input('work_hours');
+
         //Save caffe
         $caffe->save();
         //Redirect
@@ -63,13 +65,14 @@ class CaffeController extends AuthController
 
         //Update caffe
 
-
         $caffe = Caffe::find($id);
         $caffe->name = $request->input('name');
         $caffe->address = $request->input('address');
         $caffe->city = $request->input('city');
+        $caffe->work_hour_from=$request->input('work_hour_from');
+        $caffe->work_hour_to=$request->input('work_hour_to');
         $caffe->description = $request->input('description');
-        $caffe->work_hours = $request->input('work_hours');
+
         //Save caffe
         $caffe->save();
         Session::flash('success', 'This caffe was sucesfully saved.');
@@ -99,12 +102,13 @@ class CaffeController extends AuthController
     public function show($id)
     {
         $caffe = Caffe::find($id);
+        $tables = Table::all();
 
         if (empty($caffe)) {
 
             return redirect()->back();
         }
 
-        return view('caffe.caffe-show')->withCaffe($caffe);
+        return view('caffe.caffe-show')->withCaffe($caffe)->withTables($tables);
     }
 }

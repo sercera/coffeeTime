@@ -46,12 +46,16 @@
         {{Form::text('city', '' , ['class' => 'form-control', 'placeholder' => 'Unesite grad','required'=>'required'])}}
     </div>
     <div class="form-group">
-        {{Form::label('description', 'Opis')}}
-        {{Form::textarea('description', '' , ['class' => 'form-control', 'placeholder' => 'Opis...','required'=>'required'])}}
+        {{Form::label('work_hour_from', 'Radi od')}}
+        {{Form::text('work_hour_from', '' , ['class' => 'form-control', 'placeholder' => '09:00','required'=>'required'])}}
     </div>
     <div class="form-group">
-        {{Form::label('work_hours', 'Radni sati')}}
-        {{Form::text('work_hours', '' , ['class' => 'form-control', 'placeholder' => '12','required'=>'required'])}}
+        {{Form::label('work_hour_to', 'Radi do')}}
+        {{Form::text('work_hour_to', '' , ['class' => 'form-control', 'placeholder' => '23:00','required'=>'required'])}}
+    </div>
+    <div class="form-group">
+        {{Form::label('description', 'Opis')}}
+        {{Form::textarea('description', '' , ['class' => 'form-control', 'placeholder' => 'Opis...','required'=>'required'])}}
     </div>
     <div>
         {{Form::submit('Potvrdi',['class'=>'btn btn-primary'])}}

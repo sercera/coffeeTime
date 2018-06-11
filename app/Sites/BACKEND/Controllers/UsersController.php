@@ -38,19 +38,19 @@ class UsersController extends Controller
     {
 
 
-        if (Auth::user()->hasRole('admin')) {
+//        if (Auth::user()->hasRole('admin')) {
+//
+//            $roles = Role::all();
+//        } elseif (Auth::user()->hasRole('owner')) {
+//
+//            $roles = Role::where('name', '!=', 'admin')->get();
+//        } else {
+//
+//            $roles = null;
+//        }
 
-            $roles = Role::all();
-        } elseif (Auth::user()->hasRole('owner')) {
 
-            $roles = Role::where('name', '!=', 'admin')->get();
-        } else {
-
-            $roles = null;
-        }
-
-
-        return view('users.create', compact('roles'));
+        return view('users.create');//, compact('roles'));
 
     }
 

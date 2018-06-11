@@ -51,12 +51,16 @@
                 {{Form::text('city', $caffe->city , ['class' => 'form-control', 'placeholder' => 'Unesite grad'])}}
             </div>
             <div class="form-group">
-                {{Form::label('description', 'Opis')}}
-                {{Form::textarea('description', $caffe->description , ['class' => 'form-control', 'placeholder' => 'Opis...'])}}
+                {{Form::label('work_hour_from', 'Radi od')}}
+                {{Form::text('work_hour_from', $caffe->work_hour_from , ['class' => 'form-control', 'placeholder' => '9','required'=>'required'])}}
             </div>
             <div class="form-group">
-                {{Form::label('work_hours', 'Radni sati')}}
-                {{Form::text('work_hours', $caffe->work_hours , ['class' => 'form-control', 'placeholder' => '12'])}}
+                {{Form::label('work_hour_to', 'Radi do')}}
+                {{Form::text('work_hour_to', $caffe->work_hour_to , ['class' => 'form-control', 'placeholder' => '21','required'=>'required'])}}
+            </div>
+            <div class="form-group">
+                {{Form::label('description', 'Opis')}}
+                {{Form::textarea('description', $caffe->description , ['class' => 'form-control', 'placeholder' => 'Opis...'])}}
             </div>
             <div>
                 {{Form::submit('Sačuvaj',['class'=>'btn btn-primary'])}}

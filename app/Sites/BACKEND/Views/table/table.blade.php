@@ -37,7 +37,6 @@
             <div class="form-group">
                 {!! Form::label('number','Broj stola',['class'=>'col-lg-1 control-label']); !!}
                 <div class="col-lg-5">
-
                     {{Form::number('number', '' , ['class' => 'form-control', 'placeholder' => 'Unesite broj stola','required'=>'required'])}}
                 </div>
             </div>

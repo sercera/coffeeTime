@@ -23,34 +23,69 @@
                 <h4 class="panel-title">{{$caffe->name}}</h4>
             </div>
         </div>
-        <br>
-        <div class="panel-body">
 
-            {!! Form::open(['url' => 'caffe/submit']) !!}
-            <div class="form-group">
-                {{Form::label('name', 'Naziv')}}
-                {{Form::text('name', '' , ['class' => 'form-control', 'placeholder' => 'Unesite naziv'])}}
-            </div>
-            <div class="form-group">
-                {{Form::label('address', 'Adresa')}}
-                {{Form::text('address', '' , ['class' => 'form-control', 'placeholder' => 'Unesite adresu'])}}
-            </div>
-            <div class="form-group">
-                {{Form::label('city', 'Grad')}}
-                {{Form::text('city', '' , ['class' => 'form-control', 'placeholder' => 'Unesite grad'])}}
-            </div>
-            <div class="form-group">
-                {{Form::label('description', 'Opis')}}
-                {{Form::textarea('description', '' , ['class' => 'form-control', 'placeholder' => 'Opis...'])}}
-            </div>
-            <div class="form-group">
-                {{Form::label('work_hours', 'Radni sati')}}
-                {{Form::text('work_hours', '' , ['class' => 'form-control', 'placeholder' => '12'])}}
-            </div>
-            <div>
-                {{Form::submit('Potvrdi',['class'=>'btn btn-primary'])}}
-            </div>
-            {!! Form::close() !!}
+        <div class="panel-body">
+            <p class="panel-body">
+                Adresa: {{$caffe->address}} <br />
+                Radno vreme: {{$caffe->work_hour_from}}-{{$caffe->work_hour_to}} <br />
+                <br />
+                {{$caffe->description}} <br />
+            </p>
+            <div class="panel-body">
+                    <div class="table-responsive">
+                        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead class="bg-primary">
+                            <tr>
+                                <td>Broj stola</td>
+                                <td>Broj mesta za stolom</td>
+                                <td>Kafić</td>
+                                <td>Zauzet</td>
+                                <td>Rezervisan</td>
+                                <td></td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @if(count($tables) > 0)
+                                @foreach($tables as $table)
+                                    @if($table->fk_for_caffe==$caffe->caffe_id)
+                                    <tr>
+                                        <td>{{$table->table_number}}</td>
+                                        <td>{{$table->table_spots}}</td>
+                                        <td>{{$table->caffe->name}}</td>
+                                        <td>
+                                            @if($table->is_taken==0)
+                                                Slobodan
+                                            @else
+                                                Zauzet
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($table->is_reserved==0)
+                                                Nije rezervisan
+                                            @else
+                                                Rezervisan
+                                            @endif
+                                        </td>
+                                        <td style="width: 150px;">
+                                            {!! Form::open(['route' => ['table.destroy', $table->table_id],'method' => 'DELETE']) !!}
+
+                                            {!! Form::submit('Izbriši', ['class' => 'btn btn-danger pull-left', 'style' => 'margin-right: 10px']) !!}
+
+                                            {!! Form::close() !!}
+                                            <a href="{{url('table/edit',$table['table_id'])}}"
+                                               class="edit btn btn-warning" role="button">Izmeni</a>
+                                        </td>
+                                    </tr>
+
+                                    @endif
+                                @endforeach
+                            @endif
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
         </div>
     </div>
 
