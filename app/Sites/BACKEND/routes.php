@@ -5,19 +5,22 @@ Route::get('/caffe', 'CaffeController@getCaffes');
 Route::get('/caffe/add','CaffeController@index');
 Route::post('/caffe/submit','CaffeController@submit');
 Route::get('/caffe/edit/{caffe_id}','CaffeController@edit');
-Route::get('/caffe/show/{caffe_id}','CaffeController@show');
+Route::get('/caffe/show/{caffe_id}',[
+    'as' => 'caffe.show',
+    'uses' => 'CaffeController@show'
+]);
 Route::get('/caffe/employees/{caffe_id}','CaffeController@showEmployees');
 Route::resource('caffe', 'CaffeController')->only([
     'update','destroy'
 ]);
-//employee
-Route::get('/employees', 'EmployeesController@getEmployees');
-Route::get('/employees/add' , 'EmployeesController@index');
-Route::post('/employees/submit', 'EmployeesController@submit');
-Route::get('/employees/edit/{employee_id}','EmployeesController@edit');
-Route::resource('employees', 'EmployeesController')->only([
-    'update','destroy'
-]);
+////employee
+//Route::get('/employees', 'EmployeesController@getEmployees');
+//Route::get('/employees/add' , 'EmployeesController@index');
+//Route::post('/employees/submit', 'EmployeesController@submit');
+//Route::get('/employees/edit/{employee_id}','EmployeesController@edit');
+//Route::resource('employees', 'EmployeesController')->only([
+//    'update','destroy'
+//]);
 //article
 Route::get('/article','ArticleController@index');
 Route::get('/article/edit/{article_id}','ArticleController@edit');
@@ -27,6 +30,8 @@ Route::resource('article', 'ArticleController')->only([
 ]);
 //table
 Route::get('/table','TableController@getTables');
+Route::put('/table/{table_id}','TableController@reserve')->name('reserve');
+Route::put('/table/release/{table_id}','TableController@release')->name('release');
 Route::get('/table/add','TableController@index');
 Route::post('/table/submit','TableController@submit');
 Route::get('/table/edit/{table_id}','TableController@edit');

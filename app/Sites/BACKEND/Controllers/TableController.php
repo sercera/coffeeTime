@@ -83,7 +83,22 @@ class TableController extends AuthController
         ////Redirect
         return redirect('table')->with('success', 'Uspešno ste promenili podatke o stolu.');
     }
-
+    public function reserve($id)
+    {
+        $table = Table::find($id);
+//
+        if($table->is_reserved==false){
+        $table->update(['is_reserved' => true]);}
+        return redirect()->route('caffe.show', $table->fk_for_caffe)->with('success', 'Uspešno ste rezervisali sto broj ' .$table['table_number'].'.' );
+    }
+    public function release($id)
+    {
+        $table = Table::find($id);
+//
+        if($table->is_reserved==true){
+            $table->update(['is_reserved' => false]);}
+        return redirect()->route('caffe.show', $table->fk_for_caffe)->with('success', 'Uspešno ste uklonili rezervaciju za sto broj ' .$table['table_number'].'.' );
+    }
     public function destroy($id)
     {
         $table = Table::find($id);
