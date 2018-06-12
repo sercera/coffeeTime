@@ -49,7 +49,11 @@
                             @if(count($tables) > 0)
                                 @foreach($tables as $table)
                                     @if($table->fk_for_caffe==$caffe->caffe_id)
-                                    <div style="border: 2px solid #2C3468;border-radius: 5px;background-color: #2C3468;padding: 1em;color: #fff;"
+                                    <div style="border: 2px solid #2C3468;border-radius: 5px; @if($table->is_reserved==0 && $table->is_taken==0 )
+                                            background-color: #32cd32;
+                                    @else
+                                            background-color: #cd5c5c;
+                                        @endif padding: 1em;color: #fff;"
                                          data-toggle="modal" data-target="#{{$table->table_id}}"
                                     >
 
