@@ -61,6 +61,19 @@ class MenuController extends AuthController
         return redirect()->route('menu.show', $menu->menu_id)->with('success', 'Article Removed');
     }
 
+    public function update(Request $request)
+    {
+        $menu = Menu::findorFail($request->meni);
+
+        $menu->article()->detach($request->article_num);
+        $menu->article()->attach($request->input('article_num'), ['neto_price' => $request->input('neto_price'),
+            'selling_price' => $request->input('selling_price'),
+            'quantity' => $request->input('quantity'),
+            'article_id' => $request->input('article_num'),
+            'menu_id' => $menu->menu_id,
+        ]);
+        return back();
+    }
     public function list()
     {
         $menus = Menu::all();

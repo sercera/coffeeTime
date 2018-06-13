@@ -160,6 +160,7 @@
 <script src="{{asset('lib/select2/select2.js')}}"></script>
 <script src="{{asset('lib/jquery-validate/jquery.validate.js')}}"></script>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
 @yield('scripts')
 
 

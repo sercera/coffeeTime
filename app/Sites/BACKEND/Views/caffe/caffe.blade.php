@@ -32,7 +32,7 @@
         <br>
         <div class="panel-body">
 
-    {!! Form::open(['url' => 'caffe/submit']) !!}
+    {!! Form::open(['url' => 'caffe/submit', 'files' => true]) !!}
     <div class="form-group">
         {{Form::label('name', 'Naziv')}}
         {{Form::text('name', '' , ['class' => 'form-control', 'placeholder' => 'Unesite naziv','required'=>'required'])}}
@@ -56,6 +56,10 @@
     <div class="form-group">
         {{Form::label('description', 'Opis')}}
         {{Form::textarea('description', '' , ['class' => 'form-control', 'placeholder' => 'Opis...','required'=>'required'])}}
+    </div>
+    <div class="form-group">
+        {{Form::label('image', 'Ubacite sliku')}}
+        {{Form::file('image')}}
     </div>
     <div>
         {{Form::submit('Potvrdi',['class'=>'btn btn-primary'])}}

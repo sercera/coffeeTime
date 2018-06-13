@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Caffe;
 use App\Models\Table;
 use Session;
+use Image;
+use Storage;
 
 class CaffeController extends AuthController
 {
@@ -18,7 +20,8 @@ class CaffeController extends AuthController
     {
         $this->validate($request, [
             'name' => 'required',
-            'address' => 'required'
+            'address' => 'required',
+            'image' => 'sometimes|image'
         ]);
 
         //Create new caffe
@@ -31,6 +34,15 @@ class CaffeController extends AuthController
         $caffe->work_hour_to=$request->input('work_hour_to');
         $caffe->description = $request->input('description');
 
+        if ($request->hasFile('image'))
+        {
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/caffe_images/' . $filename);
+            Image::make($image)->resize(800,400)->save($location);
+
+            $caffe->image =$filename;
+        }
         //Save caffe
         $caffe->save();
         //Redirect
@@ -60,7 +72,8 @@ class CaffeController extends AuthController
     {
         $this->validate($request, [
             'name' => 'required',
-            'address' => 'required'
+            'address' => 'required',
+            'image' => 'sometimes|image'
         ]);
 
         //Update caffe
@@ -73,6 +86,19 @@ class CaffeController extends AuthController
         $caffe->work_hour_to=$request->input('work_hour_to');
         $caffe->description = $request->input('description');
 
+        if($request->hasFile('image')){
+            //add new photo
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/caffe_images/' . $filename);
+            Image::make($image)->resize(800,400)->save($location);
+
+            $oldFilename = $caffe->image;
+            //update the DB
+            $caffe->image =$filename;
+            //delete old photo
+            Storage::delete($oldFilename);
+        }
         //Save caffe
         $caffe->save();
         Session::flash('success', 'This caffe was sucesfully saved.');
@@ -83,7 +109,7 @@ class CaffeController extends AuthController
     public function destroy($id)
     {
         $caffe = Caffe::find($id);
-
+        Storage::delete($caffe->image);
         $caffe->delete();
         Session::flash('success', 'This caffe was successfully deleted.');
         //Redirect
@@ -103,7 +129,6 @@ class CaffeController extends AuthController
     {
         $caffe = Caffe::find($id);
         $tables = Table::all();
-
         if (empty($caffe)) {
 
             return redirect()->back();

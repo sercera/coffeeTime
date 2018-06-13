@@ -30,4 +30,8 @@ class Caffe extends Model
     {
         return $this->hasOne('App\Models\Menu', 'menu_id' , 'caffe_id');
     }
+    public function images()
+    {
+        return $this->hasMany('App\Models\Images', 'id', 'caffe_id');
+    }
 }

@@ -38,7 +38,7 @@
         <br>
         <div class="panel-body">
 
-            {!! Form::model($caffe,['route' => ['caffe.update' ,$caffe->caffe_id], 'method' => "PATCH"]) !!}
+            {!! Form::model($caffe,['route' => ['caffe.update' ,$caffe->caffe_id], 'method' => "PATCH", 'files' => true]) !!}
             <div class="form-group">
                 {{Form::label('name', 'Naziv')}}
                 {{Form::text('name', $caffe->name , ['class' => 'form-control', 'placeholder' => 'Unesite naziv'])}}
@@ -62,6 +62,10 @@
             <div class="form-group">
                 {{Form::label('description', 'Opis')}}
                 {{Form::textarea('description', $caffe->description , ['class' => 'form-control', 'placeholder' => 'Opis...'])}}
+            </div>
+            <div class="form-group">
+                {{Form::label('image', 'Promenite sliku')}}
+                {{Form::file('image')}}
             </div>
             <div>
                 {{Form::submit('Sačuvaj',['class'=>'btn btn-primary'])}}

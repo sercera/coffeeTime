@@ -24,7 +24,6 @@
         <li class="active">
                 <i class="fa fa-coffee"></i>
                 {{$caffe->name}}
-            </a>
         </li>
     </ol>
     <div class="panel">
@@ -40,12 +39,13 @@
             <p class="panel-body">
                 Adresa: {{$caffe->address}} <br />
                 Radno vreme: {{$caffe->work_hour_from}}-{{$caffe->work_hour_to}} <br />
+                <img src="{{asset('images/caffe_images/' . $caffe->image)}}" /> <br />
                 <br />
                 {{$caffe->description}} <br />
             </p>
             <div class="panel-body">
                     <div class="table-responsive">
-                        <div style="box-sizing: border-box;border: 2px solid #2C3468;border-radius: 5px;background-color: #fff;border: 2px solid #7cfc00;border-radius: 5px;background-color: #fff;padding: 1em;color: #2C3468;display: grid;grid-template-columns: repeat(4, 1fr);grid-gap: 10px;">
+                        <div style="box-sizing: border-box;border: 2px solid #2C3468;border-radius: 5px;background-color: #fff;border: 2px solid #2C3468;border-radius: 5px;background-color: #fff;padding: 1em;color: #2C3468;display: grid;grid-template-columns: repeat(4, 1fr);grid-gap: 10px;">
                             @if(count($tables) > 0)
                                 @foreach($tables as $table)
                                     @if($table->fk_for_caffe==$caffe->caffe_id)
