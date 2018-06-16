@@ -46,6 +46,7 @@
             <div class="panel-body">
                     <div class="table-responsive">
                         <div style="box-sizing: border-box;border: 2px solid #2C3468;border-radius: 5px;background-color: #fff;border: 2px solid #2C3468;border-radius: 5px;background-color: #fff;padding: 1em;color: #2C3468;display: grid;grid-template-columns: repeat(4, 1fr);grid-gap: 10px;">
+
                             @if(count($tables) > 0)
                                 @foreach($tables as $table)
                                     @if($table->fk_for_caffe==$caffe->caffe_id)
@@ -56,7 +57,6 @@
                                         @endif padding: 1em;color: #fff;"
                                          data-toggle="modal" data-target="#{{$table->table_id}}"
                                     >
-
                                             <div class="text-center">
                                                 {{$table->table_number}}
                                             </div>
@@ -75,7 +75,6 @@
 
                                     </div>
                                     @endif
-
 
 
                                     <!-- Classic Modal -->
@@ -143,10 +142,15 @@
                                     {{--</div>--}}
                                     {{--@endif--}}
                                 @endforeach
+
                                     {{--@endif--}}
                             @endif
                         </div>
-
+                        <br />
+                        <div>
+                            <h1>Broj slobodnih stolova: {{$mesta}}</h1>
+                        </div>
+                        <br />
                         <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead class="bg-primary">
                             <tr>

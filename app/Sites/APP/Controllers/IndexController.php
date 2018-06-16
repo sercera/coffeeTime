@@ -3,14 +3,17 @@
 namespace App\Sites\APP\Controllers;
 
 use Illuminate\Http\Request;
-use Appgit \Models\Caffe;
+use App\Models\Caffe;
+use App\Models\Table;
+
 class IndexController extends Controller
 {
     public function index()
     {
-        $caffes = Caffe::all();
-        return view('home')->withCaffes($caffes);
+        $caffes= Caffe::all();
+        $tables = Table::all();
 
+        return view('home')->withCaffes($caffes);
     }
 
 
