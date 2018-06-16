@@ -2,5 +2,6 @@
 Route::get('/', 'IndexController@index');
 Route::get('users', 'IndexController@users');
 
+Route::get('/caffe/show/{caffe_id}','IndexController@caffe')->name('show');
 
 

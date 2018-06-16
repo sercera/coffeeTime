@@ -3,7 +3,7 @@
 namespace App\Sites\APP\Controllers;
 
 use Illuminate\Http\Request;
-use Appgit \Models\Caffe;
+use App\Models\Caffe;
 class IndexController extends Controller
 {
     public function index()
@@ -22,5 +22,14 @@ class IndexController extends Controller
 
     }
 
+    public function caffe($id)
+    {
+        $caffe=Caffe::find($id);
+        if (empty($caffe)) {
 
+            return redirect()->back();
+        }
+
+        return view('caffe-show')->withCaffe($caffe);
+    }
 }

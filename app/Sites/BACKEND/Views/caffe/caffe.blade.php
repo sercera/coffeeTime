@@ -42,6 +42,10 @@
         {{Form::text('address', '' , ['class' => 'form-control', 'placeholder' => 'Unesite adresu','required'=>'required'])}}
     </div>
     <div class="form-group">
+        {{Form::label('call_number', 'Broj telefona')}}
+        {{Form::text('call_number', '' , ['class' => 'form-control', 'placeholder' => 'Unesite broj telefona','required'=>'required'])}}
+    </div>
+    <div class="form-group">
         {{Form::label('city', 'Grad')}}
         {{Form::text('city', '' , ['class' => 'form-control', 'placeholder' => 'Unesite grad','required'=>'required'])}}
     </div>
@@ -52,6 +56,10 @@
     <div class="form-group">
         {{Form::label('work_hour_to', 'Radi do')}}
         {{Form::text('work_hour_to', '' , ['class' => 'form-control', 'placeholder' => '23:00','required'=>'required'])}}
+    </div>
+    <div class="form-group">
+        {{Form::label('short_description', 'Kratak opis')}}
+        {{Form::text('short_description', '' , ['class' => 'form-control', 'placeholder' => 'Kratak opis...','required'=>'required'])}}
     </div>
     <div class="form-group">
         {{Form::label('description', 'Opis')}}

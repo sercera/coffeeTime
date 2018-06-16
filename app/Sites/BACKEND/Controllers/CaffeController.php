@@ -30,6 +30,8 @@ class CaffeController extends AuthController
         $caffe->name = $request->input('name');
         $caffe->address = $request->input('address');
         $caffe->city = $request->input('city');
+        $caffe->short_description = $request->input('short_description');
+        $caffe->call_number = $request->input('call_number');
         $caffe->work_hour_from=$request->input('work_hour_from');
         $caffe->work_hour_to=$request->input('work_hour_to');
         $caffe->description = $request->input('description');
@@ -42,6 +44,11 @@ class CaffeController extends AuthController
             Image::make($image)->resize(800,400)->save($location);
 
             $caffe->image =$filename;
+        }
+        else
+        {
+
+            $caffe->image="default.jpg";
         }
         //Save caffe
         $caffe->save();
@@ -81,6 +88,8 @@ class CaffeController extends AuthController
         $caffe = Caffe::find($id);
         $caffe->name = $request->input('name');
         $caffe->address = $request->input('address');
+        $caffe->short_description = $request->input('short_description');
+        $caffe->call_number = $request->input('call_number');
         $caffe->city = $request->input('city');
         $caffe->work_hour_from=$request->input('work_hour_from');
         $caffe->work_hour_to=$request->input('work_hour_to');

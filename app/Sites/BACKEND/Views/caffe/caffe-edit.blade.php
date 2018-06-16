@@ -48,6 +48,10 @@
                 {{Form::text('address', $caffe->address , ['class' => 'form-control', 'placeholder' => 'Unesite adresu'])}}
             </div>
             <div class="form-group">
+                {{Form::label('call_number', 'Broj telefona')}}
+                {{Form::text('call_number', $caffe->call_number , ['class' => 'form-control', 'placeholder' => 'Unesite broj telefona','required'=>'required'])}}
+            </div>
+            <div class="form-group">
                 {{Form::label('city', 'Grad')}}
                 {{Form::text('city', $caffe->city , ['class' => 'form-control', 'placeholder' => 'Unesite grad'])}}
             </div>
@@ -58,6 +62,10 @@
             <div class="form-group">
                 {{Form::label('work_hour_to', 'Radi do')}}
                 {{Form::text('work_hour_to', $caffe->work_hour_to , ['class' => 'form-control', 'placeholder' => '21','required'=>'required'])}}
+            </div>
+            <div class="form-group">
+                {{Form::label('short_description', 'Kratak opis')}}
+                {{Form::text('short_description', $caffe->short_description , ['class' => 'form-control', 'placeholder' => 'Kratak opis...','required'=>'required'])}}
             </div>
             <div class="form-group">
                 {{Form::label('description', 'Opis')}}
