@@ -3,13 +3,13 @@
 namespace App\Sites\APP\Controllers;
 
 use Illuminate\Http\Request;
-
+use Appgit \Models\Caffe;
 class IndexController extends Controller
 {
     public function index()
     {
-
-        return view('welcome');
+        $caffes = Caffe::all();
+        return view('home')->withCaffes($caffes);
 
     }
 
