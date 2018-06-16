@@ -64,6 +64,10 @@
                 {{Form::text('work_hour_to', $caffe->work_hour_to , ['class' => 'form-control', 'placeholder' => '21','required'=>'required'])}}
             </div>
             <div class="form-group">
+                {{Form::label('www', 'Link')}}
+                {{Form::text('www', $caffe->www , ['class' => 'form-control', 'placeholder' => 'www','required'=>'required'])}}
+            </div>
+            <div class="form-group">
                 {{Form::label('short_description', 'Kratak opis')}}
                 {{Form::text('short_description', $caffe->short_description , ['class' => 'form-control', 'placeholder' => 'Kratak opis...','required'=>'required'])}}
             </div>

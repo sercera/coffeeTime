@@ -32,6 +32,7 @@ class CaffeController extends AuthController
         $caffe->city = $request->input('city');
         $caffe->short_description = $request->input('short_description');
         $caffe->call_number = $request->input('call_number');
+        $caffe->www = $request->input('www');
         $caffe->work_hour_from=$request->input('work_hour_from');
         $caffe->work_hour_to=$request->input('work_hour_to');
         $caffe->description = $request->input('description');
@@ -91,6 +92,7 @@ class CaffeController extends AuthController
         $caffe->short_description = $request->input('short_description');
         $caffe->call_number = $request->input('call_number');
         $caffe->city = $request->input('city');
+        $caffe->www = $request->input('www');
         $caffe->work_hour_from=$request->input('work_hour_from');
         $caffe->work_hour_to=$request->input('work_hour_to');
         $caffe->description = $request->input('description');

@@ -39,13 +39,13 @@
 <div style="height: 30px;">
 
 </div>
-<h1 class="default-font text-bold letter-spacing-30">coffeeTime</h1>
+<h2 class="default-font text-bold letter-spacing-30"><a href="/">coffeeTime</h2>
 <br />
 <br />
 
 @foreach($caffes as $caffe)
     <div id="{{$caffe->caffe_id}}" style="width: 350px; float:left; margin:25px;" >
-        <h4> {{$caffe->name}}</h4>
+        <a href="{{route('show',$caffe->caffe_id)}}"><h4> {{$caffe->name}}</h4></a>
         <h8> </h8>
 {{--        <img style="height: 300px; width: 300px;"  alt="{{$caffe->name}}"class="img-circle" href="www.coffeetime.com/caffe/show/{{$caffe->caffe_id}} "src="{{asset('images/caffe_images/' . $caffe->image)}}" />--}}
         <a href="{{route('show',$caffe->caffe_id)}}"><img src="{{asset('images/caffe_images/' . $caffe->image)}}" style="height: 300px; width: 300px; margin:20px;"  alt="{{$caffe->name}}" class="img-circle" ></a>

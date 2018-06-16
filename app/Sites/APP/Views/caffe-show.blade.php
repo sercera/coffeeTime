@@ -51,7 +51,7 @@
 
                 <!-- INFO HEADER -->
                 <div class="info-header info-header-default active-info">
-                    <h6 class="text-semi-bold hide show-sm-block">
+                    <h6 class="text-semi-bold hide show-sm-block" style="color:black">
                         <span class="icon icon-sm fa fa-phone"></span>
                         <span class="text-middle">{{$caffe->call_number}}</span>
 
@@ -59,8 +59,8 @@
                     <div class="popup popup-1 hide-sm" data-toggle="popover" title="Broj telefona" data-content="{{$caffe->call_number}}">
                         <span class="icon icon-sm fa fa-phone"></span>
                     </div>
-                    <h2 class="default-font text-bold letter-spacing-30" style="color:black">coffeeTime</h2>
-                    <h6 class="text-semi-bold hide show-sm-block ml-sm-40 ml-md-0">
+                    <h2 class="default-font text-bold letter-spacing-30" style="color:black"><a href="/">coffeeTime</h2>
+                    <h6 class="text-semi-bold hide show-sm-block ml-sm-40 ml-md-0" style="color:black">
                         <span class="icon icon-sm fa fa-clock-o"></span>
                         <span>Pon-Ned {{$caffe->work_hour_from}}-{{$caffe->work_hour_to}}</span>
                     </h6>
@@ -80,13 +80,13 @@
             <div class="main-nav">
                 <img src="img/logo.png" width="82" height="52" class="hide-lg ml-50 ml-lg-0" alt=""/>
                 <ul class="">
-                    <li data-menuanchor="1Page"><a href="#1Page"><span class="h3 text-middle show-inline-block text-bold">01</span><span class="text-middle pl-20">Početna</span></a></li>
-                    <li data-menuanchor="2Page"><a href="#2Page"><span class="h3 text-middle show-inline-block text-bold">02</span><span class="text-middle pl-20">O nama</span></a></li>
-                    <li data-menuanchor="3Page"><a href="#3Page"><span class="h3 text-middle show-inline-block text-bold">03</span><span class="text-middle pl-20">Menu</span></a></li>
-                    <li data-menuanchor="4Page"><a href="#4Page"><span class="h3 text-middle show-inline-block text-bold">04</span><span class="text-middle pl-20">Rezervacije</span></a></li>
-                    <li data-menuanchor="5Page"><a href="#5Page"><span class="h3 text-middle show-inline-block text-bold">05</span><span class="text-middle pl-20">Galerija</span></a></li>
-                    <li data-menuanchor="6Page"><a href="#6Page"><span class="h3 text-middle show-inline-block text-bold">06</span><span class="text-middle pl-20">Tim</span></a></li>
-                    <li data-menuanchor="7Page"><a href="#7Page"><span class="h3 text-middle show-inline-block text-bold">07</span><span class="text-middle pl-20">Kontakt</span></a></li>
+                    <li data-menuanchor="1Page"><a href="#1Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">01</span><span class="text-middle pl-20" style="color:black">Početna</span></a></li>
+                    <li data-menuanchor="2Page"><a href="#2Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">02</span><span class="text-middle pl-20" style="color:black">O nama</span></a></li>
+                    <li data-menuanchor="3Page"><a href="#3Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">03</span><span class="text-middle pl-20" style="color:black">Menu</span></a></li>
+                    <li data-menuanchor="4Page"><a href="#4Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">04</span><span class="text-middle pl-20" style="color:black">Rezervacije</span></a></li>
+                    <li data-menuanchor="5Page"><a href="#5Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">05</span><span class="text-middle pl-20" style="color:black">Galerija</span></a></li>
+                    <li data-menuanchor="6Page"><a href="#6Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">06</span><span class="text-middle pl-20" style="color:black">Tim</span></a></li>
+                    <li data-menuanchor="7Page"><a href="#7Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">07</span><span class="text-middle pl-20" style="color:black">Kontakt</span></a></li>
                 </ul>
             </div>
         </div>
@@ -97,10 +97,10 @@
             <!--========== HOME ==========-->
             <header class="section section-default bg-1 light-section active" id="section0">
                 <div class="">
-                    <h1 class="default-font text-bold letter-spacing-30">{{$caffe->name}}</h1>
-                    <h2 class="default-font text-bold letter-spacing-30 mt-20">{{$caffe->short_description}}</h2>
+                    <h1 class="default-font text-bold letter-spacing-30" style="color:black">{{$caffe->name}}</h1>
+                    <h2 class="default-font text-bold letter-spacing-30 mt-20" style="color:black">{{$caffe->short_description}}</h2>
                     <div class="pulsing-ring show-inline-block mt-50">
-                        <a href="#4Page" class="btn btn-main text-primary">
+                        <a href="#4Page" class="btn btn-main text-primary" style="color:black">
                             <span>Rezervišite</span>
                             <span>sto</span>
                         </a>
@@ -108,7 +108,7 @@
                     <br />
                     <br />
                     <div>
-                        <h5 class="default-font text-bold letter-spacing-30">Broj slobodnih stolova: {{$mesta}}</h5>
+                        <h5 class="default-font text-bold letter-spacing-30" style="color:black">Broj slobodnih stolova: {{$mesta}}</h5>
                     </div>
                 </div>
             </header>
@@ -130,25 +130,21 @@
                                         </div>
                                     </div>
                                     <h6 class="text-medium">{{$caffe->short_description}}</h6>
-                                    <p class="mt-30">{{$caffe->short_description}}
+                                    <p class="mt-30">{{$caffe->description}}
                                         <br class="hide show-md-block">
                                         <br>
-                                        {{$caffe->description}}
                                     </p>
-                                    <div class="text-center text-lg-right mt-30"><a href="#" class="btn btn-md btn-primary">Saznaj više</a></div>
+                                    <div class="text-center text-lg-right mt-30"><a href="{{$caffe->www}}" class="btn btn-md btn-primary">SAZNAJ VIŠE</a></div>
                                 </div>
                                 <div class="col-sm-10 col-md-6 col-lg-5 mt-40 mt-md-0">
-                                    <h5 class="text-medium">Awards:</h5>
-                                    <article class="mt-30 mt-lg-50">
-                                        <h6 class="text-primary">OpenTable, Dinner’s Choise</h6>
-                                        <p class="big second-font text-medium ls-0 mt-20">Winner in 2016</p>
-                                        <p class="mt-10">Hath dominion them them sea he lesser without living had unto all a, fruit place. Dominion.</p>
-                                    </article>
-                                    <article>
-                                        <h6 class="text-primary">The Beijinger, Reader Restoran Awards</h6>
-                                        <p class="big second-font text-medium ls-0 mt-20">Winner in 2015</p>
-                                        <p class="mt-10">Doesn't under lights which seas fly let our days firmament. Firmament, good man which is also creepeth very and seed.</p>
-                                    </article>
+                                    <h6 class="text-primary">Adresa</h6>
+                                    <p class="big second-font text-medium ls-0 mt-20">{{$caffe->address}}</p>
+                                    <br/>
+                                    <h6 class="text-primary">Radno vreme</h6>
+                                    <p class="big second-font text-medium ls-0 mt-20">Pon-Ned {{$caffe->work_hour_from}}-{{$caffe->work_hour_to}}</p>
+                                    <br />
+                                    <h6 class="text-primary">Broj telefona</h6>
+                                    <p class="big second-font text-medium ls-0 mt-20">{{$caffe->call_number}}</p>
                                 </div>
                             </div>
                         </div>
