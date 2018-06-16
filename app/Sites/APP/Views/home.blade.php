@@ -44,9 +44,11 @@
 <br />
 
 @foreach($caffes as $caffe)
-    <div style="width: 350px; float:left; margin:25px;" >
+    <div id="{{$caffe->caffe_id}}" style="width: 350px; float:left; margin:25px;" >
         <h4> {{$caffe->name}}</h4>
-        <img style="height: 300px; width: 300px;"  alt="{{$caffe->name}}"class="img-circle"href="www.coffeetime.com/caffe/{{$caffe->caffe_id}}"src="{{asset('images/caffe_images/' . $caffe->image)}}" />
+        <h8> </h8>
+{{--        <img style="height: 300px; width: 300px;"  alt="{{$caffe->name}}"class="img-circle" href="www.coffeetime.com/caffe/show/{{$caffe->caffe_id}} "src="{{asset('images/caffe_images/' . $caffe->image)}}" />--}}
+        <a href="{{route('show',$caffe->caffe_id)}}"><img src="{{asset('images/caffe_images/' . $caffe->image)}}" style="height: 300px; width: 300px; margin:20px;"  alt="{{$caffe->name}}" class="img-circle" ></a>
     </div>
 @endforeach
 

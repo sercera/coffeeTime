@@ -105,6 +105,11 @@
                             <span>sto</span>
                         </a>
                     </div>
+                    <br />
+                    <br />
+                    <div>
+                        <h5 class="default-font text-bold letter-spacing-30">Broj slobodnih stolova: {{$mesta}}</h5>
+                    </div>
                 </div>
             </header>
 
