@@ -39,6 +39,9 @@
 <div style="height: 30px;">
 
 </div>
+<h1 class="default-font text-bold letter-spacing-30">coffeeTime</h1>
+<br />
+<br />
 
 @foreach($caffes as $caffe)
     <div id="{{$caffe->caffe_id}}" style="width: 350px; float:left; margin:25px;" >
@@ -51,7 +54,6 @@
 
 
 <script src="{{asset('FRONTEND/site/js/minified.js')}}"></script>
-
 <script src="{{asset('FRONTEND/site/js/main.js')}}"></script>
 </body>
 </html>

@@ -39,6 +39,7 @@
             <p class="panel-body">
                 Adresa: {{$caffe->address}} <br />
                 Radno vreme: {{$caffe->work_hour_from}}-{{$caffe->work_hour_to}} <br />
+                Broj telefona: {{$caffe->call_number}} <br />
                 <img src="{{asset('images/caffe_images/' . $caffe->image)}}" /> <br />
                 <br />
                 {{$caffe->description}} <br />

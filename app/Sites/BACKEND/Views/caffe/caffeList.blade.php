@@ -38,6 +38,7 @@
                 <tr>
                     <td>Ime kafića</td>
                     <td>Adresa</td>
+                    <td>Broj telefona</td>
                     <td>Grad</td>
                     <td>Radno vreme</td>
                     <td>Opis</td>
@@ -52,6 +53,7 @@
                     <tr>
                         <td>{{$caffe->name}}</td>
                         <td>{{$caffe->address}}</td>
+                        <td>{{$caffe->call_number}}</td>
                         <td>{{$caffe->city}}</td>
                         <td>{{$caffe->work_hour_from}}-{{$caffe->work_hour_to}}</td>
                         <td>{{$caffe->description}}</td>
