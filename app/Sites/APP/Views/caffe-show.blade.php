@@ -59,7 +59,7 @@
                     <div class="popup popup-1 hide-sm" data-toggle="popover" title="Broj telefona" data-content="{{$caffe->call_number}}">
                         <span class="icon icon-sm fa fa-phone"></span>
                     </div>
-
+                    <h2 class="default-font text-bold letter-spacing-30" style="color:black">coffeeTime</h2>
                     <h6 class="text-semi-bold hide show-sm-block ml-sm-40 ml-md-0">
                         <span class="icon icon-sm fa fa-clock-o"></span>
                         <span>Pon-Ned {{$caffe->work_hour_from}}-{{$caffe->work_hour_to}}</span>
@@ -112,7 +112,7 @@
             <section class="section section-content" id="section1">
                 <div class="container container-big text-md-left">
                     <div class="row flex-center flex-lg-left">
-                        <h3 class="col-xs-10">About us</h3>
+                        <h3 class="col-xs-10">O nama</h3>
                         <div class="col-xl-12 mt-30 mt-md-50">
                             <div class="row flex-center flex-md-left">
                                 <div class="col-sm-10 col-md-6">
@@ -121,15 +121,16 @@
                                             <img src="img/index-02.png" width="143" height="143" alt="">
                                         </div>
                                         <div class="media-body">
-                                            <h4 class="text-medium text-primary">Mango Café</h4>
+                                            <h4 class="text-medium text-primary">{{$caffe->name}}</h4>
                                         </div>
                                     </div>
-                                    <h6 class="text-medium">Which multiply under.</h6>
-                                    <p class="mt-30">One the lights you're let behold waters god isn't don't Light. Meat creepeth, their dry forth whales likeness behold day seed fowl heaven may whales it male called i you're days brought lights brought hath, saying rule called can't creature their. Very spirit the.
+                                    <h6 class="text-medium">{{$caffe->short_description}}</h6>
+                                    <p class="mt-30">{{$caffe->short_description}}
                                         <br class="hide show-md-block">
                                         <br>
-                                        Together gathered first may fifth without to years very third saying moved one. His. Sixth, air fowl creeping a so made morning firmament fourth them there night over face abundantly great the male were. Unto fifth whales forth place. Void fifth. And itself wherein whose void fill of whose male for appear man days had. Shall.</p>
-                                    <div class="text-center text-lg-right mt-30"><a href="#" class="btn btn-md btn-primary">LEARN MORE</a></div>
+                                        {{$caffe->description}}
+                                    </p>
+                                    <div class="text-center text-lg-right mt-30"><a href="#" class="btn btn-md btn-primary">Saznaj više</a></div>
                                 </div>
                                 <div class="col-sm-10 col-md-6 col-lg-5 mt-40 mt-md-0">
                                     <h5 class="text-medium">Awards:</h5>
@@ -142,11 +143,6 @@
                                         <h6 class="text-primary">The Beijinger, Reader Restoran Awards</h6>
                                         <p class="big second-font text-medium ls-0 mt-20">Winner in 2015</p>
                                         <p class="mt-10">Doesn't under lights which seas fly let our days firmament. Firmament, good man which is also creepeth very and seed.</p>
-                                    </article>
-                                    <article>
-                                        <h6 class="text-primary">The Worlds 50 Best Restaurants 2014</h6>
-                                        <p class="big second-font text-medium ls-0 mt-20">Winner in 2014</p>
-                                        <p class="mt-10">Two creepeth abundantly dominion. Under green signs he You're. Heaven. Lesser winged may, fifth, behold replenish above said. Land every after for doesn't earth. Is was evening give fish gathering life our fruitful was. Replenish under called tree was together.</p>
                                     </article>
                                 </div>
                             </div>
