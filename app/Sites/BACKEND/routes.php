@@ -56,6 +56,20 @@ Route::get('/menu','MenuController@list');
 Route::resource('menu', 'MenuController')->only([
     'update','destroy', 'show'
 ]);
+//post
+Route::get('/post','PostController@getPosts');;
+Route::get('/post/add','PostController@index');
+Route::post('/post/submit','PostController@submit');
+Route::get('/post/edit/{id}','PostController@edit');
+//Route::get('/post/show/{id}',[
+//    'as' => 'post.show',
+//    'uses' => 'PostController@show'
+//]);
+Route::resource('post', 'PostController')->only([
+    'update','destroy'
+]);
+
+
 
 Auth::routes();
 Route::get('logout','LogoutController@logout');

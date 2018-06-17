@@ -156,7 +156,7 @@
             <section class="section section-content " id="section2">
                 <div class="container container-big text-md-left">
                     <div class="row flex-center flex-xl-left">
-                        <h3 class="col-xs-10">Our Menus</h3>
+                        <h3 class="col-xs-10">Naši meniji</h3>
                         <div class="col-xl-10 mt-30 mt-md-50">
                             <div class="row flex-center flex-xl-left">
 
@@ -166,7 +166,7 @@
                                         <img src="img/index-03.jpg" width="418" height="284" alt="">
                                         <div class="img-bar">
                                             <h5 class="default-font text-bold">Fresh Pizza</h5>
-                                            <p class="ls-0 mt-20 hide show-xs-block">He brought. After land. Together waters after darkness made. His gathered likeness fruitful given creepeth she'd rule signs.</p>
+                                            <p class="ls-0 mt-20 hide show-xs-block">Neki meni</p>
                                             <a href="#" class="btn btn-sm btn-primary mt-20">MORE</a>
                                         </div>
                                         <div class="img-bar-default">
@@ -175,80 +175,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Section Item -->
-                                <div class="col-md-4 col-lg-5 col-xl-4 mt-30 mt-md-0">
-                                    <div class="img-container light-section">
-                                        <img src="img/index-04.jpg" width="418" height="284" alt="">
-                                        <div class="img-bar">
-                                            <h5 class="default-font text-bold">Lunches</h5>
-                                            <p class="ls-0 mt-20 hide show-xs-block">He brought. After land. Together waters after darkness made. His gathered likeness fruitful given creepeth she'd rule signs.</p>
-                                            <a href="#" class="btn btn-sm btn-primary mt-20">MORE</a>
-                                        </div>
-                                        <div class="img-bar-default">
-                                            <h3 class="default-font text-bold">Lunches</h3>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <!-- Section Item -->
-                                <div class="col-md-4 col-lg-5 col-xl-4 mt-30 mt-md-0 mt-lg-30 mt-xl-0">
-                                    <div class="img-container light-section">
-                                        <img src="img/index-05.jpg" width="418" height="284" alt="">
-                                        <div class="img-bar">
-                                            <h5 class="default-font text-bold">Summer Menu</h5>
-                                            <p class="ls-0 mt-20 hide show-xs-block">He brought. After land. Together waters after darkness made. His gathered likeness fruitful given creepeth she'd rule signs.</p>
-                                            <a href="#" class="btn btn-sm btn-primary mt-20">MORE</a>
-                                        </div>
-                                        <div class="img-bar-default">
-                                            <h3 class="default-font text-bold">Summer Menu</h3>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Section Item -->
-                                <div class="col-md-4 col-lg-5 col-xl-4 mt-30">
-                                    <div class="img-container light-section">
-                                        <img src="img/index-06.jpg" width="418" height="284" alt="">
-                                        <div class="img-bar">
-                                            <h5 class="default-font text-bold">Deserts</h5>
-                                            <p class="ls-0 mt-20 hide show-xs-block">He brought. After land. Together waters after darkness made. His gathered likeness fruitful given creepeth she'd rule signs.</p>
-                                            <a href="#" class="btn btn-sm btn-primary mt-20">MORE</a>
-                                        </div>
-                                        <div class="img-bar-default">
-                                            <h3 class="default-font text-bold">Deserts</h3>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Section Item -->
-                                <div class="col-md-4 col-lg-5 col-xl-4 mt-30">
-                                    <div class="img-container light-section">
-                                        <img src="img/index-07.jpg" width="418" height="284" alt="">
-                                        <div class="img-bar">
-                                            <h5 class="default-font text-bold">Coffee</h5>
-                                            <p class="ls-0 mt-20 hide show-xs-block">He brought. After land. Together waters after darkness made. His gathered likeness fruitful given creepeth she'd rule signs.</p>
-                                            <a href="#" class="btn btn-sm btn-primary mt-20">MORE</a>
-                                        </div>
-                                        <div class="img-bar-default">
-                                            <h3 class="default-font text-bold">Coffee</h3>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Section Item -->
-                                <div class="col-md-4 col-lg-5 col-xl-4 mt-30">
-                                    <div class="img-container light-section">
-                                        <img src="img/index-08.jpg" width="418" height="284" alt="">
-                                        <div class="img-bar">
-                                            <h5 class="default-font text-bold">Hot Dinner</h5>
-                                            <p class="ls-0 mt-20 hide show-xs-block">He brought. After land. Together waters after darkness made. His gathered likeness fruitful given creepeth she'd rule signs.</p>
-                                            <a href="#" class="btn btn-sm btn-primary mt-20">MORE</a>
-                                        </div>
-                                        <div class="img-bar-default">
-                                            <h3 class="default-font text-bold">Hot Dinner</h3>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -493,7 +420,6 @@
 
     </main>
 </div>
-
 <!-- Core Scripts -->
 <script src="{{asset('FRONTEND/site/js/minified.js')}}"></script>
 <!-- Additional Functionality Scripts -->

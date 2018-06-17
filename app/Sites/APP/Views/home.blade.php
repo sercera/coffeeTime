@@ -42,7 +42,7 @@
 <h2 class="default-font text-bold letter-spacing-30"><a href="/">coffeeTime</h2>
 <br />
 <br />
-
+<div class="panel-body">
 @foreach($caffes as $caffe)
     <div id="{{$caffe->caffe_id}}" style="width: 350px; float:left; margin:25px;" >
         <a href="{{route('show',$caffe->caffe_id)}}"><h4> {{$caffe->name}}</h4></a>
@@ -51,7 +51,12 @@
         <a href="{{route('show',$caffe->caffe_id)}}"><img src="{{asset('images/caffe_images/' . $caffe->image)}}" style="height: 300px; width: 300px; margin:20px;"  alt="{{$caffe->name}}" class="img-circle" ></a>
     </div>
 @endforeach
+</div>
 
+<footer class="footer">
+    <br />
+    <p>The Nemesis &copy; 2018<p>
+</footer>
 
 <script src="{{asset('FRONTEND/site/js/minified.js')}}"></script>
 <script src="{{asset('FRONTEND/site/js/main.js')}}"></script>

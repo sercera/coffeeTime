@@ -34,7 +34,7 @@
         <div class="panel-body">
     {!! Form::open(['url' => 'menu/submit']) !!}
     <div class="form-group">
-        {{Form::label('fk_for_caffe', 'Izaberi kafić')}}
+        {{Form::label('fk_for_caffe', 'Izaberite kafić')}}
         <select class="form-control" name="fk_for_caffe">
             @foreach($caffes as $caffe)
                 <option value="{{$caffe->caffe_id}}"> {{$caffe->name}}</option>

@@ -93,6 +93,20 @@
                 </div>
             </div>
         </a>
+        <a href="{{url('post/add')}}">
+            <div class="col-xs-4 col-sm-4 col-md-4 page-privacy">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Dodaj novi post</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="page-icon">
+                            <i class="fa fa-file-text-o"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
         <div class="col-xs-4 col-sm-4 col-md-4 page-statistics">
         </div>
     </div>
