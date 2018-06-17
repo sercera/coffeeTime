@@ -164,7 +164,7 @@
             <section class="section section-content " id="section2">
                 <div class="container container-big text-md-left">
                     <div class="row flex-center flex-xl-left">
-                        <h3 class="col-xs-10">Our Menus</h3>
+                        <h3 class="col-xs-10">Nasi Meniji</h3>
                         <div class="col-xl-10 mt-30 mt-md-50">
                             <div class="row flex-center flex-xl-left">
 
