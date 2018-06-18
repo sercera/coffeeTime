@@ -1,13 +1,15 @@
-<li class="nav-parent">
+@if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('owner'))
+
+    <li class="nav-parent">
     <a href="">
         <i class="fa fa-coffee"></i>
         <span>Kafići</span>
     </a>
     <ul class="children">
-        <li>
+        <li {{ request()->is('/caffe/add') ? 'class=active ' : '' }}>
             <a href="{{url(('/caffe/add'))}}">Dodajte novi kafić</a>
         </li>
-        <li>
+        <li {{ request()->is('/caffe') ? 'class=active ' : '' }}>
             <a href="{{url(('/caffe'))}}">Lista svih kafića</a>
         </li>
     </ul>
@@ -18,38 +20,48 @@
         <span>Radnici</span>
     </a>
     <ul class="children">
-        <li>
+        <li {{ request()->is('users/create') ? 'class=active ' : '' }}>
             <a href="{{url(('users/create'))}}"> Dodajte novog radnika</a>
         </li>
-        <li>
+        <li {{ request()->is('users') ? 'class=active ' : '' }}>
             <a href="{{url(('users'))}}"> Lista svih radnika</a>
         </li>
     </ul>
 </li>
+@endif
+
 <li class="nav-parent">
     <a href="">
         <i class="fa fa-circle"></i>
         <span>Stolovi</span>
     </a>
     <ul class="children">
-        <li>
+        @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('owner'))
+
+        <li {{ request()->is('table/add') ? 'class=active ' : '' }}>
+
             <a href="{{url(('table/add'))}}"> Dodajte novi sto</a>
         </li>
-        <li>
+        @endif
+        <li {{ request()->is('table') ? 'class=active ' : '' }}>
             <a href="{{url(('table'))}}"> Lista svih stolova</a>
         </li>
     </ul>
 </li>
+
 <li class="nav-parent">
     <a href="">
         <i class="fa fa-beer"></i>
         <span>Proizvodi</span>
     </a>
     <ul class="children">
-        <li>
+        @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('owner'))
+
+        <li {{ request()->is('article/add') ? 'class=active ' : '' }}>
             <a href="{{url(('article/add'))}}"> Dodajte novi proizvod</a>
         </li>
-        <li>
+        @endif
+        <li {{ request()->is('article') ? 'class=active ' : '' }}>
             <a href="{{url(('article'))}}"> Lista svih proizvoda</a>
         </li>
     </ul>
@@ -60,10 +72,13 @@
         <span>Menu</span>
     </a>
     <ul class="children">
-        <li>
+        @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('owner'))
+
+        <li {{ request()->is('/menu/create') ? 'class=active ' : '' }}>
             <a href="{{url(('/menu/create'))}}"> Dodajte novi meni</a>
         </li>
-        <li>
+        @endif
+        <li {{ request()->is('/menu') ? 'class=active ' : '' }}>
             <a href="{{url(('/menu'))}}"> Lista svih menija</a>
         </li>
     </ul>
@@ -74,10 +89,10 @@
         <span>Postovi</span>
     </a>
     <ul class="children">
-        <li>
+        <li {{ request()->is('/post/add') ? 'class=active ' : '' }}>
             <a href="{{url(('/post/add'))}}">Dodajte novi post</a>
         </li>
-        <li>
+        <li {{ request()->is('/post') ? 'class=active ' : '' }}>
             <a href="{{url(('/post'))}}">Lista svih postova</a>
         </li>
     </ul>

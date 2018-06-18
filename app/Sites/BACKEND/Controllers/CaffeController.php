@@ -11,12 +11,12 @@ use Storage;
 
 class CaffeController extends AuthController
 {
-    public function index()
+    public function index($permissions=["article","view"])
     {
         return view('caffe.caffe');
     }
 
-    public function submit(Request $request)
+    public function submit(Request $request,$permissions=["caffe","create"])
     {
         $this->validate($request, [
             'name' => 'required',
@@ -57,14 +57,14 @@ class CaffeController extends AuthController
         return redirect('/caffe')->with('success', 'Uspešno ste dodali novi kafić.');
     }
 
-    public function getCaffes()
+    public function getCaffes($permissions=["article","view"])
     {
         $caffes = Caffe::all();
 
         return view('caffe.caffeList')->with('caffes', $caffes);
     }
 
-    public function edit($id)
+    public function edit($id,$permissions=["article","edit"])
     {
         $caffe = Caffe::find($id);
 
@@ -76,7 +76,7 @@ class CaffeController extends AuthController
         return view('caffe.caffe-edit')->withCaffe($caffe);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $permissions=["article","edit"])
     {
         $this->validate($request, [
             'name' => 'required',
@@ -117,7 +117,7 @@ class CaffeController extends AuthController
         return redirect('/caffe')->with('success', 'Uspešno ste promenili podatke o kafiću.');
     }
 
-    public function destroy($id)
+    public function destroy($id, $permissions=["article","delete"])
     {
         $caffe = Caffe::find($id);
         Storage::delete($caffe->image);
@@ -127,16 +127,16 @@ class CaffeController extends AuthController
         return redirect('/caffe')->with('success', 'Uspešno ste izbrisali izabrani kafić.');
     }
 
-    public function showEmployees($id)
+    public function showEmployees($id, $permissions=["users","view"])
     {
-        $employees = Employee::all();
         $caffe = Caffe::find($id);
+        $employees = $caffe->getUsers();
 
 
         return view('caffe.caffe-employees')->withEmployees($employees)->withCaffe($caffe);
     }
 
-    public function show($id)
+    public function show($id, $permissions=["caffe","view"])
     {
         $caffe = Caffe::find($id);
         $tables = Table::all();

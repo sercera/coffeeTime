@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class IndexController extends AuthController
 {
-    public function index()
+    public function index($permissions=["view"])
     {
         return view('home');
     }

@@ -8,12 +8,14 @@ use Session;
 
 class ArticleController extends AuthController
 {
-    public function index()
+
+
+    public function index($permissions=["article","view"])
     {
         $article= Article::all();
         return view('article.article')->withArticles($article);
     }
-    public function submit(Request $request)
+    public function submit(Request $request, $permissions=["article","create"])
     {
         $this->validate($request, [
             'name' => 'required',
@@ -34,7 +36,7 @@ class ArticleController extends AuthController
         return redirect('/article')->with('success', 'Uspešno ste dodali novi proizvod.');
     }
 
-    public function getArticle()
+    public function getArticle($permissions=["article","view"])
     {
         $articles = Article::all();
 
@@ -43,12 +45,12 @@ class ArticleController extends AuthController
 
     public function edit($id)
     {
-        $article = Article::find($id);
+        $article = Article::find($id, $permissions=["article","edit"]);
 
         return view('article.article-edit' )->withArticle($article);
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request,$id,$permissions=["article","edit"])
     {
         $this->validate($request, [
             'name'=>'required',
@@ -69,7 +71,7 @@ class ArticleController extends AuthController
         return redirect('/article')->with('success', 'Uspešno ste promenili podatke o proizvodu.');
     }
 
-    public function destroy($id)
+    public function destroy($id, $permissions=["article","delete"])
     {
         $article = Article::find($id);
 

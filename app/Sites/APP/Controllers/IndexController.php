@@ -5,6 +5,8 @@ namespace App\Sites\APP\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Caffe;
 use App\Models\Table;
+use App\Models\Post;
+use App\Models\Menu;
 
 class IndexController extends Controller
 {
@@ -28,6 +30,8 @@ class IndexController extends Controller
     public function caffe($id)
     {
         $caffe=Caffe::find($id);
+        $posts=Post::all();
+        $menus=Menu::all();
         $tables = Table::all();
         $broj_mesta=0;
 
@@ -43,6 +47,7 @@ class IndexController extends Controller
             return redirect()->back();
         }
 
-        return view('caffe-show')->withCaffe($caffe)->withMesta($broj_mesta);
+        return view('caffe-show')->withCaffe($caffe)->withMesta($broj_mesta)->withPosts($posts)->withMenus($menus);
     }
+
 }

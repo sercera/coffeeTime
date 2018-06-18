@@ -87,6 +87,7 @@
                     <li data-menuanchor="5Page"><a href="#5Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">05</span><span class="text-middle pl-20" style="color:black">Galerija</span></a></li>
                     <li data-menuanchor="6Page"><a href="#6Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">06</span><span class="text-middle pl-20" style="color:black">Tim</span></a></li>
                     <li data-menuanchor="7Page"><a href="#7Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">07</span><span class="text-middle pl-20" style="color:black">Kontakt</span></a></li>
+                    <li data-menuanchor="8Page"><a href="#8Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">08</span><span class="text-middle pl-20" style="color:black">Postovi</span></a></li>
                 </ul>
             </div>
         </div>
@@ -160,21 +161,17 @@
                         <div class="col-xl-10 mt-30 mt-md-50">
                             <div class="row flex-center flex-xl-left">
 
-                                <!-- Section Item -->
-                                <div class="col-md-4 col-lg-5 col-xl-4">
-                                    <div class="img-container light-section">
-                                        <img src="img/index-03.jpg" width="418" height="284" alt="">
-                                        <div class="img-bar">
-                                            <h5 class="default-font text-bold">Fresh Pizza</h5>
-                                            <p class="ls-0 mt-20 hide show-xs-block">Neki meni</p>
-                                            <a href="#" class="btn btn-sm btn-primary mt-20">MORE</a>
-                                        </div>
-                                        <div class="img-bar-default">
-                                            <h3 class="default-font text-bold">Fresh Pizza</h3>
-                                        </div>
-                                    </div>
+                                <div class="col-sm-10 col-md-6">
+                                    @foreach($menus as $menu)
+                                        @if($menu->fk_for_caffe==$caffe->caffe_id)
+                                            <div class="media media-md">
+                                                <div class="media-body">
+                                                    <h4 class="text-medium text-primary" style="text-align: center">{{$menu->name}}</h4>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
                                 </div>
-
 
                             </div>
                         </div>
@@ -415,6 +412,8 @@
                     </div>
                 </div>
             </section>
+
+            //deo za postove
 
         </div>
 

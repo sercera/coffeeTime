@@ -16,9 +16,9 @@ class Caffe extends Model
         'work_hours'
     ];
 
-    public function employees()
+    public function getUsers()
     {
-        return $this->hasMany('App\Models\Employee', 'employee_id', 'caffe_id');
+        return $this->hasMany('App\Models\User', 'fk_for_caffe', 'caffe_id');
     }
 
     public function tables()

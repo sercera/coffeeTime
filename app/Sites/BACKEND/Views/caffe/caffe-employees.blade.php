@@ -32,7 +32,6 @@
                         <tr>
                             <td>Username</td>
                             <td>E-mail</td>
-                            <td>Password</td>
                             <td>Radi u</td>
                             <td></td>
                         </tr>
@@ -44,7 +43,6 @@
                                 <tr>
                                     <td>{{$employee->username}}</td>
                                     <td>{{$employee->email}}</td>
-                                    <td>{{$employee->password}}</td>
                                     <td>{{$employee->caffe->name}}</td>
                                     <td style="width: 150px;">
                                         {!! Form::open(['route' => ['employees.destroy', $employee->employee_id],'method' => 'DELETE']) !!}

@@ -10,7 +10,7 @@ use Session;
 
 class TableController extends AuthController
 {
-    public function index()
+    public function index($permissions=["table","view"])
     {
         $tables = Table::all();
         $caffes = Caffe::all();
@@ -18,7 +18,7 @@ class TableController extends AuthController
         return view('table.table')->withTables($tables)->withCaffes($caffes);
     }
 
-    public function submit(Request $request)
+    public function submit(Request $request, $permissions=["table","create"])
     {
 
         $this->validate($request, [
@@ -45,7 +45,7 @@ class TableController extends AuthController
         return redirect('table')->with('success', 'Uspešno ste uneli novi sto.');
     }
 
-    public function getTables()
+    public function getTables($permissions=["table","view"])
     {
         $tables = Table::all();
         $caffes = Caffe::all();
@@ -53,7 +53,7 @@ class TableController extends AuthController
         return view('table.tableList')->withTables($tables)->withCaffes($caffes);
     }
 
-    public function edit($id)
+    public function edit($id, $permissions=["table","edit"])
     {
 
         $table = Table::find($id);
@@ -66,7 +66,7 @@ class TableController extends AuthController
         return view('table.table-edit')->withTable($table)->withCaffe($caffe);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $permissions=["table","edit"])
     {
         $this->validate($request, [
             'number' => 'required',
@@ -83,7 +83,7 @@ class TableController extends AuthController
         ////Redirect
         return redirect('table')->with('success', 'Uspešno ste promenili podatke o stolu.');
     }
-    public function reserve($id)
+    public function reserve($id, $permissions=["table"])
     {
         $table = Table::find($id);
 //
@@ -91,7 +91,7 @@ class TableController extends AuthController
         $table->update(['is_reserved' => true]);}
         return redirect()->route('caffe.show', $table->fk_for_caffe)->with('success', 'Uspešno ste rezervisali sto broj ' .$table['table_number'].'.' );
     }
-    public function release($id)
+    public function release($id, $permissions=["table"])
     {
         $table = Table::find($id);
 //
@@ -99,7 +99,7 @@ class TableController extends AuthController
             $table->update(['is_reserved' => false]);}
         return redirect()->route('caffe.show', $table->fk_for_caffe)->with('success', 'Uspešno ste uklonili rezervaciju za sto broj ' .$table['table_number'].'.' );
     }
-    public function destroy($id)
+    public function destroy($id, $permissions=["table","delete"])
     {
         $table = Table::find($id);
 

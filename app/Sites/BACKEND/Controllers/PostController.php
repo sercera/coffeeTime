@@ -9,7 +9,7 @@ use Session;
 
 class PostController extends AuthController
 {
-    public function index()
+    public function index($permissions = ["caffe"])
     {
         $posts = Post::all();
         $caffes = Caffe::all();
@@ -17,7 +17,7 @@ class PostController extends AuthController
         return view('post.post')->withPosts($posts)->withCaffes($caffes);
     }
 
-    public function submit(Request $request)
+    public function submit(Request $request, $permissions=["caffe"])
     {
 
         $this->validate($request, [
@@ -35,7 +35,7 @@ class PostController extends AuthController
         return redirect('post')->with('success', 'Uspešno ste uneli novi post.');
     }
 
-    public function getPosts()
+    public function getPosts( $permissions=["caffe"])
     {
         $posts = Post::all();
         $caffes = Caffe::all();
@@ -43,7 +43,7 @@ class PostController extends AuthController
         return view('post.postList')->withPosts($posts)->withCaffes($caffes);
     }
 
-    public function edit($id)
+    public function edit($id, $permissions=["caffe"])
     {
 
         $post = Post::find($id);
@@ -56,7 +56,7 @@ class PostController extends AuthController
         return view('post.post-edit')->withPost($post)->withCaffe($caffe);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $permissions=["caffe"])
     {
         $this->validate($request, [
             'title' => 'required',
@@ -72,7 +72,7 @@ class PostController extends AuthController
         return redirect('post')->with('success', 'Uspešno ste promenili post.');
     }
 
-    public function destroy($id)
+    public function destroy($id, $permissions=["caffe","delete"])
     {
         $post = Post::find($id);
 

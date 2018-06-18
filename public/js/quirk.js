@@ -447,7 +447,7 @@ console.log(inputResult);
 
 
 
-    })
+    });
 
 
     $('.logout').on('click',function (e) {
@@ -458,11 +458,5 @@ console.log(inputResult);
 
         logout.submit();
 
-    })
-
-
-
-
-
-
+    });
 });

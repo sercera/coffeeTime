@@ -39,4 +39,10 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\UserDetails','fk_for_user','user_id');
     }
 
+    public function caffeEntity(){
+
+
+        return $this->hasOne('App\Models\Caffe','caffe_id','fk_for_caffe');
+    }
+
 }
