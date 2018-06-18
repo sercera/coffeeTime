@@ -30,6 +30,9 @@ class UsersController extends Controller
 
         }
 
+        var_dump($users[0]['userDetails']);
+        die();
+
         return view('users.index', compact('users'));
 
 
