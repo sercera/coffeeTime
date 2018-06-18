@@ -21,6 +21,7 @@ class UsersController extends Controller
         $numeration = 0;
 
         foreach ($allUsers as $user) {
+
             $users[$numeration]['user_id'] = $user->user_id;
             $users[$numeration]['username'] = $user->username;
             $users[$numeration]['email'] = $user->email;
