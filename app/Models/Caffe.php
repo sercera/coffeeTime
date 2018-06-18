@@ -34,4 +34,8 @@ class Caffe extends Model
     {
         return $this->hasMany('App\Models\Images', 'id', 'caffe_id');
     }
+    public function posts()
+    {
+        return $this->hasMany('App\Models\Post', 'id', 'caffe_id');
+    }
 }

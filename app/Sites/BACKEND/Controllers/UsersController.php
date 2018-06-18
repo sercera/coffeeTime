@@ -3,6 +3,7 @@
 namespace App\Sites\BACKEND\Controllers;
 
 use Request;
+USE Illuminate\Notifications\Notifiable;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Role;

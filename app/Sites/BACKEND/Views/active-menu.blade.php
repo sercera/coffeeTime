@@ -68,5 +68,19 @@
         </li>
     </ul>
 </li>
+<li class="nav-parent">
+    <a href="">
+        <i class="fa fa-file-text-o"></i>
+        <span>Postovi</span>
+    </a>
+    <ul class="children">
+        <li>
+            <a href="{{url(('/post/add'))}}">Dodajte novi post</a>
+        </li>
+        <li>
+            <a href="{{url(('/post'))}}">Lista svih postova</a>
+        </li>
+    </ul>
+</li>
 
 

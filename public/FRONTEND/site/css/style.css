@@ -3720,7 +3720,7 @@ html body .text-primary {
 }
 
 .bg-1 {
-  background: url(../img/index-01.jpg);
+  background-color:orange;
   background-size: cover;
 }
 

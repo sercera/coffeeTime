@@ -58,6 +58,10 @@
         {{Form::text('work_hour_to', '' , ['class' => 'form-control', 'placeholder' => '23:00','required'=>'required'])}}
     </div>
     <div class="form-group">
+        {{Form::label('www', 'Link')}}
+        {{Form::text('www', '' , ['class' => 'form-control', 'placeholder' => 'www','required'=>'required'])}}
+    </div>
+    <div class="form-group">
         {{Form::label('short_description', 'Kratak opis')}}
         {{Form::text('short_description', '' , ['class' => 'form-control', 'placeholder' => 'Kratak opis...','required'=>'required'])}}
     </div>

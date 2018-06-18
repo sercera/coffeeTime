@@ -40,9 +40,11 @@
                 Adresa: {{$caffe->address}} <br />
                 Radno vreme: {{$caffe->work_hour_from}}-{{$caffe->work_hour_to}} <br />
                 Broj telefona: {{$caffe->call_number}} <br />
+                Kraći opis: {{$caffe->short_description}} <br />
+                Opis: {{$caffe->description}} <br />
                 <img src="{{asset('images/caffe_images/' . $caffe->image)}}" /> <br />
                 <br />
-                {{$caffe->description}} <br />
+
             </p>
             <div class="panel-body">
                     <div class="table-responsive">
