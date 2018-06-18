@@ -33,7 +33,23 @@ class PermissionsTableSeeder extends Seeder
                 'name' => 'users',
                 'display_name' => 'Manage Users',
                 'description' => 'Allow user to manage system users'
-            ]
+            ],[
+                'name' => 'article',
+                'display_name' => 'Manage Articles',
+                'description' => 'User can perform actions with Articles combined with other permissions'
+            ],[
+                'name' => 'caffe',
+                'display_name' => 'Manage caffes',
+                'description' => 'User can perform actions with Caffes combined with other permissions'
+            ],[
+                'name' => 'table',
+                'display_name' => 'Manage tables',
+                'description' => 'User can perform actions with Tables combined with other permissions'
+            ],[
+                'name' => 'view',
+                'display_name' => 'Certain View',
+                'description' => 'Permission combined with other permissions'
+            ],
         ];
 
         foreach ($permissions as $key => $value) {
