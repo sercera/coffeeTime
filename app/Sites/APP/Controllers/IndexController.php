@@ -7,6 +7,8 @@ use App\Models\Caffe;
 use App\Models\Table;
 use App\Models\Post;
 use App\Models\Menu;
+use App\Models\User;
+use App\Models\UserDetails;
 
 class IndexController extends Controller
 {
@@ -32,6 +34,7 @@ class IndexController extends Controller
         $caffe=Caffe::find($id);
         $posts=Post::all();
         $menus=Menu::all();
+        $users=User::all();
         $tables = Table::all();
         $broj_mesta=0;
 
@@ -47,7 +50,7 @@ class IndexController extends Controller
             return redirect()->back();
         }
 
-        return view('caffe-show')->withCaffe($caffe)->withMesta($broj_mesta)->withPosts($posts)->withMenus($menus);
+        return view('caffe-show')->withCaffe($caffe)->withMesta($broj_mesta)->withPosts($posts)->withMenus($menus)->withUsers($users);
     }
 
 }

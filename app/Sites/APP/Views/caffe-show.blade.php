@@ -254,6 +254,16 @@
                         <h3 class="col-xs-10">Our Team</h3>
                         <div class="col-lg-10 mt-30 mt-md-50">
                             <div class="row flex-center">
+                                @foreach($users as $user)
+                                        <div>
+                                            <img src="img/team-member-1.jpg" width="420" height="397" class="scaling-image" alt="">
+                                            {{--{{$user['userDetails']->first_name}} {{$user['userDetails']->last_name}}--}}
+                                            <h5 class="text-semi-bold mt-30">{{$user->username}}</h5>
+                                            <p class="second-font text-primary mt-10">Chief Cook</p>
+                                            <p class="mt-10 pr-md-20">Dry saying be firmament won't abundantly Man one his, fourth creature rule spirit male brought light, face creature. Thing bearing. Our. Moveth given behold she'd i whose herb open without.</p>
+                                        </div>
+                                @endforeach
+
 
                                 <div class="col-md-4 col-lg-6 col-xl-4">
                                     <img src="img/team-member-1.jpg" width="420" height="397" class="scaling-image" alt="">
