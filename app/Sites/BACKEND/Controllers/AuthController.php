@@ -16,7 +16,7 @@ class AuthController extends BaseController
          $this->middleware('auth');
      }
 
-    /* public function callAction($method, $parameters)
+     public function callAction($method, $parameters)
      {
 
 
@@ -30,7 +30,7 @@ class AuthController extends BaseController
          return redirect('403');
 
 
-     }*/
+     }
 
 
 }

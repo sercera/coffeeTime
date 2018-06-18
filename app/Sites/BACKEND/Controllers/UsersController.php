@@ -12,7 +12,7 @@ use Validator;
 
 class UsersController extends Controller
 {
-    public function index()
+    public function index($permissions=["users","view"])
     {
         $allUsers = User::all();
 
@@ -33,28 +33,27 @@ class UsersController extends Controller
 
     }
 
-//$permissions=['create']
-    public function create()
+    public function create($permissions=["users","create"])
     {
 
 
-//        if (Auth::user()->hasRole('admin')) {
-//
-//            $roles = Role::all();
-//        } elseif (Auth::user()->hasRole('owner')) {
-//
-//            $roles = Role::where('name', '!=', 'admin')->get();
-//        } else {
-//
-//            $roles = null;
-//        }
+        if (Auth::user()->hasRole('admin')) {
+
+            $roles = Role::all();
+        } elseif (Auth::user()->hasRole('owner')) {
+
+            $roles = Role::where('name', '!=', 'admin')->get();
+        } else {
+
+            $roles = null;
+        }
 
 
-        return view('users.create');//, compact('roles'));
+        return view('users.create',compact('roles')) ;
 
     }
 
-    public function update($user)
+    public function update($user, $permissions=["users","edit"])
     {
 
 
@@ -108,7 +107,7 @@ class UsersController extends Controller
 
     }
 
-    public function store()
+    public function store($permissions=["users","edit"])
     {
 
         $request = Request::all();
@@ -167,7 +166,7 @@ class UsersController extends Controller
         return redirect()->route('users.create')->with('success', 'Uspešno ste dodali novog radnika.');
     }
 
-    public function destroy($userId)
+    public function destroy($userId, $permissions=["users","delete"])
     {
 
         $username = User::find($userId)->username;
@@ -178,7 +177,7 @@ class UsersController extends Controller
 
     }
 
-    public function edit($user)
+    public function edit($user, $permissions=["table","edit"])
     {
         $user = User::find($user);
 
@@ -207,7 +206,7 @@ class UsersController extends Controller
     }
 
 
-    public function editPassword($user, $permissions = ['edit'])
+    public function editPassword($user, $permissions=["users","edit"])
     {
         $request = Request::all();
 

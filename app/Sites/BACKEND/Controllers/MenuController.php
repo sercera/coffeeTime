@@ -10,14 +10,14 @@ use Session;
 
 class MenuController extends AuthController
 {
-    public function index()
+    public function index($permissions=["caffe","view"])
     {
         $caffes = Caffe::all();
         $articles = Article::all();
         return view('menu.menu')->withCaffes($caffes)->withArticles($articles);
     }
 
-    public function submit(Request $request)
+    public function submit(Request $request, $permissions=["caffe","edit"])
     {
 //        $this->validate($request, [
 //            'fk_for_caffe'=> 'required'
@@ -39,7 +39,7 @@ class MenuController extends AuthController
         return redirect('/menu')->with('success', 'Uspešno ste dodali novi meni.');
     }
 
-    public function addArticle(Request $request)
+    public function addArticle(Request $request, $permissions=["caffe","edit"])
     {
         $menu = Menu::find($request->input('meni_id'));
 
@@ -52,7 +52,7 @@ class MenuController extends AuthController
         return redirect()->route('menu.show', $menu->menu_id)->with('success', 'Uspešno ste dodali novi proizvod.');
     }
 
-    public function removeFromMenu($meni, $arti)
+    public function removeFromMenu($meni, $arti, $permissions=["caffe","edit"])
     {
         $menu = Menu::find($meni);
 
@@ -61,7 +61,7 @@ class MenuController extends AuthController
         return redirect()->route('menu.show', $menu->menu_id)->with('success', 'Article Removed');
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $permissions=["caffe","edit"])
     {
         $menu = Menu::findorFail($request->meni);
 
@@ -74,13 +74,13 @@ class MenuController extends AuthController
         ]);
         return back();
     }
-    public function list()
+    public function list($permissions=["caffe","view"])
     {
         $menus = Menu::all();
         return view('menu.menuList')->withMenus($menus);
     }
 
-    public function show($id)
+    public function show($id, $permissions=["caffe","view"])
     {
         $menu = Menu::find($id);
 
@@ -93,7 +93,7 @@ class MenuController extends AuthController
         return view('menu.menu-show')->withMenu($menu)->withArticles($articles);
     }
 
-    public function destroy($id)
+    public function destroy($id, $permissions=["caffe","delete"])
     {
         $menu = Menu::find($id);
         $menu->article()->detach();
