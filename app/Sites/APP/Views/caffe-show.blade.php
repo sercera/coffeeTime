@@ -84,10 +84,9 @@
                     <li data-menuanchor="2Page"><a href="#2Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">02</span><span class="text-middle pl-20" style="color:black">O nama</span></a></li>
                     <li data-menuanchor="3Page"><a href="#3Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">03</span><span class="text-middle pl-20" style="color:black">Menu</span></a></li>
                     <li data-menuanchor="4Page"><a href="#4Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">04</span><span class="text-middle pl-20" style="color:black">Rezervacije</span></a></li>
-                    <li data-menuanchor="5Page"><a href="#5Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">05</span><span class="text-middle pl-20" style="color:black">Galerija</span></a></li>
+                    <li data-menuanchor="5Page"><a href="#5Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">05</span><span class="text-middle pl-20" style="color:black">Postovi</span></a></li>
                     <li data-menuanchor="6Page"><a href="#6Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">06</span><span class="text-middle pl-20" style="color:black">Tim</span></a></li>
                     <li data-menuanchor="7Page"><a href="#7Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">07</span><span class="text-middle pl-20" style="color:black">Kontakt</span></a></li>
-                    <li data-menuanchor="8Page"><a href="#8Page"><span class="h3 text-middle show-inline-block text-bold" style="color:black">08</span><span class="text-middle pl-20" style="color:black">Postovi</span></a></li>
                 </ul>
             </div>
         </div>
@@ -135,6 +134,10 @@
                                         <br class="hide show-md-block">
                                         <br>
                                     </p>
+                                    <img src="{{asset('images/caffe_images/' . $caffe->image)}}" /> <br />
+                                    {{--<img src="{{$caffe->image}}" width="143" height="143" alt="">--}}
+
+
                                     <div class="text-center text-lg-right mt-30"><a href="{{$caffe->www}}" class="btn btn-md btn-primary">SAZNAJ VIŠE</a></div>
                                 </div>
                                 <div class="col-sm-10 col-md-6 col-lg-5 mt-40 mt-md-0">
@@ -166,7 +169,7 @@
                                         @if($menu->fk_for_caffe==$caffe->caffe_id)
                                             <div class="media media-md">
                                                 <div class="media-body">
-                                                    <h4 class="text-medium text-primary" style="text-align: center">{{$menu->name}}</h4>
+                                                    <a href=""><h4 class="text-medium text-primary" style="text-align: center">{{$menu->name}}</h4></a>
                                                 </div>
                                             </div>
                                         @endif
@@ -221,86 +224,28 @@
                 </div>
             </section>
 
-            <!--========== GALLERY ==========-->
+            <!--========== POSTS ==========-->
             <section class="section section-content " id="section4">
                 <div class="container container-big text-md-left">
                     <div class="row flex-center flex-xl-left">
-                        <h3 class="col-xs-10">Gallery</h3>
-                        <div class="col-xl-9 mt-30 mt-md-50">
-                            <div data-lightbox="gallery">
-                                <div class="row flex-center flex-xl-left light-section">
-
-                                    <!-- Gallery Item -->
-                                    <div class="col-sm-6 col-md-4 col-lg-5 col-xl-4">
-                                        <a href="img/gallery-img-1.jpg" data-lightbox="image" title="Image 1" class="img-container-1">
-                                            <img src="img/gallery-img-1.jpg" width="369" height="277" alt="">
-                                            <div class="img-bar">
-                                                <h5 class="default-font text-bold">INTERIOR DESIGN</h5>
-                                                <p class="mt-20">Likeness stars fly be. Years fowl third over. Of after.</p>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <!-- Gallery Item -->
-                                    <div class="col-sm-6 col-md-4 col-lg-5 col-xl-4 mt-30 mt-sm-0">
-                                        <a href="img/gallery-img-2.jpg" data-lightbox="image" title="Image 2" class="img-container-1">
-                                            <img src="img/gallery-img-2.jpg" width="369" height="277" alt="">
-                                            <div class="img-bar">
-                                                <h5 class="default-font text-bold">KITCHEN</h5>
-                                                <p class="mt-20">Likeness stars fly be. Years fowl third over. Of after.</p>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <!-- Gallery Item -->
-                                    <div class="col-sm-6 col-md-4 col-lg-5 col-xl-4 mt-30 mt-md-0 mt-lg-30 mt-xl-0">
-                                        <a href="img/gallery-img-3.jpg" data-lightbox="image" title="Image 3" class="img-container-1">
-                                            <img src="img/gallery-img-3.jpg" width="369" height="277" alt="">
-                                            <div class="img-bar">
-                                                <h5 class="default-font text-bold">SHOPWINDOW</h5>
-                                                <p class="mt-20">Likeness stars fly be. Years fowl third over. Of after.</p>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <!-- Gallery Item -->
-                                    <div class="col-sm-6 col-md-4 col-lg-5 col-xl-4 mt-30">
-                                        <a href="img/gallery-img-4.jpg" data-lightbox="image" title="Image 4" class="img-container-1">
-                                            <img src="img/gallery-img-4.jpg" width="369" height="277" alt="">
-                                            <div class="img-bar">
-                                                <h5 class="default-font text-bold">LOVEY DOVEY CUPS</h5>
-                                                <p class="mt-20">Likeness stars fly be. Years fowl third over. Of after.</p>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <!-- Gallery Item -->
-                                    <div class="col-sm-6 col-md-4 col-lg-5 col-xl-4 mt-30">
-                                        <a href="img/gallery-img-5.jpg" data-lightbox="image" title="Image 5" class="img-container-1">
-                                            <img src="img/gallery-img-5.jpg" width="369" height="277" alt="">
-                                            <div class="img-bar">
-                                                <h5 class="default-font text-bold">FIRE</h5>
-                                                <p class="mt-20">Likeness stars fly be. Years fowl third over. Of after.</p>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <!-- Gallery Item -->
-                                    <div class="col-sm-6 col-md-4 col-lg-5 col-xl-4 mt-30">
-                                        <a href="img/gallery-img-6.jpg" data-lightbox="image" title="Image 6" class="img-container-1">
-                                            <img src="img/gallery-img-6.jpg" width="369" height="277" alt="">
-                                            <div class="img-bar">
-                                                <h5 class="default-font text-bold">PIZZA</h5>
-                                                <p class="mt-20">Likeness stars fly be. Years fowl third over. Of after.</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                        <h3 class="col-xs-10">Postovi</h3>
+                        <div class="col-xl-1 mt-20 mt-md-30">
+                                @foreach($posts as $post)
+                                    @if($post->fk_for_caffe==$caffe->caffe_id)
+                                        <div style="margin:15px; padding: 15px; box-shadow: 1px 1px 10px 2px silver;">
+                                            <h4 class="text-semi-bold mt-30">{{$post->title}}</h4>
+                                            <p class="second-font text-primary mt-10">{{$post->content}}</p>
+                                            <br />
+                                        </div>
+                                    @endif
+                                @endforeach
                         </div>
                     </div>
                 </div>
             </section>
+
+
+
 
             <!--========== TEAM ==========-->
             <section class="section section-content" id="section5">
@@ -412,8 +357,6 @@
                     </div>
                 </div>
             </section>
-
-            //deo za postove
 
         </div>
 
