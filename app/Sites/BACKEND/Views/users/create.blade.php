@@ -177,13 +177,24 @@
 
 
                 </div>
-                <div class="form-group row">
+                <div class="form-group">
 
                     {!! Form::label('role','Uloga'); !!}
                     @if(!empty($roles))
                         <select name="role" id="select2" class="form-control" style="width: 100%">
                             @foreach($roles as $role)
                                 <option value="{{$role->id}}">{{$role->display_name}}</option>
+                            @endforeach
+                        </select>
+                    @endif
+                </div>
+                <div class="form-group">
+
+                    {!! Form::label('caffe','Kafic'); !!}
+                    @if(!empty($caffes))
+                        <select name="caffe" id="select2" class="form-control" style="width: 100%">
+                            @foreach($caffes as $caffe)
+                                <option value="{{$caffe->caffe_id}}">{{$caffe->name}}</option>
                             @endforeach
                         </select>
                     @endif

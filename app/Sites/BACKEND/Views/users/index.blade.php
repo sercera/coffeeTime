@@ -4,6 +4,8 @@
 @endsection
 
 @section('content')
+    @include('error')
+
 
     <ol class="breadcrumb breadcrumb-quirk">
         <li>
@@ -44,7 +46,7 @@
                         <td >Adresa stanovanja</td>
                         <td>Pol</td>
                         <td>Rola</td>
-                        {{--<td>Kafic</td>--}}
+                        <td>Kafic</td>
                         <td>Akcije</td>
                     </tr>
                     </thead>
@@ -60,6 +62,7 @@
                             <td>{{$user['userDetails']->address}}</td>
                             <td>{{$user['userDetails']->gender}}</td>
                             <td>{{$user['role']}}</td>
+                            <td>{{empty($user['caffe'])?"/":$user['caffe']}}</td>
                             <td style="width: 150px;">
                                 <a  href="{{url('users/delete',$user['user_id'])}}" class="btn btn-danger"
                                     role="button">Izbriši

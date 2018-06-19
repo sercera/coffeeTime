@@ -18,7 +18,7 @@ class LogoutController extends AuthController
 
     use AuthenticatesUsers;
 
-    public function logout(){
+    public function logout($permissions=["view"]){
 
         Auth::logout();
         Session::flush();

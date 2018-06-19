@@ -6,14 +6,26 @@ use App\Models\Caffe;
 use App\Models\Table;
 use Illuminate\Http\Request;
 use Session;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class TableController extends AuthController
 {
     public function index($permissions=["table","view"])
     {
-        $tables = Table::all();
-        $caffes = Caffe::all();
+        $loggedUser=Auth::user();
+
+        if($loggedUser->hasRole('admin')){
+
+            $tables = Table::all();
+            $caffes = Caffe::all();
+
+        } else if($loggedUser->hasRole('owner')){
+
+            $tables=Table::where('fk_for_caffe',$loggedUser->fk_for_caffe)->get();
+            $caffes=Caffe::where('caffe_id',$loggedUser->fk_for_caffe)->get();
+        }
 
         return view('table.table')->withTables($tables)->withCaffes($caffes);
     }
@@ -25,15 +37,6 @@ class TableController extends AuthController
             'number' => 'required',
             'spots' => 'required'
         ]);
-
-
-//        DB::table('tables')->insert([
-//
-//            'table_number' => $request->input['number'],
-//            'table_spots' => $request->input['spots'],
-//            'fk_for_caffe ' => $request->input['fk_for_caffe']
-//
-//        ]);
 
         $table = new Table;
         $table->table_number = $request->input('number');
