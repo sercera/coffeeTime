@@ -5,6 +5,7 @@ namespace App\Sites\BACKEND\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Caffe;
 use App\Models\Table;
+use Illuminate\Support\Facades\Auth;
 use Session;
 use Image;
 use Storage;
@@ -59,7 +60,20 @@ class CaffeController extends AuthController
 
     public function getCaffes($permissions=["article","view"])
     {
-        $caffes = Caffe::all();
+        $loggedUser=Auth::user();
+
+        if($loggedUser->hasRole('admin')){
+
+            $caffes = Caffe::all();
+
+        }else if($loggedUser->hasRole('owner')){
+
+            $caffes=Caffe::where('caffe_id',$loggedUser->fk_for_caffe)->get();
+        } else {
+            $caffes=null;
+
+        }
+
 
         return view('caffe.caffeList')->with('caffes', $caffes);
     }
@@ -138,16 +152,19 @@ class CaffeController extends AuthController
 
     public function show($id, $permissions=["caffe","view"])
     {
+        if(empty($id)){
+
+            $id=Auth::user()->fk_for_caffe;
+        }
         $caffe = Caffe::find($id);
-        $tables = Table::all();
+        $tables = $caffe->tables()->get();
         $broj_mesta=0;
 
         foreach($tables as $table) {
-            if ($table->fk_for_caffe == $id) {
                 if ($table->is_taken == 0 && $table->is_reserved == 0) {
                     $broj_mesta++;
                 }
-            }
+
         }
         if (empty($caffe)) {
 

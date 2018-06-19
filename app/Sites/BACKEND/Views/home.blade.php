@@ -8,6 +8,8 @@
     @include('error')
 
     <div class="row panel-quick-page">
+        @if(Auth::user()->hasRole('admin'))
+
         <a href="{{url('caffe')}}">
             <div class="col-xs-4 col-sm-5 col-md-4 page-support">
                 <div class="panel">
@@ -22,6 +24,7 @@
                 </div>
             </div>
         </a>
+        @endif
         <a href="{{url('table')}}">
             <div class="col-xs-4 col-sm-4 col-md-4 page-user">
                 <div class="panel">

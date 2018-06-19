@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Sites\BACKEND\Controllers;
+
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -11,26 +12,40 @@ class AuthController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-     public function __construct(){
+    public function __construct()
+    {
 
-         $this->middleware('auth');
-     }
+        $this->middleware('auth');
+    }
 
-     public function callAction($method, $parameters)
-     {
-
-
-         $permissions = end($parameters);
-
-         foreach ($permissions as $permission)
-         if ( Auth::user()->can($permission)) {
-
-             return parent::callAction($method, $parameters);
-         }
-         return redirect('403');
+    public function callAction($method, $parameters)
+    {
 
 
-     }
+        $permissions = end($parameters);
+        $can = false;
+        foreach ($permissions as $permission)
+            if (Auth::user()->can($permission)) {
+
+                $can = true;
+
+            } else{
+
+            $can=false;
+            }
+            if($can){
+
+                return parent::callAction($method, $parameters);
+
+            } else{
+
+                return redirect('403');
+
+            }
+
+
+
+    }
 
 
 }

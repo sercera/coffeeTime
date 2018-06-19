@@ -8,23 +8,47 @@ use DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Caffe;
 use Validator;
 
 
 class UsersController extends Controller
 {
-    public function index($permissions=["users","view"])
+    public function index($permissions = ["users", "view"])
     {
-        $allUsers = User::all();
+        $loggedUser = Auth::user();
+        $allUsers = null;
+
+
+        if ($loggedUser->hasRole('admin')) {
+
+            $allUsers = User::all();
+
+        } else if ($loggedUser->hasRole('owner')) {
+
+            $allUsers = User::where('fk_for_caffe', $loggedUser->fk_for_caffe)->get();
+
+        }
 
         $users = [];
         $numeration = 0;
 
         foreach ($allUsers as $user) {
 
+            if ($loggedUser->hasRole('owner')) {
+                if($user->hasRole('employee')){
+                 //do-nothing
+
+                } else {
+
+                    continue;
+                }
+            }
+
             $users[$numeration]['user_id'] = $user->user_id;
             $users[$numeration]['username'] = $user->username;
             $users[$numeration]['email'] = $user->email;
+            $users[$numeration]['caffe'] = !empty($user->fk_for_caffe) ? Caffe::find($user->fk_for_caffe)->name : null;
             $users[$numeration]['userDetails'] = $user->getDetails()->first();
             $users[$numeration++]['role'] = Role::where('id', DB::table('role_user')->where('user_id', $user->user_id)->first()->role_id)->first()->display_name;
 
@@ -33,34 +57,39 @@ class UsersController extends Controller
         }
 
 
-        return view('users.index', compact('users'));
+//        return view('users.index', compact('users'));
+
+        return view('users.index', compact('users', 'caffe'));
+
 
 
     }
 
-    public function create($permissions=["users","create"])
+    public function create($permissions = ["users", "create"])
     {
 
 
         if (Auth::user()->hasRole('admin')) {
 
             $roles = Role::all();
+            $caffes = Caffe::all();
         } elseif (Auth::user()->hasRole('owner')) {
 
             $roles = Role::where('name', '!=', 'admin')->get();
+            $caffes = Caffe::where('caffe_id', Auth::user()->fk_for_caffe)->get();
         } else {
 
             $roles = null;
+            $caffes = null;
         }
 
 
-        return view('users.create',compact('roles')) ;
+        return view('users.create', compact('caffes', 'roles'));
 
     }
 
-    public function update($user, $permissions=["users","edit"])
+    public function update($user, $permissions = ["users", "edit"])
     {
-
 
         $request = Request::all();
 
@@ -72,7 +101,6 @@ class UsersController extends Controller
 
         ];
 
-
         $validation = Validator::make($request, $rules);
         if ($validation->fails()) {
 
@@ -80,13 +108,12 @@ class UsersController extends Controller
 
         }
 
-
         DB::table('users')->where('user_id', $user)->update([
 
             'username' => $request['username'],
+            'fk_for_caffe' => $request['caffe'],
 
         ]);
-
 
         DB::table('user_details')->where('fk_for_user', $user)->update([
             'first_name' => $request['first_name'],
@@ -112,7 +139,7 @@ class UsersController extends Controller
 
     }
 
-    public function store($permissions=["users","edit"])
+    public function store($permissions = ["users", "edit"])
     {
 
         $request = Request::all();
@@ -142,7 +169,9 @@ class UsersController extends Controller
 
             'username' => $request['username'],
             'email' => $request['email'],
-            'password' => bcrypt($request['password'])
+            'password' => bcrypt($request['password']),
+            'fk_for_caffe' => $request['caffe']
+
 
         ]);
 
@@ -171,7 +200,7 @@ class UsersController extends Controller
         return redirect()->route('users.create')->with('success', 'Uspešno ste dodali novog radnika.');
     }
 
-    public function destroy($userId, $permissions=["users","delete"])
+    public function destroy($userId, $permissions = ["users", "delete"])
     {
 
         $username = User::find($userId)->username;
@@ -182,7 +211,7 @@ class UsersController extends Controller
 
     }
 
-    public function edit($user, $permissions=["table","edit"])
+    public function edit($user, $permissions = ["table", "edit"])
     {
         $user = User::find($user);
 
@@ -203,15 +232,30 @@ class UsersController extends Controller
 
                 $roles[$numeration++] = $role;
             }
+            $caffe = Caffe::find($user->fk_for_caffe);
+            $i = 0;
+            $caffes[$i++] = $caffe;
 
-            return view('users.edit', compact('user', 'userDetails', 'roles'));
+            if (Auth::user()->hasRole('admin')) {
+
+                $allCaffes = Caffe::where('caffe_id', '!=', $user->fk_for_caffe)->get();
+
+                foreach ($allCaffes as $caffeItem) {
+
+                    $caffes[$i++] = $caffeItem;
+
+                }
+
+            }
+
+            return view('users.edit', compact('user', 'userDetails', 'roles', 'caffes'));
 
 
         }
     }
 
 
-    public function editPassword($user, $permissions=["users","edit"])
+    public function editPassword($user, $permissions = ["users", "edit"])
     {
         $request = Request::all();
 
@@ -236,7 +280,7 @@ class UsersController extends Controller
 
         ]);
 
-        return redirect()->route('users.edit', [$user]);
+        return redirect()->route('users.edit', [$user])->with('success', 'Uspešno ste promenili sifru!');
 
     }
 

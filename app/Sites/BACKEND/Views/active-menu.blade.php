@@ -6,9 +6,11 @@
         <span>Kafići</span>
     </a>
     <ul class="children">
+        @if(Auth::user()->hasRole('admin'))
         <li {{ request()->is('/caffe/add') ? 'class=active ' : '' }}>
             <a href="{{url(('/caffe/add'))}}">Dodajte novi kafić</a>
         </li>
+        @endif
         <li {{ request()->is('/caffe') ? 'class=active ' : '' }}>
             <a href="{{url(('/caffe'))}}">Lista svih kafića</a>
         </li>

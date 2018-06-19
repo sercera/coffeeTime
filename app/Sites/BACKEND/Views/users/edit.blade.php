@@ -165,6 +165,18 @@
                     @endif
                 </div>
 
+                <div class="form-group row">
+
+                    {!! Form::label('caffe','Kafic'); !!}
+                    @if(!empty($caffes))
+                        <select name="caffe" id="select2" class="form-control" style="width: 100%">
+                            @foreach($caffes as $caffe)
+                                <option value="{{$caffe->caffe_id}}">{{$caffe->name}}</option>
+                            @endforeach
+                        </select>
+                    @endif
+                </div>
+
             </div>
             <div class="row">
 
