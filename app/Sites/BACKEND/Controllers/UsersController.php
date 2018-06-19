@@ -28,10 +28,10 @@ class UsersController extends Controller
             $users[$numeration]['userDetails'] = $user->getDetails()->first();
             $users[$numeration++]['role'] = Role::where('id', DB::table('role_user')->where('user_id', $user->user_id)->first()->role_id)->first()->display_name;
 
+//            var_dump($users[0]['userDetails']->first_name);
+//            die();
         }
 
-        var_dump($users[0]['userDetails']);
-        die();
 
         return view('users.index', compact('users'));
 
