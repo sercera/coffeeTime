@@ -11,13 +11,13 @@
         <li>
             <a href="{{url('/')}}">
                 <i class="glyphicon glyphicon-home"></i>
-                Home
+                Početna strana
             </a>
         </li>
         <li class="active">
             <a href="{{url('users')}}">
                 <i class="fa fa-users"></i>
-                Lista svih radnika
+                Lista svih korisnika
 
             </a>
         </li>
@@ -28,7 +28,7 @@
             <div class="col-lg-5">
             </div>
             <div class="col-lg-7">
-                <h4 class="panel-title" style="margin-left: 40%;">Lista svih radnika</h4>
+                <h4 class="panel-title">Lista svih radnika</h4>
             </div>
         </div>
 

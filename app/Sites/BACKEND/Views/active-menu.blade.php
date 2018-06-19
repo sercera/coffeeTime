@@ -19,14 +19,14 @@
 <li class="nav-parent">
     <a href="">
         <i class="fa fa-users"></i>
-        <span>Radnici</span>
+        <span>Korisnici</span>
     </a>
     <ul class="children">
         <li {{ request()->is('users/create') ? 'class=active ' : '' }}>
-            <a href="{{url(('users/create'))}}"> Dodajte novog radnika</a>
+            <a href="{{url(('users/create'))}}"> Dodajte novog korisnika</a>
         </li>
         <li {{ request()->is('users') ? 'class=active ' : '' }}>
-            <a href="{{url(('users'))}}"> Lista svih radnika</a>
+            <a href="{{url(('users'))}}"> Lista svih korisnika</a>
         </li>
     </ul>
 </li>
