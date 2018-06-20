@@ -10,6 +10,8 @@ use App\Models\Menu;
 use App\Models\User;
 use App\Models\UserDetails;
 use App\Models\Role;
+use Session;
+use Mail;
 
 class IndexController extends Controller
 {
@@ -56,5 +58,33 @@ class IndexController extends Controller
         return view('caffe-show')->withCaffe($caffe)->withMesta($broj_mesta)->withPosts($posts)
             ->withMenus($menus)->withUsers($users)->withUsersDetails($usersDetails)->withRoles($roles);
     }
+
+    public function contact(Request $request)
+    {
+        $this->validate($request, [
+            'email'=>'required|email',
+            'subject'=>'min:3',
+            'message'=>'min:10'
+        ]);
+
+        $data=array(
+            'email'=>$request->email,
+            'subject'=>$request->subject,
+            'bodyMessage'=>$request->message
+        );
+
+        Mail::send('mail.contact',$data,function($message) use ($data)
+        {
+            $message->from($data['email']);
+            $message->to('stiglo@stiglo.com');
+            $message->subject($data['subject']);
+        });
+
+        Session::flash('succes','Your email was sent!');
+
+//        return redirect('/')->with('success', 'Uspešno ste poslali mail.');
+        return redirect()->back()->with('success', 'Uspešno ste poslali mail.');
+    }
+
 
 }

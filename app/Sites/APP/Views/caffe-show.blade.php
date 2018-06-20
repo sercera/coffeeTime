@@ -288,11 +288,12 @@
                 </div>
             </section>
 
+
             <!--========== CONTACT US ==========-->
             <section class="section section-content " id="section6">
                 <div class="container container-big text-md-left">
                     <div class="row flex-center flex-xl-left">
-                        <h3 class="col-xs-10">Contact Us</h3>
+                        <h3 class="col-xs-10">Kontakt</h3>
                         <div class="col-xl-12 mt-30 mt-md-50">
                             <div class="row flex-center flex-xl-left">
                                 <div class="col-md-6 col-xl-5">
@@ -301,46 +302,64 @@
 
                                 <!-- Contact Form -->
                                 <div class="col-sm-10 col-md-6 col-lg-5 mt-30 mt-md-0">
-                                    <h6 class="text-medium">Get in touch</h6>
-                                    <form class="contact-form js-form" method="POST" action="php/contact.php">
-                                        <div class="row">
-                                            <div class="form-group col-md-12">
-                                                <input autocomplete="off" required type="text" name="name" class="form-control" placeholder="Name">
-                                            </div>
-                                            <div class="form-group col-md-12 mt-20 mt-md-30">
-                                                <input autocomplete="off" required type="email" name="email" class="form-control" placeholder="Email">
-                                            </div>
-                                            <div class="form-group col-md-12 mt-20 mt-md-30">
-                                                <textarea required name="message" class="form-control" placeholder="Message"></textarea>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-lg btn-primary mt-20">CONTACT US</button>
-                                    </form>
+                                    <h6 class="text-medium">Kontaktiraj nas</h6>
+
+                                    {!! Form::open(['route'=>['contact',$caffe->caffe_id], 'method'=>'POST']) !!}
+                                    <div class="form-group">
+                                        {{Form::text('email', '' , ['class' => 'form-control', 'placeholder' => 'Unesite email','required'=>'required'])}}
+                                    </div>
+                                    <div class="form-group">
+                                        {{Form::text('subject', '' , ['class' => 'form-control', 'placeholder' => 'Unesite naslov','required'=>'required'])}}
+                                    </div>
+                                    <div class="form-group">
+                                        {{Form::textarea('message', '' , ['class' => 'form-control', 'placeholder' => 'Poruka','required'=>'required'])}}
+                                    </div>
+                                    <div>
+                                        {{Form::submit('POSALJI PORUKU',['class'=>'btn btn-primary'])}}
+                                    </div>
+                                    {!! Form::close() !!}
+
+
+                                    {{--<form class="contact-form js-form" method="POST" action="{{url('caffe/show/{caffe_id}/contact')}}">--}}
+                                    {{--{{csrf_field()}}--}}
+                                    {{--<div class="row">--}}
+                                    {{--<div class="form-group col-md-12">--}}
+                                    {{--<input autocomplete="off" required type="email" name="email" class="form-control" placeholder="E-mail">--}}
+                                    {{--</div>--}}
+                                    {{--<br />--}}
+                                    {{--<div class="form-group col-md-12 mt-20 mt-md-30">--}}
+                                    {{--<input autocomplete="off" required type="text" name="subject" class="form-control" placeholder="Naslov">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="form-group col-md-12 mt-20 mt-md-30">--}}
+                                    {{--<textarea required name="message" class="form-control" placeholder="Poruka"></textarea>--}}
+                                    {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<button type="submit" class="btn btn-lg btn-primary mt-20">POŠALJI PORUKU</button>--}}
+                                    {{--</form>--}}
                                 </div>
                             </div>
+
                             <div class="contact-data row">
                                 <div class="col-xl-10">
                                     <div class="row">
                                         <div class="col-md-3 col-lg-3 col-xl-4">
-                                            <p class="second-font text-bold text-primary ls-0">ADDRESS</p>
+                                            <p class="second-font text-bold text-primary ls-0">ADRESA</p>
                                             <p class="mt-10 mt-md-20">
-                                                Nicholas Desmond Simon Graham <br>
-                                                PO Box 1230 <br>
-                                                Georgetown <br>
-                                                Grand Cayman <br>
-                                                CAYMAN ISLANDS - UK <br>
+                                                {{$caffe->address}} <br>
+                                                {{$caffe->city}} <br>
                                             </p>
                                         </div>
                                         <div class="col-md-4 col-lg-5 col-xl-4 mt-30 mt-md-0">
-                                            <p class="second-font text-bold text-primary ls-0">PHONES</p>
-                                            <p class="mt-10 mt-md-20 show-lg-flex flex-justify pr-lg-100"><span class="text-bold">Administration:</span> <a href="#">+(099) 45-33-687</a></p>
-                                            <p class="mt-10 show-lg-flex flex-justify pr-lg-100"><span class="text-bold">Chief Cook:</span> <a href="#">+(099) 64-85-879</a></p>
-                                            <p class="mt-10 show-lg-flex flex-justify pr-lg-100"><span class="text-bold">Reserve a table:</span> <a href="#">+(099) 56-98-147</a></p>
+                                            <p class="second-font text-bold text-primary ls-0">TELEFON</p>
+                                            <p class="mt-10 mt-md-20">
+                                                {{$caffe->call_number}} <br>
+                                            </p>
                                         </div>
                                         <div class="col-md-5 col-lg-4 mt-30 mt-md-0">
-                                            <p class="second-font text-bold text-primary ls-0">EMAILS</p>
-                                            <p class="mt-10 mt-md-20 show-md-flex flex-justify pr-md-20"><span class="text-bold">Administration:</span> <a href="#">Admin@email.com</a></p>
-                                            <p class="mt-10 show-md-flex flex-justify pr-md-20"><span class="text-bold">Reserve a table:</span> <a href="#">Mangocafe@email.com</a></p>
+                                            <p class="second-font text-bold text-primary ls-0">BLOG</p>
+                                            <p class="mt-10 mt-md-20">
+                                                <a href="{{$caffe->www}}">{{$caffe->www}}</a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -349,7 +368,6 @@
                     </div>
                 </div>
             </section>
-
         </div>
 
     </main>
