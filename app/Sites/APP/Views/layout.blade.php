@@ -32,6 +32,7 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CPlayfair+Display:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{{asset('FRONTEND/site/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('FRONTEND/site/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css')}}">
 
 </head>
 <body>
@@ -528,6 +529,7 @@
 <script src="{{asset('FRONTEND/site/js/minified.js')}}"></script>
 <!-- Additional Functionality Scripts -->
 <script src="{{asset('FRONTEND/site/js/main.js')}}"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
 </body>
 </html>

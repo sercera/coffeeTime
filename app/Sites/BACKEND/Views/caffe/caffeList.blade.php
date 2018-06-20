@@ -42,6 +42,7 @@
                     <td>Grad</td>
                     <td>Radno vreme</td>
                     <td>Opis</td>
+                    <td>Rezervacije</td>
                     <td>Prikaži kafić</td>
                     <td>Lista radnika</td>
                     <td>Akcije</td>
@@ -56,8 +57,10 @@
                         <td>{{$caffe->call_number}}</td>
                         <td>{{$caffe->city}}</td>
                         <td>{{$caffe->work_hour_from}}-{{$caffe->work_hour_to}}</td>
-                        <td>{{$caffe->description}}</td>
-
+                        <td>{{$caffe->description}}</td>  <td style="width:75px;">
+                            <a href="{{url('/caffe/reservations',$caffe['caffe_id'])}}"
+                               class="edit btn btn-info" role="button">Rezervacije</a>
+                        </td>
                         <td style="width:75px;">
                             <a href="{{url('caffe/show',$caffe['caffe_id'])}}"
                                class="edit btn btn-info" role="button">Prikaži</a>

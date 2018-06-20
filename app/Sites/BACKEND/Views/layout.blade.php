@@ -17,8 +17,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('/lib/jquery-toggles/toggles-full.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-date-picker/bootstrap-datepicker3.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('lib/select2/select2.css')}}">
-    <link rel="stylesheet" type="text/css"
-          href="{{asset('lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css')}}">
+
     {{--    <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-data-table/dataTables.bootstrap.css')}}">--}}
 
 
@@ -75,8 +75,18 @@
                     <li>
                         <div class="btn-group">
                             <button type="button" class="btn btn-logged" data-toggle="dropdown">
+                                <i class="fa fa-bell"></i>  Obaveštenja
+                                <span class="badge">{{count(Auth::user()->notifications)}}</span>
+                            </button>
+                            <ul class="dropdown-menu pull-right">
+                                {{--@foreach()--}}
+                                {{--<li></li>--}}
+                                    {{--@endforeach--}}
+                            </ul>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-logged" data-toggle="dropdown">
                                 <img src="images/photos/loggeduser.png" alt=""/>{{Auth::user()->username}}
-
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu pull-right">
@@ -159,7 +169,7 @@
 <script src="{{asset('lib/bootstrap-date-picker/bootstrap-datepicker3.js')}}"></script>
 <script src="{{asset('lib/select2/select2.js')}}"></script>
 <script src="{{asset('lib/jquery-validate/jquery.validate.js')}}"></script>
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
 
 @yield('scripts')
 

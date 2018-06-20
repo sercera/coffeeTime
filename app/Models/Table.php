@@ -23,4 +23,7 @@ class Table extends Model
     {
         return $this->belongsTo('App\Models\Caffe','fk_for_caffe','caffe_id');
     }
+    public function reservation(){
+        return $this->hasMany('App\Models\Reservation', 'reservation_id', 'table_id');
+    }
 }

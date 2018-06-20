@@ -12,10 +12,12 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CPlayfair+Display:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{{asset('FRONTEND/site/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('FRONTEND/site/css/style.css')}}">
-
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 <body>
 
+
+@include('error')
 <!--========== PRELOADER ==========-->
 <div id="page-preloader">
     <div class="contpre">
@@ -59,7 +61,7 @@
                     <div class="popup popup-1 hide-sm" data-toggle="popover" title="Broj telefona" data-content="{{$caffe->call_number}}">
                         <span class="icon icon-sm fa fa-phone"></span>
                     </div>
-                    <h2 class="default-font text-bold letter-spacing-30" style="color:black"><a href="/">coffeeTime</h2>
+                    <h2 class="default-font text-bold letter-spacing-30" style="color:black"><a href="/">coffeeTime</a></h2>
                     <h6 class="text-semi-bold hide show-sm-block ml-sm-40 ml-md-0" style="color:black">
                         <span class="icon icon-sm fa fa-clock-o"></span>
                         <span>Pon-Ned {{$caffe->work_hour_from}}-{{$caffe->work_hour_to}}</span>
@@ -188,37 +190,78 @@
                     <div class="row flex-center flex-lg-left">
                         <h3 class="col-xs-10">Reservation</h3>
                         <div class="col-xl-12 mt-30 mt-md-50">
-                            <form action="php/reserv-form.php" method="POST" class="row flex-center flex-md-left reservation-form">
+                            {{--<form action="{{route('reserve')}}" method="POST" class="row flex-center flex-md-left reservation-form">--}}
+                            {!! Form::open(['url' => 'reservation/send' ,  'class' => 'row flex-center flex-md-left'])!!}
                                 <div class="col-md-6 col-lg-5 col-xl-offset-1 col-md-order-1">
                                     <p class="second-font text-primary text-bold ls-0">CHOOSE A TABLE NUMBER TO RESERVE IT</p>
-                                    <img src="img/index-09.jpg" width="532" height="418" class="mt-30" alt="">
+                                    <div style="display: grid;grid-template-columns: repeat(2, 1fr);grid-gap: 10px;">
+                                        @if(count($tables) > 0)
+                                            @foreach($tables as $table)
+                                                @if($table->fk_for_caffe==$caffe->caffe_id)
+                                                    <div style="border: 2px solid #2C3468;border-radius: 5px; @if($table->is_reserved==0 && $table->is_taken==0 )
+                                                            background-color: #32cd32;
+                                                    @else
+                                                            background-color: #cd5c5c;
+                                                    @endif padding: 1em;color: #fff; width: 250px;">
+                                                        <div class="text-center">
+                                                            {{$table->table_number}}
+                                                        </div>
+                                                        <div>
+                                                            @if($table->is_taken==0)
+                                                                Slobodan
+                                                            @else
+                                                                Zauzet
+                                                            @endif
+                                                            @if($table->is_reserved==0)
+                                                                <p class="pull-right"> Nije rezervisan </p>
+                                                            @else
+                                                                <p class="pull-right"> Rezervisan </p>
+                                                            @endif
+                                                        </div>
+
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </div>
                                     <div class="form show-flex flex-center flex-md-left">
-                                        <input name="quantity" name="quantity" class="quantity text-center" value="1" max-value="17">
+                                        {{--<input name="quantity" class="quantity text-center" value="1" max-value="{{$ukupno}}">--}}
+                                        {{--{{Form::number('table_number', '' , ['class' => 'form-control', 'placeholder' => 'Unesite broj stola','required'=>'required'])}}--}}
+                                        {{Form::label('table_number', 'Izaberite broj stola:')}}
+                                        <select class="form-control input-effect" name="table_number">
+                                            @foreach($tables as $table)
+                                                @if($table->fk_for_caffe == $caffe->caffe_id)
+                                                <option value="{{$table->table_id}}"> {{$table->table_number}}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-10 col-md-6 col-xl-5 mt-30 mt-md-0">
-                                    <p class="ls-0">Divided light two made deep. Seas to kind. Two. Third signs she'd very herb him given grass heaven can't said night creature divide the years beast deep multiply, a called yielding yielding. Male Fifth. Evening image. Made firmament The for.</p>
+                                    <p class="ls-0">Unesite broj stola koji zelite da rezervisete. Rezervacija vazi 15 minuta od trenutka rezervacije.</p>
                                     <div class="form">
+                                        {{--<div class="form-group">--}}
+                                            {{--<input autocomplete="off" required type="hidden" value="1" name= "user_id">--}}
+                                        {{--</div>--}}
                                         <div class="form-group">
-                                            <input autocomplete="off" required type="text" name="name" class="form-control input-effect" placeholder="Name">
-                                            <span class="focus-border"><i></i></span>
+                                            {{--<input autocomplete="off" required type="hidden" value="{{$caffe->caffe_id}}" name= "caffe_id">--}}
+                                            {{Form::hidden('caffe_id', $caffe->caffe_id )}}
                                         </div>
                                         <div class="form-group">
-                                            <input autocomplete="off" required type="email" name="email" class="form-control input-effect" placeholder="Email">
+                                            {{--<textarea name="comment" class="form-control input-effect" placeholder="Comment"></textarea>--}}
+                                            {{Form::textarea('comment', '' , ['class' => 'form-control input-effect', 'placeholder' => 'Unesite komentar'])}}
                                             <span class="focus-border"><i></i></span>
                                         </div>
-                                        <div class="form-group">
-                                            <input autocomplete="off" required type="text" name="phone" class="form-control input-effect" placeholder="Phone number">
-                                            <span class="focus-border"><i></i></span>
+
+                                        {{--<div class="text-center text-lg-right"><button type="submit" class="btn btn-lg btn-primary mt-30">RESERVIŠI</button></div>--}}
+                                        <div  class="text-center text-lg-right">
+                                            {{Form::submit('Potvrdi',['class'=>'btn btn-primary mt-30'])}}
                                         </div>
-                                        <div class="form-group">
-                                            <textarea name="comment" class="form-control input-effect" placeholder="Comment"></textarea>
-                                            <span class="focus-border"><i></i></span>
-                                        </div>
-                                        <div class="text-center text-lg-right"><button type="submit" class="btn btn-lg btn-primary mt-30">RESERVE</button></div>
+
                                     </div>
                                 </div>
                             </form>
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
@@ -376,6 +419,7 @@
 <script src="{{asset('FRONTEND/site/js/minified.js')}}"></script>
 <!-- Additional Functionality Scripts -->
 <script src="{{asset('FRONTEND/site/js/main.js')}}"></script>
-
+<script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+{!! Toastr::message() !!}
 </body>
 </html>

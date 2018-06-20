@@ -157,7 +157,7 @@ class CaffeController extends AuthController
             $id=Auth::user()->fk_for_caffe;
         }
         $caffe = Caffe::find($id);
-        $tables = $caffe->tables()->get();
+        $tables = Table::all();
         $broj_mesta=0;
 
         foreach($tables as $table) {

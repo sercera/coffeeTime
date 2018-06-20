@@ -37,6 +37,7 @@ class IndexController extends Controller
         $users=User::all();
         $tables = Table::all();
         $broj_mesta=0;
+        $ukupan_broj=0;
 
         foreach($tables as $table) {
             if ($table->fk_for_caffe == $id) {
@@ -44,13 +45,14 @@ class IndexController extends Controller
                     $broj_mesta++;
                 }
             }
+            $ukupan_broj++;
         }
         if (empty($caffe)) {
 
             return redirect()->back();
         }
 
-        return view('caffe-show')->withCaffe($caffe)->withMesta($broj_mesta)->withPosts($posts)->withMenus($menus)->withUsers($users);
+        return view('caffe-show')->withCaffe($caffe)->withMesta($broj_mesta)->withPosts($posts)->withMenus($menus)->withUsers($users)->withTables($tables)->withUkupno($ukupan_broj);
     }
 
 }
