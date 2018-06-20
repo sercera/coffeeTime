@@ -38,4 +38,8 @@ class Caffe extends Model
     {
         return $this->hasMany('App\Models\Post', 'id', 'caffe_id');
     }
+    public function reservations()
+    {
+        return $this->hasMany('App\Models\Reservation','reservation_id', 'caffe_id');
+    }
 }

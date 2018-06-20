@@ -16,9 +16,7 @@ class ChangeCaffeTable extends Migration
         Schema::table('caffe',function (Blueprint $table){
 
             $table->string('short_description',50);
-            $table->string('work_hour_from',10);
-            $table->string('work_hour_to',10);
-            $table->string('image',100);
+
             $table->string('www',150);
             $table->string('call_number',50);
 

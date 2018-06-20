@@ -5,4 +5,9 @@ Route::get('users', 'IndexController@users');
 
 Route::get('/caffe/show/{caffe_id}','IndexController@caffe')->name('show');
 
+
 Route::post('caffe/show/{caffe_id}/contact','IndexController@contact')->name('contact');
+
+Route::post('/reservation/send', 'ReservationController@reserve')->name('reserve');
+
+

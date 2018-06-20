@@ -147,6 +147,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Brian2694\Toastr\ToastrServiceProvider::class,
         'Zizaco\Entrust\EntrustServiceProvider',
         /*
          * Package Service Providers...
@@ -214,7 +215,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Entrust' => 'Zizaco\Entrust\EntrustFacade',
         'Input' => Illuminate\Support\Facades\Input::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
     ],
 
 ];

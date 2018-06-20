@@ -69,6 +69,11 @@ Route::resource('post', 'PostController')->only([
     'update','destroy'
 ]);
 
+//reservation
+Route::get('reservation', 'ReservationController@index')->name('reservation.index');
+Route::get('/caffe/reservations/{caffe_id}', 'ReservationController@show');
+Route::post('/reservation/{reservation_id}', 'ReservationController@confirm')->name('reservation.status');
+Route::delete('/reservation/{reservation_id}', 'ReservationController@destroy')->name('reservation.destroy');
 
 
 Auth::routes();

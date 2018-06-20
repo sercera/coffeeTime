@@ -3,6 +3,7 @@
 namespace App\Sites\BACKEND\Controllers;
 
 use Request;
+use Illuminate\Notifications\Notifiable;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Role;
@@ -51,9 +52,15 @@ class UsersController extends Controller
             $users[$numeration]['userDetails'] = $user->getDetails()->first();
             $users[$numeration++]['role'] = Role::where('id', DB::table('role_user')->where('user_id', $user->user_id)->first()->role_id)->first()->display_name;
 
+//            var_dump($users[0]['userDetails']->first_name);
+//            die();
         }
 
+
+//        return view('users.index', compact('users'));
+
         return view('users.index', compact('users', 'caffe'));
+
 
 
     }
