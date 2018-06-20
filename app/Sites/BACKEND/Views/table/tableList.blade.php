@@ -46,28 +46,28 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @if(count($tables) > 0)
+                        @if(!empty($tables))
                             @foreach($tables as $table)
                                 <tr>
-                                    <td>{{$table->table_number}}</td>
-                                    <td>{{$table->table_spots}}</td>
-                                    <td>{{$table->caffe->name}}</td>
+                                    <td>{{$table['table_number']}}</td>
+                                    <td>{{$table['table_spots']}}</td>
+                                    <td>{{$table['caffe']}}</td>
                                     <td>
-                                        @if($table->is_taken==0)
+                                        @if(!$table['is_taken'])
                                             Slobodan
                                         @else
                                             Zauzet
                                         @endif
                                     </td>
                                     <td>
-                                        @if($table->is_reserved==0)
+                                        @if(!$table['is_reserved'])
                                             Nije rezervisan
                                         @else
                                             Rezervisan
                                         @endif
                                     </td>
                                     <td style="width: 150px;">
-                                        {!! Form::open(['route' => ['table.destroy', $table->table_id],'method' => 'DELETE']) !!}
+                                        {!! Form::open(['route' => ['table.destroy', $table['table_id']],'method' => 'DELETE']) !!}
 
                                         {!! Form::submit('Izbriši', ['class' => 'btn btn-danger pull-left', 'style' => 'margin-right: 10px']) !!}
 

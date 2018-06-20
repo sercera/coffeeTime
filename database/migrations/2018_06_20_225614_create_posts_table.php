@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignKeyArticlesTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class AddForeignKeyArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::table('articles', function (Blueprint $table) {
-
+        Schema::create('posts', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title',50);
+            $table->string('content',255);
             $table->integer('fk_for_caffe')->unsigned();
+            $table->timestamps();
         });
 
-        Schema::table('articles', function (Blueprint $table) {
-
+        Schema::table('posts',function (Blueprint $table){
             $table->foreign('fk_for_caffe')->references('caffe_id')->on('caffe')->onDelete('cascade');
 
         });
@@ -32,6 +34,6 @@ class AddForeignKeyArticlesTable extends Migration
      */
     public function down()
     {
-
+        Schema::dropIfExists('posts');
     }
 }

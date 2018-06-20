@@ -78,7 +78,7 @@
                             <div class="col-md-6">
                                 <button type="button" data-order="{{$order['order']}}"
                                         class="btn btn-primary btn-icon add-order">
-                                    <i class="fa fa-plus"></i>
+                                    <i class="fa fa-check"></i>
                                 </button>
                             </div>
                             <div class="col-md-6">

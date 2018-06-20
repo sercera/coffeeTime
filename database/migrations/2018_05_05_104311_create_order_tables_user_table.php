@@ -14,14 +14,18 @@ class CreateOrderTablesUserTable extends Migration
     public function up()
     {
         Schema::create('ord_tbl_usr', function (Blueprint $table) {
-            $table->integer('quantity');
-            $table->dateTime('date');
+            $table->increments('ord_tbl_id');
 
             $table->integer('menu_id')->unsigned();
-            $table->integer('order_id')->unsigned();
             $table->integer('article_id')->unsigned();
+            $table->integer('table_id')->unsigned();
+            $table->integer('quantity');
+
+            $table->integer('order_id')->unsigned();
             $table->integer('user_id')->nullable()->unsigned();
             $table->integer('employee_id')->nullable()->unsigned();
+
+            $table->dateTime('date');
             $table->timestamps();
         });
 
@@ -32,6 +36,8 @@ class CreateOrderTablesUserTable extends Migration
             $table->foreign('article_id')->references('article_id')->on('articles')->onDelete('cascade');
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->foreign('employee_id')->references('user_id')->on('users')->onDelete('cascade');
+            $table->foreign('table_id')->references('table_id')->on('tables')->onDelete('cascade');
+
 
         });
 

@@ -56,14 +56,11 @@ class CaffeController extends AuthController
         $caffe->save();
 
 
-      /*  $financial= new Financial();
+        /*  $financial= new Financial();
 
 
-        $financial->date=Carbon::now();
-        $financial->fk_for_caffe=Carbon::now();*/
-
-
-
+          $financial->date=Carbon::now();
+          $financial->fk_for_caffe=Carbon::now();*/
 
 
         //Redirect
@@ -178,25 +175,37 @@ class CaffeController extends AuthController
 
     public function show($id, $permissions = ["caffe", "view"])
     {
-        if (empty($id)) {
 
-            $id = Auth::user()->fk_for_caffe;
-        }
         $caffe = Caffe::find($id);
-        $tables = Table::all();
-        $broj_mesta = 0;
-
-        foreach ($tables as $table) {
-            if ($table->is_taken == 0 && $table->is_reserved == 0) {
-                $broj_mesta++;
-            }
-
-        }
         if (empty($caffe)) {
 
             return redirect()->back();
         }
+        $i = 0;
+        $tables = [];
+        $allTables = Table::where('fk_for_caffe', $id)->get();
 
-        return view('caffe.caffe-show')->withCaffe($caffe)->withTables($tables)->withMesta($broj_mesta);
+
+        foreach ($allTables as $table) {
+            $tables[$i]['table_id'] = $table->table_id;
+            $tables[$i]['table_number'] = $table->table_number;
+            $tables[$i]['table_spots'] = $table->table_spots;
+            $tables[$i]['caffe'] = Caffe::find($table->fk_for_caffe)->name;
+            $tables[$i]['is_taken'] = $table->is_taken;
+            $tables[$i++]['is_reserved'] = $table->is_reserved;
+
+
+        }
+
+        $broj_mesta = 0;
+        foreach ($tables as $table) {
+            if (!$table['is_taken'] && !$table['is_reserved']) {
+
+                $broj_mesta++;
+            }
+
+        }
+
+        return view('caffe.caffe-show', compact('caffe', 'tables', 'broj_mesta'));
     }
 }

@@ -19,7 +19,12 @@ class CreateCaffeTable extends Migration
             $table->string('address',100);
             $table->string('city',50);
             $table->mediumText('description',255);
-            $table->string('work_hours',20);
+            $table->string('short_description', 50);
+            $table->string('work_hour_from', 10);
+            $table->string('work_hour_to', 10);
+            $table->string('image', 100);
+            $table->string('www', 150);
+            $table->string('call_number', 50);
             $table->timestamps();
         });
     }

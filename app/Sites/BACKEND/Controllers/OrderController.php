@@ -51,7 +51,7 @@ class OrderController extends AuthController
             $orders[$i]['table'] = Table::find($order->table_id)->table_number;
             $orders[$i]['quantity'] = $order->quantity;
             $orders[$i]['user'] = !empty(User::find($order->user_id)) ? User::find($order->user_id)->username : null;
-            $orders[$i]['order'] = $order->ord_tbl_id;
+            $orders[$i++]['order'] = $order->ord_tbl_id;
         }
         $menus = Caffe::find($caffeId)->menu()->get();
 
