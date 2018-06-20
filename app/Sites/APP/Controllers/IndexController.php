@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Models\Menu;
 use App\Models\User;
 use App\Models\UserDetails;
+use App\Models\Role;
 
 class IndexController extends Controller
 {
@@ -35,6 +36,8 @@ class IndexController extends Controller
         $posts=Post::all();
         $menus=Menu::all();
         $users=User::all();
+        $roles=Role::all();
+        $usersDetails=UserDetails::all();
         $tables = Table::all();
         $broj_mesta=0;
         $ukupan_broj=0;
@@ -52,7 +55,9 @@ class IndexController extends Controller
             return redirect()->back();
         }
 
-        return view('caffe-show')->withCaffe($caffe)->withMesta($broj_mesta)->withPosts($posts)->withMenus($menus)->withUsers($users)->withTables($tables)->withUkupno($ukupan_broj);
+
+        return view('caffe-show')->withCaffe($caffe)->withMesta($broj_mesta)->withPosts($posts)
+            ->withMenus($menus)->withUsers($users)->withUsersDetails($usersDetails)->withRoles($roles)->withTables($tables)->withUkupno($ukupan_broj);;
     }
 
 }

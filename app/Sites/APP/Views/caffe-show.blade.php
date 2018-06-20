@@ -294,55 +294,37 @@
             <section class="section section-content" id="section5">
                 <div class="container container-big text-md-left">
                     <div class="row flex-center flex-xl-left">
-                        <h3 class="col-xs-10">Our Team</h3>
+                        <h3 class="col-xs-10">Naš tim</h3>
                         <div class="col-lg-10 mt-30 mt-md-50">
-                            <div class="row flex-center">
+                            <div class="row flex-left" style="marign:10px;padding: 10px;">
                                 @foreach($users as $user)
-                                        <div>
-                                            <img src="img/team-member-1.jpg" width="420" height="397" class="scaling-image" alt="">
-                                            {{--{{$user['userDetails']->first_name}} {{$user['userDetails']->last_name}}--}}
-                                            <h5 class="text-semi-bold mt-30">{{$user->username}}</h5>
-                                            <p class="second-font text-primary mt-10">Chief Cook</p>
-                                            <p class="mt-10 pr-md-20">Dry saying be firmament won't abundantly Man one his, fourth creature rule spirit male brought light, face creature. Thing bearing. Our. Moveth given behold she'd i whose herb open without.</p>
-                                        </div>
+                                    @if($user->fk_for_caffe==$caffe->caffe_id)
+                                        @foreach($usersDetails as $userDetails)
+                                            @if($userDetails->fk_for_user==$user->user_id)
+                                                <div style="margin:15px; padding: 15px; box-shadow: 1px 1px 10px 2px silver;">
+                                                    <img src="{{asset('images/caffe_images/' . $caffe->image)}}" width="300" height="300" class="scaling-image" alt="{{$user->ussername}}" align="right" margin="5px" >
+                                                    <h5 class="text-semi-bold mt-30">{{$user->username}}</h5>
+                                                    <p class="second-font text-primary mt-10">
+                                                        @if($user->hasRole('owner'))
+                                                            Vlasnik kafića
+                                                        @else
+                                                            Radnik kafića
+                                                        @endif
+                                                    </p>
+                                                    <p class="mt-10 pr-md-20">
+                                                        {{$userDetails->first_name}} {{$userDetails->last_name}}, {{$userDetails->age}}<br />
+                                                        {{$user->email}}<br />
+                                                    </p>
+                                                    <ul class="list-inline">
+                                                        <li><a href="#" class="icon icon-md fa fa-facebook"></a></li>
+                                                        <li><a href="#" class="icon icon-md fa fa-twitter"></a></li>
+                                                        <li><a href="#" class="icon icon-md fa fa-linkedin"></a></li>
+                                                    </ul>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    @endif
                                 @endforeach
-
-
-                                <div class="col-md-4 col-lg-6 col-xl-4">
-                                    <img src="img/team-member-1.jpg" width="420" height="397" class="scaling-image" alt="">
-                                    <h5 class="text-semi-bold mt-30">Harry Richardson</h5>
-                                    <p class="second-font text-primary mt-10">Chief Cook</p>
-                                    <p class="mt-10 pr-md-20">Dry saying be firmament won't abundantly Man one his, fourth creature rule spirit male brought light, face creature. Thing bearing. Our. Moveth given behold she'd i whose herb open without.</p>
-                                    <ul class="list-inline">
-                                        <li><a href="#" class="icon icon-md fa fa-facebook"></a></li>
-                                        <li><a href="#" class="icon icon-md fa fa-twitter"></a></li>
-                                        <li><a href="#" class="icon icon-md fa fa-linkedin"></a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="col-md-4 col-lg-6 col-xl-4 mt-30 mt-md-0">
-                                    <img src="img/team-member-2.jpg" width="420" height="397" class="scaling-image" alt="">
-                                    <h5 class="text-semi-bold mt-30">Olivia Stephens</h5>
-                                    <p class="second-font text-primary mt-10">Deserts</p>
-                                    <p class="mt-10 pr-md-20">The gathering beginning make bearing called fourth one seed have called and let itself to said land saw image great make evening you it evening fourth, firmament brought were created.</p>
-                                    <ul class="list-inline">
-                                        <li><a href="#" class="icon icon-md fa fa-facebook"></a></li>
-                                        <li><a href="#" class="icon icon-md fa fa-twitter"></a></li>
-                                        <li><a href="#" class="icon icon-md fa fa-linkedin"></a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="col-md-4 col-lg-6 col-xl-4 mt-30 mt-md-0 mt-lg-30 mt-xl-0">
-                                    <img src="img/team-member-3.jpg" width="420" height="397" class="scaling-image" alt="">
-                                    <h5 class="text-semi-bold mt-30">Ethan Coleman</h5>
-                                    <p class="second-font text-primary mt-10">Exotic Dishes</p>
-                                    <p class="mt-10 pr-md-20">Form so, their living. Was were the female void said. Don't she'd saying heaven face good called dominion, there greater from. You shall thing light. You'll creepeth fowl morning wherein.</p>
-                                    <ul class="list-inline">
-                                        <li><a href="#" class="icon icon-md fa fa-facebook"></a></li>
-                                        <li><a href="#" class="icon icon-md fa fa-twitter"></a></li>
-                                        <li><a href="#" class="icon icon-md fa fa-linkedin"></a></li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </div>

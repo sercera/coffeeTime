@@ -43,7 +43,7 @@
             <div class="col-xs-4 col-sm-4 col-md-4 page-reports">
                 <div class="panel" id="users">
                     <div class="panel-heading">
-                        <h4 class="panel-title">Lista radnika</h4>
+                        <h4 class="panel-title">Lista korisnika</h4>
                     </div>
                     <div class="panel-body">
                         <div class="page-icon">
