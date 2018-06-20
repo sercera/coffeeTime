@@ -18,9 +18,9 @@ Route::resource('caffe', 'CaffeController')->only([
 //Route::get('/employees/add' , 'EmployeesController@index');
 //Route::post('/employees/submit', 'EmployeesController@submit');
 //Route::get('/employees/edit/{employee_id}','EmployeesController@edit');
-//Route::resource('employees', 'EmployeesController')->only([
-//    'update','destroy'
-//]);
+/*Route::resource('employees', 'EmployeesController')->only([
+    'update','destroy'
+]);*/
 //article
 Route::get('/article','ArticleController@index');
 Route::get('/article/edit/{article_id}','ArticleController@edit');
@@ -39,7 +39,7 @@ Route::resource('table', 'TableController')->only([
     'update','destroy'
 ]);
 //article
-Route::get('/article', 'ArticleController@getArticle');
+Route::get('/article', 'ArticleController@getArticles');
 Route::get('/article/add','ArticleController@index');
 Route::post('/article/submit','ArticleController@submit');
 Route::get('/article/edit/{article_id}','ArticleController@edit');
@@ -54,8 +54,10 @@ Route::post('/menu/add_article','MenuController@addArticle');
 Route::get('/menu/edit/{menu_id}','MenuController@edit');
 Route::get('/menu','MenuController@list');
 Route::resource('menu', 'MenuController')->only([
-    'update','destroy', 'show'
+    'destroy', 'show'
 ]);
+
+Route::put('/menu/update/{menu_id}','MenuController@updateMenu');
 //post
 Route::get('/post','PostController@getPosts');;
 Route::get('/post/add','PostController@index');
@@ -98,3 +100,10 @@ Route::get('403',function (){
     return View::make('errors.403');
 
 });
+
+Route::resource('orders', 'OrderController')->except('update');
+
+Route::get('/orders/{order}/caffe/{caffe}','OrderController@show');
+
+Route::post('order/apply','OrderController@applyOrder');
+Route::post('order/delete','OrderController@deleteOrder');

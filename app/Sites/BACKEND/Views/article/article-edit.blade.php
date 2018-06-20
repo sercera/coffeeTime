@@ -52,6 +52,15 @@
                 {{Form::label('description', 'Opis')}}
                 {{Form::textarea('description', $article->description , ['class' => 'form-control', 'placeholder' => 'Opis proizvoda...'])}}
             </div>
+            <div class="form-group">
+                {{Form::label('caffe', 'Izaberite kafić')}}
+                <select class="form-control" name="caffe">
+                    @foreach($caffes as $caffe)
+                        <option value="{{$caffe->caffe_id}}"> {{$caffe->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div>
                 {{Form::submit('Potvrdi',['class'=>'btn btn-primary'])}}
             </div>

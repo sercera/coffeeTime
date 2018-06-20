@@ -11,12 +11,17 @@ class Article extends Model
     protected $fillable=[
         'name',
         'description',
-        'type'
+        'type',
+        'fk_for_caffe'
     ];
 
     public function menu()
     {
-        $this->belongsToMany('App\Models\Menu','menu_article', 'article_id', 'menu_id')->withPivot('neto_price', 'selling_price','quantity')->withTimestamps();
+       return $this->belongsToMany('App\Models\Menu','menu_article', 'article_id', 'menu_id')->withPivot('neto_price', 'selling_price','quantity')->withTimestamps();
+    }
+    public function caffe(){
+
+        return $this->belongsTo('App\Models\Caffe','caffe_id','fk_for_caffe');
     }
 
 }

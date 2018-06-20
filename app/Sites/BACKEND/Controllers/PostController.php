@@ -5,14 +5,26 @@ namespace App\Sites\BACKEND\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Caffe;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 use Session;
 
 class PostController extends AuthController
 {
     public function index($permissions = ["caffe"])
     {
-        $posts = Post::all();
-        $caffes = Caffe::all();
+        $loggedUser=Auth::user();
+
+        if($loggedUser->hasRole('admin')){
+
+            $posts = Post::all();
+            $caffes = Caffe::all();
+
+        } else if($loggedUser->hasRole('owner')||$loggedUser->hasRole('employee')){
+
+            $caffes=Caffe::where('caffe_id',$loggedUser->fk_for_caffe)->get();
+            $posts=Caffe::find($loggedUser->fk_for_caffe)->posts()->get();
+
+        }
 
         return view('post.post')->withPosts($posts)->withCaffes($caffes);
     }
@@ -37,8 +49,22 @@ class PostController extends AuthController
 
     public function getPosts( $permissions=["caffe"])
     {
-        $posts = Post::all();
-        $caffes = Caffe::all();
+
+        $loggedUser=Auth::user();
+
+
+        if($loggedUser->hasRole('admin')){
+
+            $posts = Post::all();
+            $caffes = Caffe::all();
+
+        } else if($loggedUser->hasRole('owner')||$loggedUser->hasRole('employee')){
+
+            $caffes=Caffe::where('caffe_id',$loggedUser->fk_for_caffe)->get();
+            $posts=Caffe::find($loggedUser->fk_for_caffe)->posts()->get();
+
+        }
+
 
         return view('post.postList')->withPosts($posts)->withCaffes($caffes);
     }

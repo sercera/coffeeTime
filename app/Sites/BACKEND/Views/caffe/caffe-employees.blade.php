@@ -14,6 +14,17 @@
                 Početna strana
             </a>
         </li>
+        <li>
+            <a href="{{url('caffe/edit/'.$caffe->caffe_id)}}">
+                <i class="fa fa-coffee"></i>
+                {{$caffe->name}}
+            </a>
+        <li>
+            <a href="{{url('caffe/employees/'.$caffe->caffe_id)}}">
+                <i class="fa fa-users"></i>
+                Lista radnika kafića "{{$caffe->name}}"
+            </a>
+        </li>
     </ol>
     <div class="panel">
         <div class="panel-heading">
@@ -30,31 +41,35 @@
                     <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead class="bg-primary">
                         <tr>
+                            <td>Ime</td>
+                            <td>Prezime</td>
                             <td>Username</td>
                             <td>E-mail</td>
                             <td>Radi u</td>
-                            <td></td>
+                            <td>Br. telefona</td>
+                            <td>ID radnika</td>
+                            <td>Akcije</td>
                         </tr>
                         </thead>
                         <tbody>
-                        @if(count($employees) > 0)
+                        @if(!empty($employees))
                             @foreach($employees as $employee)
-                                @if($employee->caffe->name==$caffe->name)
                                 <tr>
+                                    <td>{{$employee->getDetails->first_name}}</td>
+                                    <td>{{$employee->getDetails->last_name}}</td>
                                     <td>{{$employee->username}}</td>
                                     <td>{{$employee->email}}</td>
-                                    <td>{{$employee->caffe->name}}</td>
+                                    <td>{{$caffe->name}}</td>
+                                    <td>{{$employee->getDetails->phone_number}}</td>
+                                    <td>{{empty($employee->getDetails->employee_id)?"-":$employee->getDetails->employee_id}}</td>
                                     <td style="width: 150px;">
-                                        {!! Form::open(['route' => ['employees.destroy', $employee->employee_id],'method' => 'DELETE']) !!}
-
-                                        {!! Form::submit('Izbriši', ['class' => 'btn btn-danger pull-left', 'style' => 'margin-right: 10px']) !!}
-
-                                        {!! Form::close() !!}
-                                        <a href="{{url('employees/edit',$employee['employee_id'])}}"
+                                        <a href="{{url('users/delete',$employee->user_id)}}" class="btn btn-danger"
+                                           role="button">Izbriši
+                                        </a>
+                                        <a href="{{url('users/'.$employee->user_id.'/edit')}}"
                                            class="edit btn btn-warning" role="button">Izmeni</a>
                                     </td>
                                 </tr>
-                                @endif
                             @endforeach
                         @endif
                         </tbody>

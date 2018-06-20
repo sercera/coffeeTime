@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeCaffeTable extends Migration
+class ChangeTblTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,11 @@ class ChangeCaffeTable extends Migration
      */
     public function up()
     {
-        Schema::table('caffe', function (Blueprint $table) {
+        Schema::table('ord_tbl_usr', function (Blueprint $table) {
 
-            $table->string('short_description', 50);
-            $table->string('work_hour_from', 10);
-            $table->string('work_hour_to', 10);
-            $table->string('image', 100);
-            $table->string('www', 150);
-            $table->string('call_number', 50);
-
-
+            $table->increments('ord_tbl_id');
         });
+
     }
 
     /**

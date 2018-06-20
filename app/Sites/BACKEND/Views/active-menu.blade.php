@@ -16,6 +16,19 @@
         </li>
     </ul>
 </li>
+    <li class="nav-parent">
+        <a href="">
+            <i class="fa fa-coffee"></i>
+            <span>Narudžbine</span>
+        </a>
+        <ul class="children">
+                <li {{ request()->is('/orders') ? 'class=active ' : '' }}>
+                    <a href="{{url('/orders')}}">Pregled Narudžbina</a>
+                </li>
+
+        </ul>
+    </li>
+
 <li class="nav-parent">
     <a href="">
         <i class="fa fa-users"></i>

@@ -44,7 +44,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @if(count($menus) > 0)
+                        @if(!empty($menus))
                             @foreach($menus as $menu)
                                 <tr>
                                     <td>{{$menu->caffe->name}}</td>

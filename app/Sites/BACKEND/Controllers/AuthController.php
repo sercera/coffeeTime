@@ -24,6 +24,12 @@ class AuthController extends BaseController
 
         $permissions = end($parameters);
         $can = false;
+        if($method=== "updateMenu"){
+
+            return parent::callAction($method, $parameters);
+
+        }
+
         foreach ($permissions as $permission)
             if (Auth::user()->can($permission)) {
 

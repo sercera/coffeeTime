@@ -281,7 +281,7 @@ $(document).ready(function () {
     $('.datepicker').datepicker();
 
 
-    $('#select1, #select2, #select3').select2();
+    $('#select1, #select2, #select3,#select4,#select5,#select6,#select7').select2();
 
 
     $('#myModal').on('click', function () {
@@ -430,33 +430,173 @@ $(document).ready(function () {
     $('.tag').on('focusout', function (e) {
 
         var inputResult = e.target.value;
-         var dataResult= $(this).data('value');
-console.log(inputResult);
+        var dataResult = $(this).data('value');
+        console.log(inputResult);
 
 
-        if (inputResult !="" ) {
+        if (inputResult != "") {
             var hidden = document.createElement('input');
             var parent = document.getElementById('hidden-fields');
 
             hidden.type = 'hidden';
-            hidden.className= 'received-tags';
-            hidden.name= 'tag[]';
-            hidden.value=dataResult + " " +inputResult ;
+            hidden.className = 'received-tags';
+            hidden.name = 'tag[]';
+            hidden.value = dataResult + " " + inputResult;
             parent.appendChild(hidden);
-       }
-
+        }
 
 
     });
 
 
-    $('.logout').on('click',function (e) {
+    $('.logout').on('click', function (e) {
 
         e.preventDefault();
-        var logout=document.getElementById('logout-form');
+        var logout = document.getElementById('logout-form');
         console.log(logout);
 
         logout.submit();
 
     });
+
+    $(window).load(function () {
+
+
+        $('.add-order').each(function () {
+            if ($(this).data('order') !== "") {
+
+                $(this).addClass('disabled');
+            }
+        });
+
+        $('.delete-order').each(function () {
+            if ($(this).data('order') === "") {
+
+                $(this).hide();
+            } else {
+
+                $(this).show();
+
+            }
+        });
+    });
+
+
+    $(document).on('click', '.add-order', function () {
+
+        var menu = $(this).closest('.order').find('[name=menu]').val();
+        var article = $(this).closest('.order').find('[name=article]').val();
+        var table = $(this).closest('.order').find('[name=table]').val();
+        var quantity = $(this).closest('.order').find('[name=quantity]').val();
+        var user = $(this).closest('.order').find('[name=user]').val();
+        var orderId = $('#orderId').val();
+
+        var $order = $(".order:last").clone();
+        var $selectedButton = $(this);
+        var $beforeButton = $selectedButton.html();
+
+        $.ajax({
+            url: '/order/apply',
+            type: "POST",
+            data: {
+                'menu': menu,
+                'article': article,
+                'table': table,
+                'quantity': quantity,
+                'user': user,
+                'order': orderId,
+                'permissions': "edit"
+            },
+            beforeSend: function () {
+                $selectedButton.html('<i class="fa fa-spinner fa-spin "></i>');
+            },
+            error: function (err) {
+
+                var error = err['responseJSON'];
+
+                if (error.order) {
+                    $selectedButton.html('<i class="fa fa-plus"></i>');
+                    $.growl.error({message: error.order});
+                }
+
+                if (error.ratio) {
+                    $.growl.error({message: error.ratio});
+                    $selectedButton.html('<i class="fa fa-plus"></i>');
+                }
+
+            },
+            success: function (orderId) {
+                $order.find('#select3').prop('selectedIndex', 0).trigger('change');
+                $order.find('#select4').prop('selectedIndex', 0).trigger('change');
+                $order.find('#select5').prop('selectedIndex', 0).trigger('change');
+                $order.find('#select6').prop('selectedIndex', 0).trigger('change');
+                $order.find('#select7').prop('selectedIndex', 0).trigger('change');
+                $order.find("span").remove();
+                $order.find("select").select2();
+                $order.insertAfter(".order:last");
+                $selectedButton.html($beforeButton);
+
+
+                $selectedButton.closest('.order').find('#select3').attr('disabled', true);
+                $selectedButton.closest('.order').find('#select4').attr('disabled', true);
+                $selectedButton.closest('.order').find('#select5').attr('disabled', true);
+                $selectedButton.closest('.order').find('#select6').attr('disabled', true);
+                $selectedButton.closest('.order').find('#select7').attr('disabled', true);
+                $selectedButton.closest('.order').find('.ratio').attr('disabled', true);
+
+
+                $selectedButton.removeClass('btn-primary');
+                $selectedButton.addClass('btn-success');
+                $selectedButton.addClass('disabled');
+                $selectedButton.find('i').removeClass('fa-plus');
+                $selectedButton.find('i').addClass('fa-check');
+
+                $selectedButton.data('data-order', orderId);
+                $selectedButton.blur();
+                $selectedButton.closest('.order').find('.delete-order').data('order', orderId);
+                $selectedButton.closest('.order').find('.delete-order').show();
+                $.growl.notice({message: "order is successfully added."});
+            },
+            complete: function () {
+
+            }
+        });
+    });
+
+    $(document).on('click', '.delete-order', function () {
+
+        var $orderID = $(this).data('order');
+        var $deleteButton = $(this);
+
+
+        $.ajax({
+            url: '/order/delete',
+            type: "POST",
+            data: {
+                'orderId': $orderID,
+                'permissions': "delete"
+            },
+            beforeSend: function () {
+
+                $deleteButton.html('<i class="fa fa-spinner fa-spin "></i>');
+
+            },
+            error: function () {
+                $.growl.error({message: "Internal Server Error. Please try again."});
+            },
+            success: function () {
+                $deleteButton.closest('.order').remove();
+                $.growl.notice({message: "order is successfully deleted."});
+
+            },
+            complete: function () {
+
+
+            }
+        });
+
+    });
+
+
+
 });

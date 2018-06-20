@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer('neto_total');
             $table->integer('selling_total');
             $table->boolean('is_charged')->default(false);
-            $table->integer('fk_for_financial')->unsigned();
+            $table->integer('fk_for_financial')->unsigned()->nullable();
 
             $table->timestamps();
         });

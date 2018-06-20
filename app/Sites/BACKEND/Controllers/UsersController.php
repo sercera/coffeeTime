@@ -12,7 +12,7 @@ use App\Models\Caffe;
 use Validator;
 
 
-class UsersController extends Controller
+class UsersController extends AuthController
 {
     public function index($permissions = ["users", "view"])
     {
@@ -97,6 +97,7 @@ class UsersController extends Controller
 
             'first_name' => 'required|min:2',
             'last_name' => 'required|min:2',
+
             //'phone_number' => 'string|min:5',
 
         ];
@@ -206,7 +207,7 @@ class UsersController extends Controller
         $username = User::find($userId)->username;
         User::where('user_id', $userId)->delete();
 
-        return redirect()->route('users.index')->with('success', 'Uspešno ste izbrisali korisnika "' . $username . '"');
+        return redirect()->back()->with('success', 'Uspešno ste izbrisali korisnika "' . $username . '"');
 
 
     }

@@ -18,6 +18,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-date-picker/bootstrap-datepicker3.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('lib/select2/select2.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backoffice/css/jquery.growl.css')}}">
+
 
     {{--    <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-data-table/dataTables.bootstrap.css')}}">--}}
 
@@ -165,6 +167,8 @@
 <script src="{{asset('lib/jquery-ui/jquery-ui.js')}}"></script>
 <script src="{{asset('lib/bootstrap/js/bootstrap.js')}}"></script>
 <script src="{{asset('lib/jquery-toggles/toggles.js')}}"></script>
+<script src="{{asset('js/jquery.growl.js')}}"></script>
+
 <script src="{{asset('js/quirk.js')}}"></script>
 <script src="{{asset('lib/bootstrap-date-picker/bootstrap-datepicker3.js')}}"></script>
 <script src="{{asset('lib/select2/select2.js')}}"></script>

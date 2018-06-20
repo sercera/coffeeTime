@@ -6,13 +6,32 @@ use Illuminate\Http\Request;
 use App\Models\Menu;
 use App\Models\Caffe;
 use App\Models\Article;
+use Illuminate\Support\Facades\Auth;
+
 use Session;
 
 class MenuController extends AuthController
 {
     public function index($permissions=["caffe","view"])
     {
-        $caffes = Caffe::all();
+        if ( Auth::user()->hasRole('admin')) {
+
+            $caffes = Caffe::all();
+
+        }
+        else if (Auth::user()->hasRole('owner') || Auth::user()->hasRole('employee')) {
+
+            $caffes=Caffe::where('caffe_id',Auth::user()->fk_for_caffe)->get();
+
+        }
+
+        if(empty($caffes)){
+
+            $caffes=null;
+
+        }
+
+
         $articles = Article::all();
         return view('menu.menu')->withCaffes($caffes)->withArticles($articles);
     }
@@ -61,9 +80,9 @@ class MenuController extends AuthController
         return redirect()->route('menu.show', $menu->menu_id)->with('success', 'Article Removed');
     }
 
-    public function update(Request $request, $permissions=["caffe","edit"])
+    public function updateMenu(Request $request, $permissions=["caffe","edit"])
     {
-        $menu = Menu::findorFail($request->meni);
+        $menu = Menu::findOrFail($request->meni);
 
         $menu->article()->detach($request->article_num);
         $menu->article()->attach($request->input('article_num'), ['neto_price' => $request->input('neto_price'),
@@ -76,19 +95,42 @@ class MenuController extends AuthController
     }
     public function list($permissions=["caffe","view"])
     {
-        $menus = Menu::all();
+        if ( Auth::user()->hasRole('admin')) {
+
+            $menus = Menu::all();
+
+        }
+        else if (Auth::user()->hasRole('owner') || Auth::user()->hasRole('employee')) {
+
+            $menus=Menu::where('fk_for_caffe',Auth::user()->fk_for_caffe)->get();
+
+        }
+        if(empty($menus)){
+
+            $menus=null;
+
+        }
+
         return view('menu.menuList')->withMenus($menus);
     }
 
     public function show($id, $permissions=["caffe","view"])
     {
+
         $menu = Menu::find($id);
 
         if (empty($menu)) {
 
             return redirect()->back();
         }
-        $articles = Article::all();
+
+       $articles=Caffe::find($menu->fk_for_caffe)->articles()->get();
+
+        if(empty($articles)){
+
+            $articles=null;
+        }
+
 
         return view('menu.menu-show')->withMenu($menu)->withArticles($articles);
     }

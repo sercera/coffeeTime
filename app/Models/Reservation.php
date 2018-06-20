@@ -15,4 +15,6 @@ class Reservation extends Model
     public function caffe(){
         return $this->belongsTo('App\Models\Caffe', 'fk_for_caffe', 'caffe_id');
     }
+
 }
+

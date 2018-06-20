@@ -23,12 +23,12 @@ class Caffe extends Model
 
     public function tables()
     {
-        return $this->hasMany('App\Models\Table', 'table_id', 'caffe_id');
+        return $this->hasMany('App\Models\Table', 'fk_for_caffe', 'caffe_id');
     }
 
     public function menu()
     {
-        return $this->hasOne('App\Models\Menu', 'menu_id' , 'caffe_id');
+        return $this->hasMany('App\Models\Menu', 'menu_id' , 'caffe_id');
     }
     public function images()
     {
@@ -38,8 +38,20 @@ class Caffe extends Model
     {
         return $this->hasMany('App\Models\Post', 'id', 'caffe_id');
     }
+
+    public function articles()
+    {
+        return $this->hasMany('App\Models\Article', 'fk_for_caffe', 'caffe_id');
+    }
+
     public function reservations()
     {
         return $this->hasMany('App\Models\Reservation','reservation_id', 'caffe_id');
     }
+    public function getFinancials(){
+
+        return $this->hasMany('App\Models\Financial','fk_for_caffe', 'caffe_id');
+
+    }
+
 }

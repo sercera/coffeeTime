@@ -39,23 +39,25 @@
                             <td>Naziv</td>
                             <td>Tip</td>
                             <td>Opis</td>
+                            <td>Kafić</td>
                             <td>Akcije</td>
                         </tr>
                         </thead>
                         <tbody>
-                        @if(count($articles) > 0)
+                        @if(!empty($articles))
                             @foreach($articles as $article)
                                 <tr>
-                                    <td>{{$article->name}}</td>
-                                    <td>{{$article->type}}</td>
-                                    <td>{{$article->description}}</td>
+                                    <td>{{$article['article']->name}}</td>
+                                    <td>{{$article['article']->type}}</td>
+                                    <td>{{$article['article']->description}}</td>
+                                    <td>{{$article['caffe']}}</td>
                                     <td style="width: 150px;">
-                                        {!! Form::open(['route' => ['article.destroy', $article->article_id],'method' => 'DELETE']) !!}
+                                        {!! Form::open(['route' => ['article.destroy', $article['article']->article_id],'method' => 'DELETE']) !!}
 
                                         {!! Form::submit('Izbriši', ['class' => 'btn btn-danger pull-left', 'style' => 'margin-right: 10px']) !!}
 
                                         {!! Form::close() !!}
-                                        <a href="{{url('article/edit',$article['article_id'])}}"
+                                        <a href="{{url('article/edit',$article['article']->article_id)}}"
                                            class="edit btn btn-warning" role="button">Izmeni</a>
                                     </td>
                                 </tr>
