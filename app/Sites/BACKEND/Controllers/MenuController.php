@@ -9,6 +9,7 @@ use App\Models\Article;
 use Illuminate\Support\Facades\Auth;
 
 use Session;
+use Image;
 
 class MenuController extends AuthController
 {
@@ -46,6 +47,17 @@ class MenuController extends AuthController
         $menu = new Menu;
         $menu->fk_for_caffe = $request->input('fk_for_caffe');
         $menu->name= $request -> input ('name');
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/caffe_images/' . $filename);
+            Image::make($image)->resize(800, 400)->save($location);
+
+            $menu->image = $filename;
+        } else {
+
+            $menu->image = "default.jpg";
+        }
         $menu->save();
 
 //        $menu->article()->attach($request->input('article_number'),['neto_price' => $request->input('neto_price'),
