@@ -13,7 +13,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 
 
-class ReservationController extends Controller
+class ReservationController extends AuthController
 {
     /**
      * @param Request $request

@@ -28,7 +28,7 @@ class Caffe extends Model
 
     public function menu()
     {
-        return $this->hasMany('App\Models\Menu', 'menu_id' , 'caffe_id');
+        return $this->hasMany('App\Models\Menu', 'fk_for_caffe' , 'caffe_id');
     }
     public function images()
     {

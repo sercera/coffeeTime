@@ -77,7 +77,7 @@ class OrderController extends AuthController
         }
 
 
-        return view('orders.index', compact('menus', 'articles', 'tables', 'users', 'orderId', 'orders'));
+        return view('orders.show', compact('menus', 'articles', 'tables', 'users', 'orderId', 'orders'));
     }
 
     public function create($permissions = ['caffe'])
