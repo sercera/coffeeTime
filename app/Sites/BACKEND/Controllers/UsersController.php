@@ -40,8 +40,8 @@ class UsersController extends AuthController
         foreach ($allUsers as $user) {
 
             if ($loggedUser->hasRole('owner')) {
-                if($user->hasRole('employee')){
-                 //do-nothing
+                if ($user->hasRole('employee')) {
+                    //do-nothing
 
                 } else {
 
@@ -53,18 +53,12 @@ class UsersController extends AuthController
             $users[$numeration]['username'] = $user->username;
             $users[$numeration]['email'] = $user->email;
             $users[$numeration]['caffe'] = !empty($user->fk_for_caffe) ? Caffe::find($user->fk_for_caffe)->name : null;
-            $users[$numeration]['userDetails'] = $user->getDetails()->first();
+            $users[$numeration]['userDetails'] = !empty($user->getDetails()->first()) ? $user->getDetails()->first() : null;
             $users[$numeration++]['role'] = Role::where('id', DB::table('role_user')->where('user_id', $user->user_id)->first()->role_id)->first()->display_name;
 
-//            var_dump($users[0]['userDetails']->first_name);
-//            die();
         }
 
-
-//        return view('users.index', compact('users'));
-
         return view('users.index', compact('users', 'caffe'));
-
 
 
     }
@@ -95,7 +89,7 @@ class UsersController extends AuthController
     {
 
         $request = $req->all();
-        $newImage=null;
+        $newImage = null;
 
         $rules = [
 
@@ -113,7 +107,7 @@ class UsersController extends AuthController
 
         }
 
-        $oldImage=User::find($user)->getDetails()->first()->image;
+        $oldImage = User::find($user)->getDetails()->first()->image;
 
         if ($req->hasFile('image')) {
             //add new photo
@@ -122,7 +116,7 @@ class UsersController extends AuthController
             $location = public_path('images/caffe_images/' . $filename);
             Image::make($image)->resize(800, 400)->save($location);
 
-            $oldFilename =$oldImage;
+            $oldFilename = $oldImage;
             //update the DB
             $newImage = $filename;
             //delete old photo
@@ -146,7 +140,7 @@ class UsersController extends AuthController
             'pid' => $request['pid'],
             'employee_number' => $request['employee_number'],
             'fk_for_user' => $user,
-            'image'=>is_null($newImage)?$oldImage:$newImage
+            'image' => is_null($newImage) ? $oldImage : $newImage
 
         ]);
 
@@ -161,10 +155,10 @@ class UsersController extends AuthController
 
     }
 
-    public function store(Request $req,  $permissions = ["users", "edit"])
+    public function store(Request $req, $permissions = ["users", "edit"])
     {
 
-        $request=$req->all();
+        $request = $req->all();
         $rules = [
 
             'first_name' => 'required|min:2',
@@ -173,7 +167,7 @@ class UsersController extends AuthController
             //'phone_number' => 'string|min:5',
             'username' => 'required|string|min:3|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            ];
+        ];
 
 
         $validation = Validator::make($request, $rules);
@@ -202,7 +196,7 @@ class UsersController extends AuthController
             $location = public_path('images/caffe_images/' . $filename);
             Image::make($image)->resize(800, 400)->save($location);
 
-            $image= $filename;
+            $image = $filename;
         } else {
 
             $image = "default.jpg";
@@ -218,7 +212,7 @@ class UsersController extends AuthController
             'pid' => $request['pid'],
             'employee_number' => $request['employee_number'],
             'fk_for_user' => $createdUser->user_id,
-            'image'=>$image
+            'image' => $image
 
         ]);
 
@@ -245,7 +239,7 @@ class UsersController extends AuthController
 
     public function edit($user, $permissions = ["table", "edit"])
     {
-        $user = User::find($user);
+        $selectedUser = User::find($user);
 
 
         if (empty($user)) {
@@ -255,30 +249,37 @@ class UsersController extends AuthController
 
         } else {
 
-            $userDetails = $user->getDetails()->first();
+            $userDetails = $selectedUser->getDetails()->first();
 
             $numeration = 0;
-            $allRoles = Role::where('id', '!=', $user->roles()->first()->id)->get();
-            $roles[$numeration++] = Role::find($user->roles()->first()->id);
+            $allRoles = Role::where('id', '!=', $selectedUser->roles()->first()->id)->get();
+            $roles[$numeration++] = Role::find($selectedUser->roles()->first()->id);
             foreach ($allRoles as $role) {
 
                 $roles[$numeration++] = $role;
             }
-            $caffe = Caffe::find($user->fk_for_caffe);
-            $i = 0;
-            $caffes[$i++] = $caffe;
 
-            if (Auth::user()->hasRole('admin')) {
+            if(is_null($selectedUser->fk_for_caffe)){
+                $caffes=Caffe::all();
 
-                $allCaffes = Caffe::where('caffe_id', '!=', $user->fk_for_caffe)->get();
+            } else {
+                $caffe = Caffe::find($selectedUser->fk_for_caffe);
+                $i = 0;
+                $caffes[$i++] = $caffe;
 
-                foreach ($allCaffes as $caffeItem) {
+                if (Auth::user()->hasRole('admin')) {
 
-                    $caffes[$i++] = $caffeItem;
+                    $allCaffes = Caffe::where('caffe_id', '!=', $selectedUser->fk_for_caffe)->get();
+
+                    foreach ($allCaffes as $caffeItem) {
+
+                        $caffes[$i++] = $caffeItem;
+
+                    }
 
                 }
-
             }
+            $user=$selectedUser;
 
             return view('users.edit', compact('user', 'userDetails', 'roles', 'caffes'));
 
@@ -287,7 +288,7 @@ class UsersController extends AuthController
     }
 
 
-    public function editPassword(Request $req,$user, $permissions = ["users", "edit"])
+    public function editPassword(Request $req, $user, $permissions = ["users", "edit"])
     {
         $request = $req->all();
 

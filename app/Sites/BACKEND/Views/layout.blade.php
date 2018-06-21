@@ -20,7 +20,7 @@
     <link rel="stylesheet" type="text/css"
           href="{{asset('lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backoffice/css/jquery.growl.css')}}">
-    {{--<link rel="stylesheet" type="text/css" href="{{asset('resources/assets/scss/app.scss')}}">--}}
+    <link rel="stylesheet" type="text/css" href="{{asset('resources/assets/scss/app.scss')}}">
 
 
     {{--    <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-data-table/dataTables.bootstrap.css')}}">--}}
@@ -280,7 +280,7 @@
 <script src="{{asset('lib/bootstrap-date-picker/bootstrap-datepicker3.js')}}"></script>
 <script src="{{asset('lib/select2/select2.js')}}"></script>
 <script src="{{asset('lib/jquery-validate/jquery.validate.js')}}"></script>
-{{--<scipt src="{{asset('resources/assets/js/app.js')}}"></scipt>--}}
+<scipt src="{{asset('resources/assets/js/app.js')}}"></scipt>
 
 
 @yield('scripts')

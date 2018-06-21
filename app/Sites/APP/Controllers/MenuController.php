@@ -3,14 +3,14 @@
 namespace App\Sites\APP\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Sites\APP\Controllers\Auth;
 use App\Models\Menu;
 use App\Models\Article;
 use App\Models\Caffe;
 use App\Models\Order;
 
 
-class MenuController extends Controller
+class MenuController extends AuthController
 {
     public function index($id)
     {

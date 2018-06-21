@@ -14,17 +14,17 @@
             @if(!empty($orders))
                 @foreach($orders as $order)
                     <div class="order form-group row">
-                        <div class="col-md-2">
-                            <div class="col-md-2 control-label">
-                                {{Form::label('Meni','Meni')}}
-                            </div>
-                            <div class="col-md-10">
-                                <select name="menu" id="select3" style="width: 100%" disabled>
-                                    <option value="{{$order['menu']}}">{{$order['menu']}}</option>
+                        {{--<div class="col-md-2">--}}
+                            {{--<div class="col-md-2 control-label">--}}
+                                {{--{{Form::label('Meni','Meni')}}--}}
+                            {{--</div>--}}
+                            {{--<div class="col-md-10">--}}
+                                {{--<select name="menu" id="select3" style="width: 100%" disabled>--}}
+                                    {{--<option value="{{$order['menu']}}">{{$order['menu']}}</option>--}}
 
-                                </select>
-                            </div>
-                        </div>
+                                {{--</select>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                         <div class="col-md-2">
 
                             <div class="col-md-2 control-label">
@@ -93,18 +93,6 @@
             @endif
             <div class="order form-group row">
                 <div class="col-md-2">
-                    <div class="col-md-2 control-label">
-                        {{Form::label('Meni','Meni')}}
-                    </div>
-                    <div class="col-md-10">
-                        <select name="menu" id="select3" style="width: 100%">
-                            @foreach($menus as $menu)
-                                <option value="{{$menu->menu_id}}">{{$menu->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-2">
 
                     <div class="col-md-2 control-label">
                         {{Form::label('article','Artikl:')}}
@@ -136,11 +124,11 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <div class="col-md-2 control-label">
+                    <div class="col-md-3 control-label">
 
                         {{Form::label('quantity','Kolicina:')}}
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         <select name="quantity" id="select6" style="width: 100%">
                             @foreach($articles as $article)
                                 @foreach($article as $art)
@@ -152,7 +140,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
 
                     <div class="col-md-2 control-label">
                         {{Form::label('user','Korisnik:')}}

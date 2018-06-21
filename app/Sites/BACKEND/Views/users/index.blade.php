@@ -53,14 +53,25 @@
                     <tbody>
                     @foreach($users as $user)
                         <tr>
-                            <td>{{$user['userDetails']->first_name}}</td>
-                            <td>{{$user['userDetails']->last_name}}</td>
                             <td>{{$user['username']}}</td>
                             <td>{{$user['email']}}</td>
+
+                            @if((is_null($user['userDetails'])))
+                                <td >-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+
+                                @else
+                                <td>{{$user['userDetails']->first_name}}</td>
+                                <td>{{$user['userDetails']->last_name}}</td>
                             <td >{{$user['userDetails']->pid}}</td>
                             <td>{{$user['userDetails']->age}}</td>
                             <td>{{$user['userDetails']->address}}</td>
                             <td>{{$user['userDetails']->gender}}</td>
+                            @endif
                             <td>{{$user['role']}}</td>
                             <td>{{empty($user['caffe'])?"/":$user['caffe']}}</td>
                             <td style="width: 150px;">

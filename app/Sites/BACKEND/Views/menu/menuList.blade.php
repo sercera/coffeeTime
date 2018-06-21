@@ -47,17 +47,17 @@
                         @if(!empty($menus))
                             @foreach($menus as $menu)
                                 <tr>
-                                    <td>{{$menu->caffe->name}}</td>
-                                    <td>{{$menu->name}}</td>
+                                    <td>{{$menu['caffe']}}</td>
+                                    <td>{{$menu['menu']->name}}</td>
                                     <td style="width: 66px">
-                                        {!! Form::open(['route' => ['menu.show', $menu->menu_id],'method' => 'GET']) !!}
+                                        {!! Form::open(['route' => ['menu.show', $menu['menu']->menu_id],'method' => 'GET']) !!}
 
                                         {!! Form::submit('Prikazi', ['class' => 'btn btn-warning pull-left', 'style' => 'margin-right: 10px']) !!}
 
                                         {!! Form::close() !!}
                                     </td>
                                     <td style="width: 66px;">
-                                        {!! Form::open(['route' => ['menu.destroy', $menu->menu_id],'method' => 'DELETE']) !!}
+                                        {!! Form::open(['route' => ['menu.destroy', $menu['menu']->menu_id],'method' => 'DELETE']) !!}
 
                                         {!! Form::submit('Izbriši', ['class' => 'btn btn-danger pull-left', 'style' => 'margin-right: 10px']) !!}
 

@@ -484,7 +484,7 @@ $(document).ready(function () {
 
     $(document).on('click', '.add-order', function () {
 
-        var menu = $(this).closest('.order').find('[name=menu]').val();
+        // var menu = $(this).closest('.order').find('[name=menu]').val();
         var article = $(this).closest('.order').find('[name=article]').val();
         var table = $(this).closest('.order').find('[name=table]').val();
         var quantity = $(this).closest('.order').find('[name=quantity]').val();
@@ -526,7 +526,7 @@ $(document).ready(function () {
 
             },
             success: function (orderId) {
-                $order.find('#select3').prop('selectedIndex', 0).trigger('change');
+                // $order.find('#select3').prop('selectedIndex', 0).trigger('change');
                 $order.find('#select4').prop('selectedIndex', 0).trigger('change');
                 $order.find('#select5').prop('selectedIndex', 0).trigger('change');
                 $order.find('#select6').prop('selectedIndex', 0).trigger('change');

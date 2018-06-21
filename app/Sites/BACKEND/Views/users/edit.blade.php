@@ -22,7 +22,8 @@
         <li>
             <a href="{{url('users/'.$user->user_id.'/edit')}}">
                 <i class="fa fa-user"></i>
-                {{$userDetails->first_name}} {{$userDetails->last_name}}
+
+                {{is_null($userDetails)?$user->username:$userDetails->first_name.' '.$userDetails->last_name}}
             </a>
         </li>
     </ol>
@@ -32,7 +33,8 @@
             <div class="col-lg-5">
             </div>
             <div class="col-lg-7">
-                <h4 class="panel-title" style="margin-left: 40%;">Izmeni korsinika: {{$userDetails->first_name}} {{$userDetails->last_name}}</h4>
+                <h4 class="panel-title" style="margin-left: 40%;">Izmeni korsinika: {{is_null($userDetails)?$user->username:$userDetails->first_name.' '.$userDetails->last_name}}
+                </h4>
             </div>
         </div>
         <div class="panel-body" style="margin-left: 20px">
@@ -52,7 +54,7 @@
                             <br> <p class="alert alert-warning">{!! $error !!}</p>
                         @endforeach
                     @else
-                        {!! Form::text('first_name',$userDetails->first_name,['class'=>'form-control','placeholder'=>'Unesi svoje ime','required'=>'required']); !!}
+                        {!! Form::text('first_name',is_null($userDetails)?"":$userDetails->first_name,['class'=>'form-control','placeholder'=>'Unesi svoje ime','required'=>'required']); !!}
                     @endif
                 </div>
 
@@ -64,7 +66,7 @@
                             <br> <p class="alert alert-warning">{!! $error !!}</p>
                         @endforeach
                     @else
-                        {!! Form::text('last_name',$userDetails->last_name,['class'=>'form-control','placeholder'=>'Unesi svoje prezime','required'=>'required']); !!}
+                        {!! Form::text('last_name',is_null($userDetails)?"":$userDetails->last_name,['class'=>'form-control','placeholder'=>'Unesi svoje prezime','required'=>'required']); !!}
                     @endif
 
 
@@ -102,14 +104,14 @@
 
                     {!! Form::label('pid','Broj licne karte:'); !!}
 
-                    {{ Form::number('pid',$userDetails->pid,['class'=>'form-control','placeholder'=>'Unesi broj licne karte','required'=>'required']) }}
+                    {{ Form::number('pid',is_null($userDetails)?"":$userDetails->pid,['class'=>'form-control','placeholder'=>'Unesi broj licne karte','required'=>'required']) }}
 
                 </div>
                 <div class="form-group">
 
                     {!! Form::label('age','Godina:'); !!}
 
-                    {{ Form::number('age',$userDetails->age,['class'=>'form-control','placeholder'=>'Unesi godine','required'=>'required']) }}
+                    {{ Form::number('age',is_null($userDetails)?"":$userDetails->age,['class'=>'form-control','placeholder'=>'Unesi godine','required'=>'required']) }}
 
                 </div>
 
@@ -117,7 +119,7 @@
 
                     {!! Form::label('address','Adresa stanovanja:'); !!}
 
-                    {!! Form::text('address',$userDetails->address,['class'=>'form-control','placeholder'=>'Unesi adresu stanovanja','required'=>'required']); !!}
+                    {!! Form::text('address',is_null($userDetails)?"":$userDetails->address,['class'=>'form-control','placeholder'=>'Unesi adresu stanovanja','required'=>'required']); !!}
                 </div>
                 <div class="form-group row">
 
@@ -133,7 +135,7 @@
 
                     {!! Form::label('employee_number','Id radnika:'); !!}
 
-                    {!! Form::number('employee_number',$userDetails->employee_number,['class'=>'form-control','placeholder'=>'Unesi ID radnika (Opciono)']); !!}
+                    {!! Form::number('employee_number',is_null($userDetails)?"":$userDetails->employee_number,['class'=>'form-control','placeholder'=>'Unesi ID radnika (Opciono)']); !!}
                 </div>
 
 
@@ -147,7 +149,7 @@
                     <div class="input-group mb20">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
 
-                        {{ Form::number('phone_number',$userDetails->phone_number,['class'=>'form-control','placeholder'=>'Unesi svoj broj telefona','id'=>'phone','required'=>'required']) }}
+                        {{ Form::number('phone_number',is_null($userDetails)?"":$userDetails->phone_number,['class'=>'form-control','placeholder'=>'Unesi svoj broj telefona','id'=>'phone','required'=>'required']) }}
 
                     </div>
 
@@ -171,6 +173,7 @@
                     @if(!empty($caffes))
                         <select name="caffe" id="select2" class="form-control" style="width: 100%">
                             @foreach($caffes as $caffe)
+
                                 <option value="{{$caffe->caffe_id}}">{{$caffe->name}}</option>
                             @endforeach
                         </select>

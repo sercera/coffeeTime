@@ -18,7 +18,7 @@
         <li class="active">
             <a href="{{url('/menu/'.$menu->menu_id)}}">
                 <i class="fa fa-book"></i>
-                {{$menu->caffe->name}}
+                {{$caffe->name}}
             </a>
         </li>
     </ol>
@@ -31,7 +31,7 @@
 
             </div>
             <div>
-                <h4 class="panel-title">Menu {{$menu->name}} "{{$menu->caffe->name}}"</h4>
+                <h4 class="panel-title">Menu {{$menu->name}} "{{$caffe->name}}"</h4>
             </div>
         </div>
         <br>

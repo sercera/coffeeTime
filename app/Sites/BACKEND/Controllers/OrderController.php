@@ -46,20 +46,21 @@ class OrderController extends AuthController
         $i = 0;
         foreach ($getOrders as $order) {
 
-            $orders[$i]['menu'] = Menu::find($order->menu_id)->name;
+//            $orders[$i]['menu'] = Menu::find($order->menu_id)->name;
             $orders[$i]['article'] = Article::find($order->article_id)->name;
             $orders[$i]['table'] = Table::find($order->table_id)->table_number;
             $orders[$i]['quantity'] = $order->quantity;
             $orders[$i]['user'] = !empty(User::find($order->user_id)) ? User::find($order->user_id)->username : null;
             $orders[$i++]['order'] = $order->ord_tbl_id;
         }
-        $menus = Caffe::find($caffeId)->menu()->get();
+       $menus = Caffe::find($caffeId)->menu()->get();
 
         foreach ($menus as $menu) {
 
             $articles[$menu->menu_id] = $menu->article()->get();
 
         }
+
 
         $tables = Caffe::find($caffeId)->tables()->get();
 
@@ -77,7 +78,7 @@ class OrderController extends AuthController
         }
 
 
-        return view('orders.show', compact('menus', 'articles', 'tables', 'users', 'orderId', 'orders'));
+        return view('orders.show', compact( 'articles', 'tables', 'users', 'orderId', 'orders'));
     }
 
     public function create($permissions = ['caffe'])
@@ -114,7 +115,7 @@ class OrderController extends AuthController
         $request = Request::all();
 
         $order = new OrderTableUser();
-        $order->menu_id = $request['menu'];
+        $order->menu_id = Article::find($request['article'])->menu()->first()->pivot->menu_id;
         $order->order_id = $request['order'];
         $order->table_id = $request['table'];
         $order->user_id = $request['user'];

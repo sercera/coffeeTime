@@ -13,22 +13,21 @@ use Image;
 
 class MenuController extends AuthController
 {
-    public function index($permissions=["caffe","view"])
+    public function index($permissions = ["caffe", "view"])
     {
-        if ( Auth::user()->hasRole('admin')) {
+        if (Auth::user()->hasRole('admin')) {
 
             $caffes = Caffe::all();
 
+        } else if (Auth::user()->hasRole('owner') || Auth::user()->hasRole('employee')) {
+
+            $caffes = Caffe::where('caffe_id', Auth::user()->fk_for_caffe)->get();
+
         }
-        else if (Auth::user()->hasRole('owner') || Auth::user()->hasRole('employee')) {
 
-            $caffes=Caffe::where('caffe_id',Auth::user()->fk_for_caffe)->get();
+        if (empty($caffes)) {
 
-        }
-
-        if(empty($caffes)){
-
-            $caffes=null;
+            $caffes = null;
 
         }
 
@@ -37,7 +36,7 @@ class MenuController extends AuthController
         return view('menu.menu')->withCaffes($caffes)->withArticles($articles);
     }
 
-    public function submit(Request $request, $permissions=["caffe","edit"])
+    public function submit(Request $request, $permissions = ["caffe", "edit"])
     {
 //        $this->validate($request, [
 //            'fk_for_caffe'=> 'required'
@@ -46,7 +45,7 @@ class MenuController extends AuthController
 //        dd($request->input('article_number'));
         $menu = new Menu;
         $menu->fk_for_caffe = $request->input('fk_for_caffe');
-        $menu->name= $request -> input ('name');
+        $menu->name = $request->input('name');
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
@@ -70,7 +69,7 @@ class MenuController extends AuthController
         return redirect('/menu')->with('success', 'Uspešno ste dodali novi meni.');
     }
 
-    public function addArticle(Request $request, $permissions=["caffe","edit"])
+    public function addArticle(Request $request, $permissions = ["caffe", "edit"])
     {
         $menu = Menu::find($request->input('meni_id'));
 
@@ -83,7 +82,7 @@ class MenuController extends AuthController
         return redirect()->route('menu.show', $menu->menu_id)->with('success', 'Uspešno ste dodali novi proizvod.');
     }
 
-    public function removeFromMenu($meni, $arti, $permissions=["caffe","edit"])
+    public function removeFromMenu($meni, $arti, $permissions = ["caffe", "edit"])
     {
         $menu = Menu::find($meni);
 
@@ -92,7 +91,7 @@ class MenuController extends AuthController
         return redirect()->route('menu.show', $menu->menu_id)->with('success', 'Article Removed');
     }
 
-    public function updateMenu(Request $request, $permissions=["caffe","edit"])
+    public function updateMenu(Request $request, $permissions = ["caffe", "edit"])
     {
         $menu = Menu::findOrFail($request->meni);
 
@@ -105,28 +104,41 @@ class MenuController extends AuthController
         ]);
         return back();
     }
-    public function list($permissions=["caffe","view"])
+
+    public function list($permissions = ["caffe", "view"])
     {
-        if ( Auth::user()->hasRole('admin')) {
+        $tempMenu=null;
+
+        if (Auth::user()->hasRole('admin')) {
 
             $menus = Menu::all();
 
+        } else if (Auth::user()->hasRole('owner') || Auth::user()->hasRole('employee')) {
+
+            $menus = Menu::where('fk_for_caffe', Auth::user()->fk_for_caffe)->get();
+
         }
-        else if (Auth::user()->hasRole('owner') || Auth::user()->hasRole('employee')) {
 
-            $menus=Menu::where('fk_for_caffe',Auth::user()->fk_for_caffe)->get();
+        $i = 0;
+        if (empty($menus)) {
 
-        }
-        if(empty($menus)){
+            $menus = null;
 
-            $menus=null;
+        } else {
+            foreach ($menus as $menu) {
 
+                $tempMenu[$i]['menu'] = $menu;
+                $tempMenu[$i++]['caffe'] = Caffe::find($menu->fk_for_caffe)->name;
+
+            }
+            $menus=$tempMenu;
         }
 
         return view('menu.menuList')->withMenus($menus);
     }
 
-    public function show($id, $permissions=["caffe","view"])
+    public
+    function show($id, $permissions = ["caffe", "view"])
     {
 
         $menu = Menu::find($id);
@@ -136,18 +148,21 @@ class MenuController extends AuthController
             return redirect()->back();
         }
 
-       $articles=Caffe::find($menu->fk_for_caffe)->articles()->get();
+        $caffe=Caffe::find($menu->fk_for_caffe);
 
-        if(empty($articles)){
+        $articles = Caffe::find($menu->fk_for_caffe)->articles()->get();
 
-            $articles=null;
+        if (empty($articles)) {
+
+            $articles = null;
         }
 
 
-        return view('menu.menu-show')->withMenu($menu)->withArticles($articles);
+        return view('menu.menu-show',compact('caffe'))->withMenu($menu)->withArticles($articles);
     }
 
-    public function destroy($id, $permissions=["caffe","delete"])
+    public
+    function destroy($id, $permissions = ["caffe", "delete"])
     {
         $menu = Menu::find($id);
         $menu->article()->detach();
