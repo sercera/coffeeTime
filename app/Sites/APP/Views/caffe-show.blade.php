@@ -176,7 +176,7 @@
                                                 <div class="img-bar">
                                                     <h5 class="default-font text-bold">  </h5>
                                                     <p class="ls-0 mt-20 hide show-xs-block">  </p>
-                                                    <a href="#" class="btn btn-sm btn-primary mt-20">VIŠE</a>
+                                                    <a href="#" class="btn btn-sm btn-primary mt-20" data-toggle="modal"  data-target="#show">VIŠE</a>
                                                 </div>
                                                 <div class="img-bar-default">
                                                     <h3 class="default-font text-bold">{{$menu->name}}</h3>
@@ -186,11 +186,15 @@
                                     @endif
                                 @endforeach
 
+
+
+
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
 
             {{--<section class="section section-content " id="section2">--}}
                 {{--<div class="container container-big text-md-left">--}}
@@ -457,4 +461,71 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 {!! Toastr::message() !!}
 </body>
+<div class="modal fade" id="show" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" >&times;</button>
+
+                <h4 class="modal-title">Meni {{$menu->name}}</h4>
+            </div>
+            <div class="modal-body" style="height: 600px; width: 100%">
+                    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead class="bg-primary">
+                        <tr>
+                            <td>Naziv artikla</td>
+                            <td>Tip</td>
+                            <td>Opis</td>
+                            <td>Prodajna cena</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($menu->article as $article)
+                            <tr>
+                                <td>{{$article->name}}</td>
+                                <td>{{$article->type}}</td>
+                                <td>{{$article->description}}</td>
+                                <td>{{$article->pivot->selling_price}}</td>
+
+
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                {{--{!! Form::open(['url' => ['menu/order', $menu->menu_id], 'method' => 'POST'])!!}--}}
+                {{--@foreach($menu->article as $article)--}}
+                    {{--<tr>--}}
+                        {{--<td>--}}
+                            {{--{{ $article->name  }}--}}
+                        {{--</td>--}}
+
+                        {{--<td>--}}
+                            {{--{{$article->type}}--}}
+                        {{--</td>--}}
+
+                        {{--<td>{{$article->description}}</td>--}}
+
+                        {{--<td>{{$article->pivot->selling_price}}</td>--}}
+                        {{--<td>--}}
+                            {{--{!! Form::checkbox('check[]', $article->article_id, true) !!}--}}
+                            {{--<input name="check[]" type="checkbox" value="{{$article->article_id}}">--}}
+                        {{--</td>--}}
+                    {{--</tr>--}}
+                {{--@endforeach--}}
+
+                {{--</tbody>--}}
+                {{--</table>--}}
+
+
+            </div>
+            <div class="modal-footer">
+                {{--{{Form::submit('Naruči',['class'=>'btn btn-primary'])}}--}}
+                {{--{!! Form::close() !!}--}}
+                <button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
+            </div>
+        </div>
+    </div>
+</div>
 </html>
