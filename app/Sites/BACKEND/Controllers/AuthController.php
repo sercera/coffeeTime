@@ -24,7 +24,7 @@ class AuthController extends BaseController
 
         $permissions = end($parameters);
         $can = false;
-        if($method=== "updateMenu"){
+        if ($method === "updateMenu") {
 
             return parent::callAction($method, $parameters);
 
@@ -35,20 +35,19 @@ class AuthController extends BaseController
 
                 $can = true;
 
-            } else{
+            } else {
 
-            $can=false;
+                $can = false;
             }
-            if($can){
+        if ($can) {
 
-                return parent::callAction($method, $parameters);
+            return parent::callAction($method, $parameters);
 
-            } else{
+        } else {
 
-                return redirect('403');
+            return redirect('403');
 
-            }
-
+        }
 
 
     }
