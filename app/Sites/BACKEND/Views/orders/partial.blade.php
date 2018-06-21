@@ -113,7 +113,8 @@
                         <select name="article" id="select4" style="width: 100%">
                             @foreach($articles as $article)
                                 @foreach($article as $art)
-                                    <option value="{{$art->article_id}}">{{$art->name}}</option>
+                                    <option data-menu="{{$art->menu()->first()->pivot->menu_id}}"
+                                            value="{{$art->article_id}}">{{$art->name}}</option>
                                 @endforeach
                             @endforeach
                         </select>
@@ -141,9 +142,13 @@
                     </div>
                     <div class="col-md-10">
                         <select name="quantity" id="select6" style="width: 100%">
-                            @for($i=1;$i<=10;$i++)
-                                <option value="{{$i}}">{{$i}}</option>
-                            @endfor
+                            @foreach($articles as $article)
+                                @foreach($article as $art)
+                                    @for($i=1;$i<=$art->menu()->first()->pivot->quantity;$i++)
+                                        <option data-article="{{$art->article_id}}" value="{{$i}}">{{$i}}</option>
+                                    @endfor
+                                @endforeach
+                            @endforeach
                         </select>
                     </div>
                 </div>

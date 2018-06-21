@@ -40,7 +40,11 @@
 
 </div>
 <h2 class="default-font text-bold letter-spacing-30"><a href="/">coffeeTime</h2>
-<br />
+<h6 class="text-semi-bold hide show-sm-block ml-sm-40 ml-md-0" style="color:black;margin-left: 70%;">
+   <a href="{{url('/logout')}}"> <span class="icon icon-sm glyphicon glyphicon-log-out"></span>
+    <span>Odjavi se</span>
+   </a>
+</h6>
 <br />
 <div class="panel-body">
 @foreach($caffes as $caffe)

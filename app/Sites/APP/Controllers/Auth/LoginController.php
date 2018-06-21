@@ -1,9 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Sites\APP\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Sites\APP\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Request;
+use DB;
+use Validator;
 
 class LoginController extends Controller
 {
@@ -36,4 +41,49 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function login()
+    {
+
+        $request = Request::all();
+
+        $login_error = "Username or password is incorrect";
+
+        $user = User::where('username', $request['username'])->first();
+
+        if (empty($user)) {
+
+
+            $login_error = "Username or password is incorrect";
+
+
+            return view('auth.login', compact('login_error'));
+        }
+
+
+        $rules = [
+            'username' => 'required|string',
+            'password' => 'required|string|min:6'
+
+
+        ];
+
+        $validator = Validator::make($request, $rules);
+
+
+        if ($validator->fails())
+            return redirect()->to('login')->withErrors($validator->errors())->withInput();
+
+        if (Auth::attempt(['username' => $request['username'], 'password' => $request['password']])) {
+
+            return redirect()->intended();
+
+        } else {
+
+            return view('auth.login', compact('login_error'));
+
+
+        }
+    }
+
 }

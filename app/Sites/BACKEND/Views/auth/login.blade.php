@@ -62,9 +62,9 @@
                                         {{ __('Prijavi se') }}
                                     </button>
 
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    {{--<a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Zaboravili ste lozinku?') }}
-                                    </a>
+                                    </a>--}}
                                 </div>
                             </div>
                         </form>

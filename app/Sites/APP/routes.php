@@ -10,4 +10,7 @@ Route::post('caffe/show/{caffe_id}/contact','IndexController@contact')->name('co
 
 Route::post('/reservation/send', 'ReservationController@reserve')->name('reserve');
 
+Auth::routes();
+Route::get('/logout','LogoutController@logout');
+
 

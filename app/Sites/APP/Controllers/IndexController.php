@@ -13,7 +13,7 @@ use App\Models\Role;
 use Session;
 use Mail;
 
-class IndexController extends Controller
+class IndexController extends AuthController
 {
     public function index()
     {
