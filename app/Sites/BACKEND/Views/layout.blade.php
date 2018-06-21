@@ -17,14 +17,13 @@
     <link rel="stylesheet" type="text/css" href="{{asset('/lib/jquery-toggles/toggles-full.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-date-picker/bootstrap-datepicker3.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('lib/select2/select2.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backoffice/css/jquery.growl.css')}}">
     {{--<link rel="stylesheet" type="text/css" href="{{asset('resources/assets/scss/app.scss')}}">--}}
 
 
     {{--    <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-data-table/dataTables.bootstrap.css')}}">--}}
-
-
 
 
     <script src="{{asset('lib/modernizr/modernizr.js')}}"></script>
@@ -73,9 +72,59 @@
                         </div>
                     </li>
                     <li>
+                        <div id="noticePanel" class="btn-group">
+                            <button class="btn btn-notice alert-notice" data-toggle="dropdown">
+                                <i class="fa fa-globe"></i>
+                            </button>
+                            <div id="noticeDropdown" class="dropdown-menu dm-notice pull-right">
+                                <div role="tabpanel">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs nav-justified" role="tablist">
+                                        <li class="active"><a data-target="#notification" data-toggle="tab">Notifikacije({{count(Auth::user()->unreadNotifications)}})</a>
+                                        </li>
+                                    </ul>
 
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane active" id="notification">
+                                            <ul class="list-group notice-list">
+                                                {{--<li class="list-group-item unread">
+                                                    <div class="row">
+                                                        <div class="col-xs-2">
+                                                            <i class="fa fa-envelope"></i>
+                                                        </div>
+                                                        <div class="col-xs-10">
+                                                            <h5><a href="">New message from Weno Carasbong</a></h5>
+                                                            <small>June 20, 2015</small>
+                                                            <span>Soluta nobis est eligendi optio cumque...</span>
+                                                        </div>
+                                                    </div>
+                                                </li>--}}
+                                                <li>
+                                                @if(count(Auth::user()->unreadNotifications))
+                                                @foreach(Auth::user()->unreadNotifications as $notification)
+                                                <a class="dropdown-item" href="http://www.admin.coffeetime.com/caffe/reservations/{{$notification->data['caffe']['caffe_id']}}">
+                                                Rezervacija za {{$notification->data['caffe']['name']}}
+                                                </a><br />
+                                                @endforeach
+                                                @else
+                                                <a class="dropdown-item" href="#">
+                                                No notification
+                                                </a>
+                                                @endif
+                                                </li>
+                                            </ul>
+                                            {{--http://www.admin.coffeetime.com/caffe/reservations/{{$notification->data['caffe']['caffe_id']}}--}}
+                                            <a class="btn-more" href="#">Vidi sve Notifikacije <i
+                                                        class="fa fa-long-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                     <li>
+
                         {{--<div class="btn-group">--}}
                             {{--<button type="button" class="btn btn-logged" data-toggle="dropdown">--}}
                                 {{--<i class="fa fa-bell"></i>  Obaveštenja--}}
@@ -125,9 +174,22 @@
 
 
 
+                       {{-- <div class="btn-group">
+                            <button type="button" class="btn btn-logged" data-toggle="dropdown">
+                                <i class="fa fa-bell"></i> Obaveštenja
+                                <span class="badge">{{count(Auth::user()->notifications)}}</span>
+                            </button>
+                            <ul class="dropdown-menu pull-right">
+                                --}}{{--@foreach()--}}{{--
+                                --}}{{--<li></li>--}}{{--
+                                --}}{{--@endforeach--}}{{--
+                            </ul>
+                        </div>--}}
+
+
                         <div class="btn-group">
                             <button type="button" class="btn btn-logged" data-toggle="dropdown">
-                                <img src="images/photos/loggeduser.png" alt=""/>{{Auth::user()->username}}
+                                <img src="{{asset('images/caffe_images/'.Auth::user()->getDetails()->first()->image)}}" alt=""/>{{Auth::user()->username}}
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu pull-right">
@@ -157,8 +219,15 @@
             <!-- ################## LEFT PANEL PROFILE ################## -->
 
             <div class="media leftpanel-profile">
+                <div class="media-left">
+                    <a href="{{url('users/'.Auth::user()->user_id).'/edit'}}">
+                        <img src="{{asset('images/caffe_images/'.Auth::user()->getDetails()->first()->image)}}" alt="" class="media-object img-circle">
+                    </a>
+                </div>
                 <div class="media-body">
+
                     <h3 class="media-heading">{{Auth::user()->username}}</h3>
+
 
                 </div>
             </div><!-- leftpanel-profile -->
