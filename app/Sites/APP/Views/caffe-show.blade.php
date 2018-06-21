@@ -159,6 +159,7 @@
             </section>
 
             <!--========== MENUS ==========-->
+
             <section class="section section-content " id="section2">
                 <div class="container container-big text-md-left">
                     <div class="row flex-center flex-xl-left">
@@ -166,23 +167,57 @@
                         <div class="col-xl-10 mt-30 mt-md-50">
                             <div class="row flex-center flex-xl-left">
 
-                                <div class="col-sm-10 col-md-6">
-                                    @foreach($menus as $menu)
-                                        @if($menu->fk_for_caffe==$caffe->caffe_id)
-                                            <div class="media media-md">
-                                                <div class="media-body">
-                                                    <a href=""><h4 class="text-medium text-primary" style="text-align: center">{{$menu->name}}</h4></a>
+                                <!-- Section Item -->
+                                @foreach($menus as $menu)
+                                    @if($menu->fk_for_caffe==$caffe->caffe_id)
+                                        <div class="col-md-4 col-lg-4 col-xl-4">
+                                            <div class="img-container light-section">
+                                                <img src="{{asset('images/caffe_images/' . $menu->image)}}" width="418" height="284" alt="">
+                                                <div class="img-bar">
+                                                    <h5 class="default-font text-bold">  </h5>
+                                                    <p class="ls-0 mt-20 hide show-xs-block">  </p>
+                                                    <a href="#" class="btn btn-sm btn-primary mt-20">VIŠE</a>
+                                                </div>
+                                                <div class="img-bar-default">
+                                                    <h3 class="default-font text-bold">{{$menu->name}}</h3>
                                                 </div>
                                             </div>
-                                        @endif
-                                    @endforeach
-                                </div>
+                                        </div>
+                                    @endif
+                                @endforeach
 
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+            {{--<section class="section section-content " id="section2">--}}
+                {{--<div class="container container-big text-md-left">--}}
+                    {{--<div class="row flex-center flex-xl-left">--}}
+                        {{--<h3 class="col-xs-10">Naši meniji</h3>--}}
+                        {{--<div class="col-xl-10 mt-30 mt-md-50">--}}
+                            {{--<div class="row flex-center flex-xl-left">--}}
+
+                                {{--<div class="col-sm-10 col-md-6">--}}
+                                    {{--@foreach($menus as $menu)--}}
+                                        {{--@if($menu->fk_for_caffe==$caffe->caffe_id)--}}
+                                            {{--<div class="media media-md">--}}
+                                                {{--<div class="media-body">--}}
+                                                    {{--<a href=""><h4 class="text-medium text-primary" style="text-align: center">{{$menu->name}}</h4></a>--}}
+                                                    {{--<img src="{{asset('images/caffe_images/' . $menu->image)}}" width="300" height="200" class="scaling-image" alt="{{$menu->name}}" align="right" margin="5px" >--}}
+
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--@endif--}}
+                                    {{--@endforeach--}}
+                                {{--</div>--}}
+
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</section>--}}
 
             <!--========== RESERVATION ==========-->
             <section class="section section-content" id="section3">
@@ -302,7 +337,7 @@
                                         @foreach($usersDetails as $userDetails)
                                             @if($userDetails->fk_for_user==$user->user_id)
                                                 <div style="margin:15px; padding: 15px; box-shadow: 1px 1px 10px 2px silver;">
-                                                    <img src="{{asset('images/caffe_images/' . $caffe->image)}}" width="300" height="300" class="scaling-image" alt="{{$user->ussername}}" align="right" margin="5px" >
+                                                    <img src="{{asset('images/caffe_images/' . $userDetails->image)}}" width="300" height="300" class="scaling-image" alt="{{$user->username}}" align="right" margin="5px" >
                                                     <h5 class="text-semi-bold mt-30">{{$user->username}}</h5>
                                                     <p class="second-font text-primary mt-10">
                                                         @if($user->hasRole('owner'))

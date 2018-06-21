@@ -32,7 +32,7 @@
         </div>
         <br>
         <div class="panel-body">
-    {!! Form::open(['url' => 'menu/submit']) !!}
+    {!! Form::open(['url' => 'menu/submit', 'files' => true]) !!}
     <div class="form-group">
         {{Form::label('fk_for_caffe', 'Izaberite kafić')}}
         <select class="form-control" name="fk_for_caffe">
@@ -44,6 +44,10 @@
             <div class="form-group">
                 {{Form::label('name', 'Naziv menija')}}
                 {{Form::text('name', '' , ['class' => 'form-control', 'placeholder' => 'Podrazumeva se ispred naziva menija dodaje "Meni" ','required'=>'required'])}}
+            </div>
+            <div class="form-group">
+                {{Form::label('image', 'Ubacite sliku')}}
+                {{Form::file('image')}}
             </div>
     <div>
         {{Form::submit('Potvrdi',['class'=>'btn btn-primary'])}}

@@ -2,14 +2,18 @@
 
 namespace App\Sites\BACKEND\Controllers;
 
-use Request;
+//use Request;
+use Illuminate\Http\Request;
+
 use Illuminate\Notifications\Notifiable;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Caffe;
+use Storage;
 use Validator;
+use Image;
 
 
 class UsersController extends AuthController
@@ -83,15 +87,15 @@ class UsersController extends AuthController
             $caffes = null;
         }
 
-
         return view('users.create', compact('caffes', 'roles'));
 
     }
 
-    public function update($user, $permissions = ["users", "edit"])
+    public function update(Request $req, $user, $permissions = ["users", "edit"])
     {
 
-        $request = Request::all();
+        $request = $req->all();
+        $newImage=null;
 
         $rules = [
 
@@ -107,6 +111,22 @@ class UsersController extends AuthController
 
             return redirect()->route('users.create')->withErrors($validation->errors())->withInput();
 
+        }
+
+        $oldImage=User::find($user)->getDetails()->first()->image;
+
+        if ($req->hasFile('image')) {
+            //add new photo
+            $image = $req->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/caffe_images/' . $filename);
+            Image::make($image)->resize(800, 400)->save($location);
+
+            $oldFilename =$oldImage;
+            //update the DB
+            $newImage = $filename;
+            //delete old photo
+            Storage::delete($oldFilename);
         }
 
         DB::table('users')->where('user_id', $user)->update([
@@ -125,7 +145,8 @@ class UsersController extends AuthController
             'age' => $request['age'],
             'pid' => $request['pid'],
             'employee_number' => $request['employee_number'],
-            'fk_for_user' => $user
+            'fk_for_user' => $user,
+            'image'=>is_null($newImage)?$oldImage:$newImage
 
         ]);
 
@@ -140,11 +161,10 @@ class UsersController extends AuthController
 
     }
 
-    public function store($permissions = ["users", "edit"])
+    public function store(Request $req,  $permissions = ["users", "edit"])
     {
 
-        $request = Request::all();
-
+        $request=$req->all();
         $rules = [
 
             'first_name' => 'required|min:2',
@@ -176,6 +196,18 @@ class UsersController extends AuthController
 
         $createdUser = User::where('email', $request['email'])->first();
 
+        if ($req->hasFile('image')) {
+            $image = $req->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/caffe_images/' . $filename);
+            Image::make($image)->resize(800, 400)->save($location);
+
+            $image= $filename;
+        } else {
+
+            $image = "default.jpg";
+        }
+
         DB::table('user_details')->insert([
             'first_name' => $request['first_name'],
             'last_name' => $request['last_name'],
@@ -185,7 +217,8 @@ class UsersController extends AuthController
             'age' => $request['age'],
             'pid' => $request['pid'],
             'employee_number' => $request['employee_number'],
-            'fk_for_user' => $createdUser->user_id
+            'fk_for_user' => $createdUser->user_id,
+            'image'=>$image
 
         ]);
 
@@ -254,9 +287,9 @@ class UsersController extends AuthController
     }
 
 
-    public function editPassword($user, $permissions = ["users", "edit"])
+    public function editPassword(Request $req,$user, $permissions = ["users", "edit"])
     {
-        $request = Request::all();
+        $request = $req->all();
 
 
         $rules = [

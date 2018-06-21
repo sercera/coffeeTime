@@ -38,7 +38,7 @@
         <div class="panel-body" style="margin-left: 20px">
             <div class="row">
 
-                {!! Form::open(['url'=>['users',$user->user_id],'method'=>'PUT','class' =>'form-horizontal']); !!}
+                {!! Form::open(['url'=>['users',$user->user_id],'method'=>'PUT','class' =>'form-horizontal', 'files' => true]); !!}
 
                 <div class="form-group">
 
@@ -175,6 +175,11 @@
                             @endforeach
                         </select>
                     @endif
+                </div>
+
+                <div class="form-group">
+                    {{Form::label('image', 'Promenite sliku')}}
+                    {{Form::file('image')}}
                 </div>
 
             </div>
