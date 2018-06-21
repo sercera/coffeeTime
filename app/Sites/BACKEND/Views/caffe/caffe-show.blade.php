@@ -98,7 +98,7 @@
                                                     {{--{!! Form::submit('Dodaj narudžbinu', ['class' => 'btn btn-info pull-left', 'style' => 'margin-right: 10px']) !!}--}}
 
                                                     {{--{!! Form::close() !!}--}}
-                                                    <a href="{{url('table/order/add/{$table_id}',$table['table_id'])}}"
+                                                    <a href="{{url('orders/2/caffe/18')}}"
                                                        class="edit btn btn-info pull-left" style="margin-right: 10px;"
                                                        role="button">Dodaj narudžbinu</a>
                                                 </div>

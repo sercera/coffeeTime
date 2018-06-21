@@ -23,7 +23,7 @@
         </a>
         <ul class="children">
                 <li {{ request()->is('/orders') ? 'class=active ' : '' }}>
-                    <a href="{{url('/orders')}}">Pregled Narudžbina</a>
+                    <a href="#">Pregled Narudžbina</a>
                 </li>
 
         </ul>
@@ -111,6 +111,18 @@
             <a href="{{url(('/post'))}}">Lista svih postova</a>
         </li>
     </ul>
+</li>
+<li class="nav-parent">
+    <a href="">
+        <i class="fa fa-phone"></i>
+        <span>Rezervacije</span>
+    </a>
+    <ul class="children">
+        <li {{ request()->is('/reservation') ? 'class=active ' : '' }}>
+            <a href="{{url(('/reservation'))}}">Lista rezervacija</a>
+        </li>
+    </ul>
+</li>
 </li>
 
 

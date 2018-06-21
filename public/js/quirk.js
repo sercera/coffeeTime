@@ -484,27 +484,29 @@ $(document).ready(function () {
 
     $(document).on('click', '.add-order', function () {
 
-        // var menu = $(this).closest('.order').find('[name=menu]').val();
         var article = $(this).closest('.order').find('[name=article]').val();
         var table = $(this).closest('.order').find('[name=table]').val();
         var quantity = $(this).closest('.order').find('[name=quantity]').val();
         var user = $(this).closest('.order').find('[name=user]').val();
         var orderId = $('#orderId').val();
+        var articlePrice=$(".article:last option:selected").data('price');
 
         var $order = $(".order:last").clone();
         var $selectedButton = $(this);
         var $beforeButton = $selectedButton.html();
+        var receipt=parseInt($('#receipt').text());
+        var $newPrice=receipt+articlePrice;
 
         $.ajax({
             url: '/order/apply',
             type: "POST",
             data: {
-                'menu': menu,
                 'article': article,
                 'table': table,
                 'quantity': quantity,
                 'user': user,
                 'order': orderId,
+                'newPrice': $newPrice,
                 'permissions': "edit"
             },
             beforeSend: function () {
@@ -536,6 +538,7 @@ $(document).ready(function () {
                 $order.insertAfter(".order:last");
                 $selectedButton.html($beforeButton);
 
+                $('#receipt').text($newPrice);
 
                 $selectedButton.closest('.order').find('#select3').attr('disabled', true);
                 $selectedButton.closest('.order').find('#select4').attr('disabled', true);
@@ -568,6 +571,11 @@ $(document).ready(function () {
         var $orderID = $(this).data('order');
         var $deleteButton = $(this);
 
+        var articlePrice=$(".article:last option:selected").data('price');
+
+        var receipt=parseInt($('#receipt').text());
+        var $newPrice=receipt-articlePrice;
+
 
         $.ajax({
             url: '/order/delete',
@@ -587,6 +595,8 @@ $(document).ready(function () {
             success: function () {
                 $deleteButton.closest('.order').remove();
                 $.growl.notice({message: "order is successfully deleted."});
+
+                $('#receipt').text($newPrice);
 
             },
             complete: function () {

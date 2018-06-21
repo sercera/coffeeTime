@@ -216,15 +216,9 @@
                                                 <img src="{{asset('images/caffe_images/' . $menu->image)}}" width="418"
                                                      height="284" alt="">
                                                 <div class="img-bar">
-<<<<<<< HEAD
                                                     <h5 class="default-font text-bold">  </h5>
                                                     <p class="ls-0 mt-20 hide show-xs-block">  </p>
                                                     <a href="#" class="btn btn-sm btn-primary mt-20" data-toggle="modal"  data-target="#show">VIŠE</a>
-=======
-                                                    <h5 class="default-font text-bold"></h5>
-                                                    <p class="ls-0 mt-20 hide show-xs-block"></p>
-                                                    <a href="#" class="btn btn-sm btn-primary mt-20">VIŠE</a>
->>>>>>> 466a63349f53d91ce7ab3404ae141cbc3a26518e
                                                 </div>
                                                 <div class="img-bar-default">
                                                     <h3 class="default-font text-bold">{{$menu->name}}</h3>
@@ -551,7 +545,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" >&times;</button>
 
-                <h4 class="modal-title">Meni {{$menu->name}}</h4>
+                <h4 class="modal-title">Lista artikla</h4>
             </div>
             <div class="modal-body" style="height: 600px; width: 100%">
                     <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">

@@ -103,6 +103,8 @@ Route::get('403',function (){
 });
 
 Route::resource('orders', 'OrderController')->except('update');
+Route::put('orders/store/{order}','OrderController@update');
+
 
 Route::get('/orders/{order}/caffe/{caffe}','OrderController@show');
 

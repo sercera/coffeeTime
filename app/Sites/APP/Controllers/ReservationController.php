@@ -30,7 +30,7 @@ class ReservationController extends AuthController
         $reservation = new Reservation();
 
         $caffe= Caffe::find($request->input('caffe_id'));
-        User::find(1)->notify(new RepliedToReservation($caffe));
+        Auth::user()->notify(new RepliedToReservation($caffe));
 //        Auth::user()->notify(new RepliedToReservation());
 //        dd($stocic);
         $reservation->fk_for_table=$request->input('table_number');

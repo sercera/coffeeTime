@@ -14,24 +14,13 @@
             @if(!empty($orders))
                 @foreach($orders as $order)
                     <div class="order form-group row">
-                        {{--<div class="col-md-2">--}}
-                            {{--<div class="col-md-2 control-label">--}}
-                                {{--{{Form::label('Meni','Meni')}}--}}
-                            {{--</div>--}}
-                            {{--<div class="col-md-10">--}}
-                                {{--<select name="menu" id="select3" style="width: 100%" disabled>--}}
-                                    {{--<option value="{{$order['menu']}}">{{$order['menu']}}</option>--}}
-
-                                {{--</select>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
                         <div class="col-md-2">
 
                             <div class="col-md-2 control-label">
                                 {{Form::label('article','Artikl:')}}
                             </div>
                             <div class="col-md-10">
-                                <select name="article" id="select4" style="width: 100%" disabled>
+                                <select name="article" id="select4" class="article" style="width: 100%" disabled>
                                     <option value="{{$order['article']}}">{{$order['article']}}</option>
                                 </select>
 
@@ -50,17 +39,17 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <div class="col-md-2 control-label">
+                            <div class="col-md-3 control-label">
 
                                 {{Form::label('quantity','Kolicina:')}}
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-9">
                                 <select name="quantity" id="select6" style="width: 100%" disabled>
                                     <option value="{{$order['quantity']}}">{{$order['quantity']}}</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
 
                             <div class="col-md-2 control-label">
                                 {{Form::label('user','Korisnik:')}}
@@ -98,10 +87,11 @@
                         {{Form::label('article','Artikl:')}}
                     </div>
                     <div class="col-md-10">
-                        <select name="article" id="select4" style="width: 100%">
+                        <select name="article" class="article" id="select4" style="width: 100%">
                             @foreach($articles as $article)
                                 @foreach($article as $art)
-                                    <option data-menu="{{$art->menu()->first()->pivot->menu_id}}"
+                                    <option data-price="{{$art->menu()->first()->pivot->selling_price}}"
+                                            data-menu="{{$art->menu()->first()->pivot->menu_id}}"
                                             value="{{$art->article_id}}">{{$art->name}}</option>
                                 @endforeach
                             @endforeach
@@ -176,7 +166,22 @@
             <div class="col-md-10"></div>
             <div class="col-md-2">
                 <h1 style="float: left">Total:</h1>
-                <h1 class="receipt" style="float: left">0</h1>
+                <h1 id="receipt" style="float: left">{{is_null($orderTotal)?"0":"$orderTotal"}}</h1>
+            </div>
+        </div>
+        <div class="col-md-12 row">
+            <div class="col-md-2">
+                {!! Form::open(['url' => ['orders', $orderId],'method' => 'DELETE']) !!}
+
+                {{Form::submit('Poništi',['class'=>'btn btn-danger'])}}
+                {{Form::close()}}
+
+            </div>
+            <div class="col-md-2">
+                {!! Form::open(['url' => ['orders/store', $orderId],'method' => 'PUT']) !!}
+
+                {{Form::submit('Naplati',['class'=>'btn btn-warning'])}}
+                {{Form::close()}}
             </div>
         </div>
     </div>

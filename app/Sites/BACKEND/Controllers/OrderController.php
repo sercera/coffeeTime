@@ -19,7 +19,7 @@ use Session;
 class OrderController extends AuthController
 {
 
-    public function index($permissions = ['caffe'])
+    public function index($order,$caffe,$permissions = ['caffe'])
     {
 
         $orders = Order::all();
@@ -30,6 +30,7 @@ class OrderController extends AuthController
 
     public function show($order, $caffe, $permissions = ['caffe'])
     {
+
         $orderId = $order;
         $caffeId = $caffe;
 
@@ -37,10 +38,13 @@ class OrderController extends AuthController
 
         $order = Order::find($orderId);
 
+        $orderTotal=$order->selling_total;
+
         if (empty($order)) {
 
             return redirect()->back();
         }
+
 
         $getOrders = DB::table('ord_tbl_usr')->where('ord_tbl_usr.order_id', $orderId)->get();
         $i = 0;
@@ -78,7 +82,7 @@ class OrderController extends AuthController
         }
 
 
-        return view('orders.show', compact( 'articles', 'tables', 'users', 'orderId', 'orders'));
+        return view('orders.show', compact( 'articles', 'tables', 'users', 'orderId', 'orders','orderTotal'));
     }
 
     public function create($permissions = ['caffe'])
@@ -95,15 +99,18 @@ class OrderController extends AuthController
         return view('orders.index');
     }
 
-    public function update($permissions = ['caffe'])
+    public function update($order,$permissions = ['caffe'])
     {
+
+        $selectedOrder=Order::find($order);
 
 
         return view('orders.index');
     }
 
-    public function destroy($id, $permissions = ['caffe', 'delete'])
+    public function destroy($order, $permissions = ['caffe', 'delete'])
     {
+
 
 
         return view('orders.index');
@@ -125,6 +132,10 @@ class OrderController extends AuthController
         $order->date = Carbon::now();
 
         $order->save();
+
+        DB::table('orders')->where('order_id',$request['order'])->update([
+            'selling_total'=>$request['newPrice']
+        ]);
 
 
         if ($order) {
