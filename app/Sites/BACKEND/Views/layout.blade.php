@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('lib/select2/select2.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backoffice/css/jquery.growl.css')}}">
+    {{--<link rel="stylesheet" type="text/css" href="{{asset('resources/assets/scss/app.scss')}}">--}}
 
 
     {{--    <link rel="stylesheet" type="text/css" href="{{asset('lib/bootstrap-data-table/dataTables.bootstrap.css')}}">--}}
@@ -75,17 +76,55 @@
 
                     </li>
                     <li>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-logged" data-toggle="dropdown">
-                                <i class="fa fa-bell"></i>  Obaveštenja
-                                <span class="badge">{{count(Auth::user()->notifications)}}</span>
-                            </button>
-                            <ul class="dropdown-menu pull-right">
-                                {{--@foreach()--}}
-                                {{--<li></li>--}}
+                        {{--<div class="btn-group">--}}
+                            {{--<button type="button" class="btn btn-logged" data-toggle="dropdown">--}}
+                                {{--<i class="fa fa-bell"></i>  Obaveštenja--}}
+                                {{--<span class="badge">{{count(Auth::user()->unreadNotifications)}}</span>--}}
+                            {{--</button>--}}
+                            {{--<ul class="dropdown-content pull-right">--}}
+                                {{--@if(count(Auth::user()->unreadNotifications))--}}
+                                    {{--@foreach(Auth::user()->unreadNotifications as $notification)--}}
+                                        {{--<a class="dropdown-item" href="http://www.admin.coffeetime.com/caffe/reservations/{{$notification->data['caffe']['caffe_id']}}">--}}
+                                            {{--Rezervacija za {{$notification->data['caffe']['name']}}--}}
+                                        {{--</a>--}}
                                     {{--@endforeach--}}
-                            </ul>
-                        </div>
+                                {{--@else--}}
+                                    {{--<a class="dropdown-item" href="#">--}}
+                                        {{--No notification--}}
+                                    {{--</a>--}}
+                                {{--@endif--}}
+                            {{--</ul>--}}
+                        {{--</div>--}}
+
+                        <caffe v-bind:caffes="caffes"></caffe>
+
+                        {{--<div class="btn-group">--}}
+                    {{--<ul>--}}
+                        {{--<li class="nav-item-dropdown">--}}
+                            {{--<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"--}}
+                               {{--aria-haspopup="true" aria-expanded="false">--}}
+                                {{--<i class="fa fa-bell"></i> Notification <span class="badge" id="count-notification">--}}
+                                    {{--{{count(Auth::user()->unreadNotifications)}}</span><span class="caret"></span>--}}
+                            {{--</a>--}}
+                            {{--<div class="dropdown-contet" aria-labelledby="navbarDropdown">--}}
+                                {{--@if(count(Auth::user()->unreadNotifications))--}}
+                                    {{--@foreach(Auth::user()->unreadNotifications as $notification)--}}
+                                    {{--<a class="dropdown-item" href="http://www.admin.coffeetime.com/caffe/reservations/{{$notification->data['caffe']['caffe_id']}}">--}}
+                                        {{--Rezervacija za {{$notification->data['caffe']['name']}}--}}
+                                    {{--</a>--}}
+                                    {{--@endforeach--}}
+                                    {{--@else--}}
+                                {{--<a class="dropdown-item" href="#">--}}
+                                    {{--No notification--}}
+                                {{--</a>--}}
+                                    {{--@endif--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                        {{--</div>--}}
+
+
+
                         <div class="btn-group">
                             <button type="button" class="btn btn-logged" data-toggle="dropdown">
                                 <img src="images/photos/loggeduser.png" alt=""/>{{Auth::user()->username}}
@@ -148,7 +187,6 @@
     <div class="mainpanel">
 
         <div class="contentpanel">
-
             @yield('content')
 
 
@@ -173,6 +211,7 @@
 <script src="{{asset('lib/bootstrap-date-picker/bootstrap-datepicker3.js')}}"></script>
 <script src="{{asset('lib/select2/select2.js')}}"></script>
 <script src="{{asset('lib/jquery-validate/jquery.validate.js')}}"></script>
+{{--<scipt src="{{asset('resources/assets/js/app.js')}}"></scipt>--}}
 
 
 @yield('scripts')

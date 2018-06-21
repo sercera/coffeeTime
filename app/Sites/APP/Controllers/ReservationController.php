@@ -8,6 +8,7 @@ use App\Models\Table;
 use App\Notifications\RepliedToReservation;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,9 +29,9 @@ class ReservationController extends Controller
 
         $reservation = new Reservation();
 
+        $caffe= Caffe::find($request->input('caffe_id'));
+        User::find(1)->notify(new RepliedToReservation($caffe));
 //        Auth::user()->notify(new RepliedToReservation());
-
-
 //        dd($stocic);
         $reservation->fk_for_table=$request->input('table_number');
         $reservation->fk_for_caffe=$request->input('caffe_id');

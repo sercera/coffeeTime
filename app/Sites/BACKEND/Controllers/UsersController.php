@@ -153,9 +153,7 @@ class UsersController extends AuthController
             //'phone_number' => 'string|min:5',
             'username' => 'required|string|min:3|unique:users',
             'password' => 'required|string|min:6|confirmed',
-
-
-        ];
+            ];
 
 
         $validation = Validator::make($request, $rules);

@@ -4,6 +4,7 @@ namespace App\Sites\BACKEND\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Notifications;
 use App\Models\Caffe;
 use App\Models\Table;
 use App\Models\Financial;
@@ -50,7 +51,7 @@ class CaffeController extends AuthController
             $caffe->image = $filename;
         } else {
 
-            $caffe->image = "default.jpg";
+            $caffe->image = "default.png";
         }
         //Save caffe
         $caffe->save();
@@ -193,8 +194,6 @@ class CaffeController extends AuthController
             $tables[$i]['caffe'] = Caffe::find($table->fk_for_caffe)->name;
             $tables[$i]['is_taken'] = $table->is_taken;
             $tables[$i++]['is_reserved'] = $table->is_reserved;
-
-
         }
 
         $broj_mesta = 0;
@@ -207,5 +206,10 @@ class CaffeController extends AuthController
         }
 
         return view('caffe.caffe-show', compact('caffe', 'tables', 'broj_mesta'));
+    }
+
+    public function notification()
+    {
+        return Auth::user()->unreadNotifications;
     }
 }

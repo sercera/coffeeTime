@@ -12,14 +12,15 @@ class RepliedToReservation extends Notification
 {
     use Queueable;
 
+    protected $caffe;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($caffe)
     {
-        //
+        $this->caffe=$caffe;
     }
 
     /**
@@ -30,13 +31,13 @@ class RepliedToReservation extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', 'broadcast'];
     }
 
     public function toDatabase($notifiable)
     {
         return [
-            'repliedTime'=>Carbon::now()
+            'caffe' => $this->caffe
         ];
     }
     /**
@@ -45,10 +46,11 @@ class RepliedToReservation extends Notification
      * @param  mixed  $notifiable
      * @return array
      */
-    public function toArray($notifiable)
+    public function toBroadcast($notifiable)
     {
         return [
-            //
-        ];
+            'caffe' => $this->caffe,
+            ];
     }
+
 }

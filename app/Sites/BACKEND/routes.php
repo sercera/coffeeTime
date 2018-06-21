@@ -88,6 +88,7 @@ Route::resources([
 Route::get('users/delete/{userId}','UsersController@destroy');
 Route::put('users/editpassword/{user}','UsersController@editPassword');
 
+Route::post('notification/caffe/notification', 'CaffeController@notification');
 
 Route::get('hello',function (){
 
